@@ -13,7 +13,7 @@ You can return the answer in any order.
 std::vector<int> twoSum(std::vector<int>& nums, int target) {
     std::unordered_map<int, int> numsMap;
 
-    for (size_t ind = 0; ind < nums.size(); ++ind) { //iterate through nums
+    for (int ind = 0; ind < nums.size(); ++ind) { //iterate through nums
         int other = target - nums[ind];              //other number that adds up to target
         if (numsMap[other] != 0) {                   //if that other number exists
             return {ind, numsMap[other] - 1};        //return the vector with the indicies
