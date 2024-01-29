@@ -6,3 +6,4 @@ int main(int argc, char* argv[]) {
     int* y = &x;
     std::cout << *y << std::endl;
 }
+
