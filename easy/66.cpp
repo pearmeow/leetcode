@@ -20,7 +20,7 @@ std::vector<int> plusOne(std::vector<int>& digits) {
             return digits;
         }
     }
-    if (!digits[0]) {
+    if (carry) {
         digits.insert(digits.begin(), 1);
     }
     return digits;
