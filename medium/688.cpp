@@ -24,14 +24,8 @@ double knightProbability(int boardLength, int moves, int r, int c) {
     if (moves == 0) {
         return 1;
     }
-    const std::vector<std::vector<int>> shift = {{r + 2, c + 1}, //all possible moves 
-                                                {r + 2, c - 1},
-                                                {r - 2, c + 1},
-                                                {r - 2, c - 1},
-                                                {r + 1, c + 2},
-                                                {r + 1, c - 2},
-                                                {r - 1, c + 2},
-                                                {r - 1, c - 2}};
+    const std::vector<std::vector<int>> shift = {{r + 2, c + 1}, {r + 2, c - 1}, {r - 2, c + 1}, {r - 2, c - 1},
+                                                 {r + 1, c + 2}, {r + 1, c - 2}, {r - 1, c + 2}, {r - 1, c - 2}};
     double total = 0;
     for (std::size_t i = 0; i < shift.size(); ++i) {
         total += knightProbability(boardLength, moves - 1, shift[i][0], shift[i][1]);
