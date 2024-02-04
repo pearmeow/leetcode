@@ -18,30 +18,28 @@ Return the probability that the knight remains on the board after it has stopped
 #include <iostream> //for testing
 #include <map>
 
+const int X[8] = {2, 2, 1, 1, -1, -1, -2, -2};
+const int Y[8] = {1, -1, 2, -2, 2, -2, 1, -1};
 
 double knightProbability(int boardLength, int moves, int r, int c) {
-    std::map<std::vector<int>, double> memo;
+    std::vector<std::vector<std::vector<double>>> memo(moves + 1, std::vector<std::vector<double>>(boardLength, std::vector<double>(boardLength, -1.0)));
     return helper(boardLength, moves, r, c, memo);
 }
     
-double helper(int boardLength, int moves, int r, int c, std::map<std::vector<int>, double>& memo) {
-    if (r >= boardLength || c >= boardLength || r < 0 || c < 0) { //if piece is out of bounds
-        return 0.0;
+double helper(int boardLength, int moves, int r, int c, std::vector<std::vector<std::vector<double>>>& memo) {
+    if (moves == 0) return 1.0;
+    if (memo[moves][r][c] != -1) {
+        return memo[moves][r][c];
     }
-    if (moves == 0) {
-        return 1;
-    }
-    if (memo[{moves, r, c}] != 0) {
-        return memo[{moves, r, c}] + 3;
-    }
-    const std::vector<std::vector<int>> shift = {{r + 2, c + 1}, {r + 2, c - 1}, {r - 2, c + 1}, {r - 2, c - 1},
-                                                 {r + 1, c + 2}, {r + 1, c - 2}, {r - 1, c + 2}, {r - 1, c - 2}};
     double total = 0;
-    for (std::size_t i = 0; i < shift.size(); ++i) {
-        total += helper(boardLength, moves - 1, shift[i][0], shift[i][1], memo);
+    for (int i = 0; i < 8; ++i) {
+        int x = r + X[i];
+        int y = c + Y[i];
+        if (x >= 0 && x < boardLength && y >= 0 && y < boardLength) {
+            total += helper(boardLength, moves - 1, x, y, memo);
+        }
     }
-    memo[{moves, r, c}] = total / 8 - 3;
-    return total / 8;
+    return memo[moves][r][c] = total / 8.0;
 }
 
 int main(int argc, char* argv[]) {
