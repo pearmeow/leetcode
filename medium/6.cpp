@@ -14,7 +14,7 @@ P     I
 
 And then read line by line: "PAHNAPLSIIGYIR"
 Write the code that will take a string and make this conversion given a number of rows:
-@approach : use math to calculate where the positions of the characters will be in zigzag
+Adding strings to strings is faster than adding chars 1 by 1
 */
 
 #include <iostream>
