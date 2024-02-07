@@ -16,7 +16,7 @@ Write the code that will take a string and make this conversion given a number o
 std::string convert(std::string s, int numRows) {
     std::vector<std::vector<char>> chars;
     char buf;
-    while (buf << s) {
+    {
 
     }
 }
