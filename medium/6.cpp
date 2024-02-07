@@ -6,17 +6,38 @@ The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of 
 P   A   H   N
 A P L S I I G
 Y   I   R
+
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+
 And then read line by line: "PAHNAPLSIIGYIR"
 Write the code that will take a string and make this conversion given a number of rows:
+@approach : use math to calculate where the positions of the characters will be in zigzag
 */
 
+#include <iostream>
 #include <string>
 #include <vector>
 
 std::string convert(std::string s, int numRows) {
-    std::vector<std::vector<char>> chars;
-    char buf;
-    {
+    std::vector<std::string> rows(numRows);
+    std::string res;
+    int zig = 0;
+    bool zag = false;
+    if (numRows == 1) {return s;}
+    for (size_t i = 0; i < s.size(); ++i) {
+        if (zig == numRows - 1) {zag = true;}
+        else if (zig == 0) {zag = false;}
+        rows[zig] += s[i];
+        if (zag) {zig -= 1;}
+        else {zig += 1;}
+    } 
+    for (size_t i = 0; i < rows.size(); ++i) {res += rows[i];}
+    return res;
+}
 
-    }
+int main(int argc, char* argv[]) {
+    std::cout << convert("PAYPALISHIRING", 4) << std::endl;
 }
