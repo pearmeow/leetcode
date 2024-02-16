@@ -3,6 +3,7 @@
 !/**/
 !*.*
 **/*Zone.Identifier
+.vscode
 
 # Prerequisites
 *.d
