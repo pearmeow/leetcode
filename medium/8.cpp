@@ -25,7 +25,8 @@ int myAtoi(std::string s) {
   bool negative = false;
   size_t pos = 0;
   while (s[pos] == ' ' && pos < s.size() - 1) ++pos;
-  if 
+  if (s[pos + 1] == '-') negative = true;
+  else 
   for (size_t i = pos; i < s.size(); ++i) {
     if (s[i] >= '0' && s[i] <= '9') {
       res *= 10;
