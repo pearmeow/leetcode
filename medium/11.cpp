@@ -16,5 +16,5 @@ Notice that you may not slant the container.
 #include <iostream>
 
 int maxArea(std::vector<int>& height) {
-        
+  
 }
