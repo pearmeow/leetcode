@@ -24,22 +24,28 @@ int myAtoi(std::string s) {
   long long res = 0;
   bool negative = false;
   size_t pos = 0;
-  while (s[pos] == ' ' && pos < s.size() - 1) ++pos;
-  if (s[pos + 1] == '-') negative = true;
-  else 
+  while (s[pos] == ' ' && pos < s.size()) ++pos;
+  if (pos == s.size()) return res;
+  if (s[pos] == '-') {
+    negative = true;
+    ++pos;
+  }
+  else if (s[pos] == '+') ++pos;
+
   for (size_t i = pos; i < s.size(); ++i) {
+    std::cout << s[pos] << " at position " << i << std::endl;
     if (s[i] >= '0' && s[i] <= '9') {
       res *= 10;
       res += (s[i] - '0');
+      if (res > 2147483647 && !negative) return 2147483647;
+      else if (negative && res * -1 < -2147483648) return -2147483648;
     }
     else break;
   }
   if (negative) res *= -1;
-  if (res > 2147483647) return 2147483647;
-  else if (res < -2147483648) return -2147483648;
   return (int)res;
 }
 
 int main() {
-  myAtoi("   -42");
+  std::cout << myAtoi("   -42") << '\n';
 }
