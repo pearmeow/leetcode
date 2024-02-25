@@ -14,7 +14,14 @@ Notice that you may not slant the container.
 
 #include <vector>
 #include <iostream>
+#include <cmath>
 
 int maxArea(std::vector<int>& height) {
-  
+  int res = 0;
+  for (int i = 0; i < height.size(); ++i) {
+    for (int j = i; j < height.size(); ++j) {
+      res = std::max(res, (j - i) * std::min(height[i], height[j]));
+    }
+  }
+  return res;
 }
