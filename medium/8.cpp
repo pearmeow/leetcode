@@ -3,8 +3,9 @@
 @author : Perry Huang
 @date : 2/24/2024
 
+8. String to Integer (atoi)
+Description of problem:
 The algorithm for myAtoi(string s) is as follows:
-
 Read in and ignore any leading whitespace.
 Check if the next character (if not already at the end of the string) is '-' or '+'. 
 Read this character in if it is either. This determines if the final result is negative or positive respectively. 
