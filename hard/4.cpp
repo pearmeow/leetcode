@@ -9,7 +9,7 @@ The overall run time complexity should be O(log (m+n)).
 #include <vector>
 
 double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {
-    
+  return 0.0;
 }
 
 int main(int argc, char* argv[]) {
