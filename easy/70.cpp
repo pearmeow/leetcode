@@ -12,11 +12,11 @@ Each time you can either climb 1 or 2 steps. In how many distinct ways can you c
 #include <iostream>
 
 int climbStairs(int n) {
-  std::vector<int> ways = {1, 2};
-  for (int i = 2; i < n; ++i) {
+  std::vector<int> ways = {1, 1};
+  for (int i = 2; i < n + 1; ++i) {
     ways.push_back(ways[i - 1] + ways[i - 2]);
   }
-  return ways[n - 1];
+  return ways[n];
 }
 
 int main() {
