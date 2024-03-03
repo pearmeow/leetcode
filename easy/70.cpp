@@ -20,5 +20,5 @@ int climbStairs(int n) {
 }
 
 int main() {
-  std::cout << climbStairs(13) << std::endl;
+  std::cout << climbStairs(10) << std::endl;
 }

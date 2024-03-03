@@ -18,15 +18,13 @@ Notice that the solution set must not contain duplicate triplets.
 
 std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
   std::vector<std::vector<int>> triplets;
-  std::unordered_map<int, int> numIndex;
-  std::unordered_map<int, std::vector<int>> seen;
+  std::unordered_map<int, int> first;
   
+  std::unordered_map<int, int> numIndex;  
 
   return triplets;
 }
 
 int main() {
-  std::unordered_map<int, std::vector<int>> numIndex;
-  numIndex[0] = {1, 2};
-  std::cout << numIndex[0][0];
+
 }
