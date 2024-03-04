@@ -60,9 +60,11 @@ std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
 }
 
 int main() {
-  // std::vector<int> bruh = {4, 2, 1, 2, 34, 2, 1, 2, 34, 2, 1, 2, 34, 2, 1, 2,
-  // 34, 2, 1, 2, 34, 2, 1, 2, 3}; mergeSort(bruh); for (int i : bruh) std::cout
-  // << i << " "; std::cout << std::endl;
+  std::vector<int> bruh = {4, 2, 1, 2,  34, 2, 1, 2,  34, 2, 1, 2, 34,
+                           2, 1, 2, 34, 2,  1, 2, 34, 2,  1, 2, 3};
+  mergeSort(bruh);
+  for (int i : bruh) std::cout << i << " ";
+  std::cout << std::endl;
   int x = 6;
   int y = 2;
   x ? y += 1, x + 1 : (y -= 1, x -= 1);
