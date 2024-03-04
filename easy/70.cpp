@@ -5,11 +5,12 @@
 
 70. Climbing Stairs
 You are climbing a staircase. It takes n steps to reach the top.
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you
+climb to the top?
 */
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
 int climbStairs(int n) {
   std::vector<int> ways = {1, 1};
@@ -19,6 +20,4 @@ int climbStairs(int n) {
   return ways[n];
 }
 
-int main() {
-  std::cout << climbStairs(10) << std::endl;
-}
+int main() { std::cout << climbStairs(10) << std::endl; }
