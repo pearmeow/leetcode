@@ -1,10 +1,11 @@
-# No extensionless files
+# Extensionless files & folders
 *
 !/**/
 !*.*
 **/*Zone.Identifier
 .vs
 .vscode
+build
 
 # Prerequisites
 *.d
