@@ -27,7 +27,7 @@ int lengthOfLongestSubstring(std::string s) {
   return longestSub;
 }
 
-int main(int argc, char* argv[]) {
+int main() {
   std::string sample = "bacdefghijab";  // expecting 10
   std::cout << lengthOfLongestSubstring(sample);
   return 0;

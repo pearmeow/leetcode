@@ -43,7 +43,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
   return res;
 }
 
-int main(int argc, char* argv[]) {
+int main() {
   ListNode numOne(1);
   ListNode numTwo(8);
   ListNode copy = numTwo;

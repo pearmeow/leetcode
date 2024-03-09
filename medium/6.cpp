@@ -42,6 +42,6 @@ std::string convert(std::string s, int numRows) {
   return res;
 }
 
-int main(int argc, char* argv[]) {
+int main() {
   std::cout << convert("PAYPALISHIRING", 4) << std::endl;
 }

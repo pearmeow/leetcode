@@ -50,6 +50,6 @@ double helper(int boardLength, int moves, int r, int c,
   return memo[moves][r][c] = total / 8.0;
 }
 
-int main(int argc, char* argv[]) {
+int main() {
   std::cout << knightProbability(8, 30, 6, 4) << std::endl;
 }

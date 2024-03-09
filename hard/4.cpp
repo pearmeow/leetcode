@@ -14,4 +14,4 @@ double findMedianSortedArrays(std::vector<int>& nums1,
   return 0.0;
 }
 
-int main(int argc, char* argv[]) {}
+int main() {}
