@@ -14,10 +14,10 @@ return the answer in any order.
 std::vector<int> twoSum(std::vector<int>& nums, int target) {
   std::unordered_map<int, int> numsMap;
 
-  for (int ind = 0; ind < nums.size(); ++ind) {  // iterate through nums
+  for (size_t ind = 0; ind < nums.size(); ++ind) {  // iterate through nums
     int other = target - nums[ind];      // other number that adds up to target
     if (numsMap[other] != 0) {           // if that other number exists
-      return {ind, numsMap[other] - 1};  // return the vector with the indicies
+      return {(int)ind, numsMap[other] - 1};  // return the vector with the indicies
     }
     numsMap[nums[ind]] = ind + 1;  // index + 1 to avoid 0
   }
@@ -25,7 +25,7 @@ std::vector<int> twoSum(std::vector<int>& nums, int target) {
   return {};
 }
 
-int main(int argc, char* argv[]) {
+int main() {
   std::vector<int> test = {1, 2, 3, 4, 5};
   std::vector<int> res = twoSum(test, 3);
   std::cout << res[0] << " " << res[1] << std::endl;
