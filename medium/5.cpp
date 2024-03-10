@@ -5,6 +5,9 @@
 
 5. Longest Palindromic Substring
 Given a string s, return the longest palindromic substring in s.
+
+TODO
+
 */
 
 #include <iostream>
@@ -13,7 +16,7 @@ Given a string s, return the longest palindromic substring in s.
 /*
 iterate through substring 2 chars at a time
 */
-std::string longestPalindrome(std::string s) {
+std::string longestPalindrome(const std::string& s) {
   std::string res = "";
   int start = 0;
   int end = 0;

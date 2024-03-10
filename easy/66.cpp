@@ -11,7 +11,7 @@ Increment the large integer by one and return the resulting array of digits.
 
 #include <vector>
 
-std::vector<int> plusOne(std::vector<int>& digits) {
+std::vector<int>& plusOne(std::vector<int>& digits) {
   int carry = 0;
   for (std::size_t digit = digits.size(); digit > 0; --digit) {
     digits[digit - 1] += 1;

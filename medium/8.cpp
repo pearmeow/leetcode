@@ -22,7 +22,7 @@ to 231 - 1. Return the integer as the final result.
 
 #include <iostream>
 
-int myAtoi(std::string s) {
+int myAtoi(const std::string& s) {
   long long res = 0;
   bool negative = false;
   size_t pos = 0;

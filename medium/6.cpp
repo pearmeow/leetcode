@@ -19,7 +19,7 @@ of rows: Adding strings to strings is faster than adding chars 1 by 1
 #include <string>
 #include <vector>
 
-std::string convert(std::string s, int numRows) {
+std::string convert(const std::string& s, int numRows) {
   std::vector<std::string> rows(numRows);
   std::string res;
   int zig = 0;

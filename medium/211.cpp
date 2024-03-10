@@ -5,6 +5,9 @@
 
 211. Design Add and Search words Data Structure
 Design a data structure that supports adding new m_words and finding if a string matches any previously added string.
+
+OPTIMIZE
+
 */
 
 #include <iostream>
@@ -17,7 +20,7 @@ class WordDictionary {
  public:
   WordDictionary() {}
 
-  void addWord(std::string word) {
+  void addWord(const std::string& word) {
     m_words.emplace(word);
   }
 

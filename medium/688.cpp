@@ -20,7 +20,6 @@ moving.
 */
 
 #include <iostream>  //for testing
-#include <map>
 #include <vector>
 
 const int X[8] = {2, 2, 1, 1, -1, -1, -2, -2};

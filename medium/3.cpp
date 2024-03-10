@@ -9,7 +9,7 @@ substring without repeating characters.
 #include <string>
 #include <unordered_map>
 
-int lengthOfLongestSubstring(std::string s) {
+int lengthOfLongestSubstring(const std::string& s) {
   std::unordered_map<char, int> charPositions;
   int longestSub = 0;
   int offset = 0;

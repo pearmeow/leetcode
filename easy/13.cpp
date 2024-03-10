@@ -10,7 +10,7 @@ Given a roman numeral, convert it to an integer.
 #include <iostream>
 #include <unordered_map>
 
-int romanToInt(std::string s) {
+int romanToInt(const std::string& s) {
   int num = 0;
   std::unordered_map<char, int> values = {{'I', 1},   {'V', 5},   {'X', 10},
                                           {'L', 50},  {'C', 100}, {'D', 500},

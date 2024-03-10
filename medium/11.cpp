@@ -16,7 +16,7 @@ container.
 #include <iostream>
 #include <vector>
 
-int maxArea(std::vector<int>& height) {
+int maxArea(const std::vector<int>& height) {
   int res = 0, p1 = 0, p2 = height.size() - 1;
   while (p1 != p2) {
     res = std::max(std::min(height[p1], height[p2]) * (p2 - p1), res);

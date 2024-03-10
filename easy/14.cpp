@@ -13,7 +13,7 @@ If there is no common prefix, return an empty string "".
 #include <iostream>
 #include <vector>
 
-std::string longestCommonPrefix(std::vector<std::string>& strs) {
+std::string& longestCommonPrefix(const std::vector<std::string>& strs) {
   std::string lcp;
   char curr = ' ';
   size_t min_size = strs[0].size();

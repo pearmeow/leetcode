@@ -11,9 +11,8 @@ return the answer in any order.
 #include <unordered_map>
 #include <vector>
 
-std::vector<int> twoSum(std::vector<int>& nums, int target) {
+std::vector<int> twoSum(const std::vector<int>& nums, int target) {
   std::unordered_map<int, int> numsMap;
-
   for (size_t ind = 0; ind < nums.size(); ++ind) {  // iterate through nums
     int other = target - nums[ind];      // other number that adds up to target
     if (numsMap[other] != 0) {           // if that other number exists
@@ -21,7 +20,6 @@ std::vector<int> twoSum(std::vector<int>& nums, int target) {
     }
     numsMap[nums[ind]] = ind + 1;  // index + 1 to avoid 0
   }
-
   return {};
 }
 
