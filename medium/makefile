@@ -1,10 +1,10 @@
 default: run
 
 run: compile
-	./$(num)
+	./$(ARGS)
 
 compile:
-	g++ -std=c++11 -pedantic -Wall -Wextra -Werror -o $(num) -g $(num).cpp
+	g++ -std=c++11 -pedantic -Wall -Wextra -Werror -o $(ARGS) -g $(ARGS).cpp
 
 clean:
-	rm $(num)
+	rm $(ARGS)
