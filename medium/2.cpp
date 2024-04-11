@@ -6,9 +6,6 @@ integers. The digits are stored in reverse order, and each of their nodes
 contains a single digit. Add the two numbers and return the sum as a linked
 list. You may assume the two numbers do not contain any leading zero, except the
 number 0 itself.
-
-REDO
-
 */
 
 #include <iostream>
@@ -23,27 +20,13 @@ struct ListNode {
 };
 
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-  ListNode* head = new ListNode();
-  ListNode* newNum = head;
-  int carry = 0;
+  int carry = 0, total = 0;
+  ListNode* head = new ListNode;
+  ListNode* dummy = head;
   while (l1 || l2 || carry) {
-    int total = 0;
-    if (l1) {
-      total += l1->val;
-      l1 = l1->next;
-    }
-    if (l2) {
-      total += l2->val;
-      l2 = l2->next;
-    }
-    total += carry;
-    carry = total / 10;
-    newNum->next = new ListNode(total % 10);
-    newNum = newNum->next;
+    dummy
   }
-  ListNode* res = head->next;
-  delete head;
-  return res;
+  return head;
 }
 
 int main() {
