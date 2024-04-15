@@ -7,6 +7,7 @@
 .vscode
 build
 lmao
+.histfile
 
 # Prerequisites
 *.d
