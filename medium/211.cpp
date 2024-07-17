@@ -8,11 +8,15 @@
 
 #include <iostream>
 #include <string>
-#include <unordered_map>
 
 class WordDictionary {
  public:
-  WordDictionary() {}
+  WordDictionary() {
+    hasEnd = false;
+    for (int i = 0; i < 26; ++i) {
+      words[i] = nullptr;
+    }
+  }
 
   void addWord(const std::string& word) {
     
@@ -23,6 +27,10 @@ class WordDictionary {
   }
 
  private:
+  bool hasEnd;
+  int depth;
+  WordDictionary* words[26];
+
 };
 
 int main() {}
