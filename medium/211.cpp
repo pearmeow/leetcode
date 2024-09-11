@@ -13,23 +13,33 @@ class WordDictionary {
  public:
   WordDictionary() {
     hasEnd = false;
+    words = new WordDictionary*[26];
     for (int i = 0; i < 26; ++i) {
       words[i] = nullptr;
     }
   }
 
+  void end() { hasEnd = true; }
+
   void addWord(const std::string& word) {
-    
+    WordDictionary* curr = this;
+    for (int i = 0; i < word.size(); ++i) {
+      if (curr->words[word[i] - 'a'] == nullptr) {
+        curr->words[word[i] - 'a'] = new WordDictionary();
+      }
+      curr = curr->words[word[i] - 'a'];
+    }
+    curr->end();
   }
 
   bool search(const std::string& word) {
-    return true;
+    WordDictionary* curr = this;
+
   }
 
  private:
   bool hasEnd;
-  int depth;
-  WordDictionary* words[26];
+  WordDictionary** words;
 
 };
 
