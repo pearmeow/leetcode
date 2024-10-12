@@ -1,11 +1,10 @@
-/*
-@file: 12-int-to-rom-numeral.cpp
-@author: Perry Huang
-@date: 2/25/2024
-
-12.
-Given an integer, convert it to a roman numeral.
-*/
+/**
+ * @file: 12-int-to-rom-numeral.cpp
+ * @author: Perry Huang
+ * @date: 2/25/2024
+ * 12.
+ * Given an integer, convert it to a roman numeral.
+ */
 
 #include <iostream>
 #include <unordered_map>

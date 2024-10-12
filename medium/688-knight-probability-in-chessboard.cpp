@@ -1,4 +1,4 @@
-/*
+/**
  * @file 688-knight-probability-in-chessboard.cpp
  * @author Perry Huang
  * @date 2024-10-12
@@ -16,7 +16,7 @@
  * the chessboard.
  * Return the probability that the knight remains on the board after it has stopped
  * moving.
-*/
+ */
 
 #include <iostream>  //for testing
 #include <vector>
