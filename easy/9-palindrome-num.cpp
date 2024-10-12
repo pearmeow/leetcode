@@ -1,8 +1,10 @@
-/*
-@file : 9.cpp
-@author : Perry Huang
-@brief : is the number a palindrome
-*/
+/**
+ * @file 9-palindrome-num.cpp
+ * @author Perry Huang
+ * @date 2024-10-12
+ * 9. Palindrome Number
+ * Given an integer x, return true if x is a palindrome, and false otherwise.
+ */
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 /**
- * @file: 21.cpp
- * @author: Perry Huang
- * @date: 3/3/2024
+ * @file 21-merge-two-sorted-lists.cpp
+ * @author Perry Huang
+ * @date 3/3/2024
  * 21. Merge Two Sorted Lists
  * You are given the heads of two sorted linked lists list1 and list2.
  * Merge the two lists into one sorted list. The list should be made by splicing

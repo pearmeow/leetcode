@@ -1,19 +1,17 @@
-/*
-@file: 14.cpp
-@author: Perry Huang
-@date: 2/25/2024
-
-14. Longest Common Prefix
-Write a function to find the longest common prefix string amongst an array of
-strings.
-
-If there is no common prefix, return an empty string "".
-*/
+/**
+ * @file 14-longest-common-prefix.cpp
+ * @author Perry Huang
+ * @date 2/25/2024
+ * 14. Longest Common Prefix
+ * Write a function to find the longest common prefix string amongst an array of
+ * strings.
+ * If there is no common prefix, return an empty string "".
+ */
 
 #include <iostream>
 #include <vector>
 
-std::string& longestCommonPrefix(const std::vector<std::string>& strs) {
+std::string longestCommonPrefix(const std::vector<std::string>& strs) {
   std::string lcp;
   char curr = ' ';
   size_t min_size = strs[0].size();

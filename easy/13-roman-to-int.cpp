@@ -1,11 +1,10 @@
-/*
-@file: 13.cpp
-@author: Perry Huang
-@date: 2/25/2024
-
-13.
-Given a roman numeral, convert it to an integer.
-*/
+/**
+ * @file 13-roman-to-int.cpp
+ * @author Perry Huang
+ * @date 2/25/2024
+ * 13. Roman to Integer
+ * Given a roman numeral, convert it to an integer.
+ */
 
 #include <iostream>
 #include <unordered_map>
