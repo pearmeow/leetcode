@@ -1,4 +1,2 @@
 Leetcode - C++ edition
-
-TODO
-Group by problem topic (maybe)
+Filename contains "X" after number = incomplete
