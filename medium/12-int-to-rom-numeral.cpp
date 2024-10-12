@@ -2,7 +2,7 @@
  * @file: 12-int-to-rom-numeral.cpp
  * @author: Perry Huang
  * @date: 2/25/2024
- * 12.
+ * 12. Integer to Roman
  * Given an integer, convert it to a roman numeral.
  */
 

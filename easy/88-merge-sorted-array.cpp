@@ -1,4 +1,4 @@
-/*
+/**
  * @file 88-merge-sorted-array.cpp
  * @author Perry Huang
  * @date 2024-10-12
