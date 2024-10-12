@@ -1,9 +1,11 @@
-/*
-3. Longest Substring Without Repeating Characters
-Description of problem:
-Given a string s, find the length of the longest
-substring without repeating characters.
-*/
+/**
+ * @file 3-longest-substring-norepeat.cpp
+ * @author Perry Huang
+ * @date 2024-10-12
+ * 3. Longest Substring Without Repeating Characters
+ * Given a string s, find the length of the longest
+ * substring without repeating characters.
+ */
 
 #include <iostream>  //for testing
 #include <string>

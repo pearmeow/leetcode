@@ -1,14 +1,10 @@
-/*
-@file: 5.cpp
-@author: Perry Huang
-@date: 2/1/2024
-
-5. Longest Palindromic Substring
-Given a string s, return the longest palindromic substring in s.
-
-TODO
-
-*/
+/**
+ * @file: 5-longest-palindromic-substring.cpp
+ * @author: Perry Huang
+ * @date: 2/1/2024
+ * 5. Longest Palindromic Substring
+ * Given a string s, return the longest palindromic substring in s.
+ */
 
 #include <iostream>
 #include <vector>
