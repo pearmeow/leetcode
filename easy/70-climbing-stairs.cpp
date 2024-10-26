@@ -11,12 +11,17 @@
 #include <iostream>
 #include <vector>
 
-int climbStairs(int n) {
-  std::vector<int> ways = {1, 1};
-  for (size_t i = 2; i < n + 1; ++i) {
-    ways.push_back(ways[i - 1] + ways[i - 2]);
+int helper(int n, std::vector<int>& memo) {
+  if (memo[n] != 0) return memo[n];
+  if (n <= 2) {
+    memo[n] = n;
+    return n;
   }
-  return ways[n];
+  memo[n] = helper(n - 1, memo) + helper(n - 2, memo);
+  return memo[n];
 }
 
-int main() { std::cout << climbStairs(10) << std::endl; }
+int climbStairs(int n) {
+  std::vector<int> memo(n + 1, 0); // 1 stair: 1 way, 2 stairs: 2 ways
+  return helper(n, memo);
+}
