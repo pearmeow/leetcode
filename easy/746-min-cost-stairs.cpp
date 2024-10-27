@@ -9,9 +9,18 @@
 
 #include <vector>
 
+int minCostClimbingStairs(std::vector<int>& cost) {
+  for (size_t i = cost.size() - 2; i > 0; --i) {
+    cost[i - 1] = cost[i - 1] + std::min(cost[i], cost[i + 1]);
+  }
+  return std::min(cost[0], cost[1]);
+}
+
+// ugly memoization solution
+
 int helper(std::vector<int>& memo, std::vector<int>& cost, int pos);
 
-int minCostClimbingStairs(std::vector<int>& cost) {
+int minCostClimbingStairsMemo(std::vector<int>& cost) {
   std::vector<int> memo(cost.size(), 0);
   return std::min(helper(memo, cost, 0), helper(memo, cost, 1));
 }
