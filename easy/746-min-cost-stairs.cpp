@@ -11,12 +11,12 @@
 
 int minCostClimbingStairs(std::vector<int>& cost) {
   for (size_t i = cost.size() - 2; i > 0; --i) {
-    cost[i - 1] = cost[i - 1] + std::min(cost[i], cost[i + 1]);
-  }
-  return std::min(cost[0], cost[1]);
+    cost[i - 1] = cost[i - 1] + std::min(cost[i], cost[i + 1]); // determine the minimum as you go
+  } // the min of cost at index x has to be it's positional cost plus the least cost between pos x + 1 and x + 2
+  return std::min(cost[0], cost[1]); // since you can start at 0 or 1, the least cost is between the two positions
 }
 
-// ugly memoization solution
+// memory hungry memoization solution
 
 int helper(std::vector<int>& memo, std::vector<int>& cost, int pos);
 
