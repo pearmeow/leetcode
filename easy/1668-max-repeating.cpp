@@ -7,21 +7,18 @@
 #include <string>
 
 int maxRepeating(std::string sequence, std::string word) {
-  int count = 0, tempCount = 0, tempInd = 0;
-  for (size_t i = 0; i < sequence.size(); ++i) {
-    if (word[tempInd] == sequence[i]) {
-      if (tempInd == word.size() - 1) {
-        ++tempCount;
-        tempInd = 0;
+  int count = 0, tempCount = 0;
+  for (size_t i = 0; i < word.size(); ++i) {
+    for (size_t j = i; j < sequence.size(); j += word.size()) {
+      if (sequence.compare(j, word.size(), word, 0, word.size()) == 0) {
+        tempCount += 1;
       } else {
-        ++tempInd;
+        count = std::max(tempCount, count);
+        tempCount = 0;
       }
-    } else {
-      count = std::max(tempCount, count);
-      tempInd = 0;
-      tempCount = 0;
     }
+    count = std::max(tempCount, count);
+    tempCount = 0;
   }
-  count = std::max(tempCount, count);
   return count;
 }
