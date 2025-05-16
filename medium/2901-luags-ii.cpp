@@ -33,21 +33,19 @@ int hamm_dist(const std::string& str1, const std::string& str2) {
 std::vector<std::string> getWordsInLongestSubsequence(std::vector<std::string>& words, std::vector<int>& groups) {
   std::vector<std::string> res;
   std::vector<std::pair<int, int>> dp(words.size(), std::pair<int, int>{-1, 1}); // first=nextIndex, second=maxLength
+  int maxLen = 1;
+  size_t start = 0;
   for (size_t i = dp.size(); i > 0; --i) {
     for (size_t j = i - 1; j > 0; --j) {
       if (groups[j - 1] != groups[i - 1] && hamm_dist(words[j - 1], words[i - 1]) == 1 // subsequence eligibility
           && dp[i - 1].second + 1 > dp[j - 1].second) { // can form longer subsequence if this one is linked to i
         dp[j - 1].first = i - 1; // link
         dp[j - 1].second = dp[i - 1].second + 1;
+        if (dp[j - 1].second > maxLen) {
+          maxLen = dp[j - 1].second;
+          start = j - 1;
+        }
       }
-    }
-  }
-  int maxLen = 1;
-  size_t start = 0;
-  for (size_t i = 0; i < dp.size(); ++i) {
-    if (dp[i].second > maxLen) {
-      start = i;
-      maxLen = dp[i].second;
     }
   }
   size_t curr = start;
