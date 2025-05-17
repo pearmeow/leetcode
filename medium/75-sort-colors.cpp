@@ -23,7 +23,7 @@ void sortColors(std::vector<int>& nums) {
     if (nums[curr] == 2) {
       std::swap(nums[curr], nums[back]);
       --back;
-      if (nums[curr] == 0) {
+      if (nums[front] == 0) {
         ++front;
       }
     } else if (nums[curr] == 0) {
