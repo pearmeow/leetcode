@@ -21,11 +21,7 @@ int longestPalindrome(std::vector<std::string>& words) {
   std::string complement;
   std::unordered_map<std::string, int> wordCount;
   for (size_t i = 0; i < words.size(); ++i) {
-    if (wordCount.find(words[i]) == wordCount.end()) {
-      wordCount[words[i]] = 1;
-    } else {
-      wordCount[words[i]] += 1;
-    }
+    wordCount[words[i]] += 1;
     if (words[i][0] == words[i][1]) {
       if (wordCount[words[i]] % 2 == 0) { // even number of "couples"
         oddCouples -= 1;
@@ -34,11 +30,8 @@ int longestPalindrome(std::vector<std::string>& words) {
         oddCouples += 1;
       }
     } else {
-      std::string complement{words[i][1], words[i][0]};
-      if (wordCount.find(complement) != wordCount.end()) {
-        if (wordCount[complement] >= wordCount[words[i]]) {
+      if (wordCount[{words[i][1], words[i][0]}] >= wordCount[words[i]]) { // check complement of word
           res += 4;
-        }
       }
     }
   }
