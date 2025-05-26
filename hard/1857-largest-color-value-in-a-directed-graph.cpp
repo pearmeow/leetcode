@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include <queue>
+#include <iostream>
 
 const int COLORS = 26;
 
@@ -28,29 +29,29 @@ int largestPathValue(const std::string& colors, const std::vector<std::vector<in
     adjList[parent].push_back(child);
     ++indegrees[child];
   }
-  std::vector<std::vector<int>> pathValues(colors.size(), std::vector<int>(COLORS));
+  std::vector<std::vector<int>> colorMaxes(colors.size(), std::vector<int>(COLORS));
   std::queue<int> parents;
-  for (int i : indegrees) {
-    if (i == 0) {
+  for (size_t i = 0; i < indegrees.size(); ++i) {
+    if (indegrees[i] == 0) {
       parents.push(i);
     }
   }
   int maxColor = 0;
   int totalParents = 0;
-  while (parents.empty() == false) {
+  while (!parents.empty()) {
     ++totalParents;
     int currPar = parents.front();
     parents.pop();
-    pathValues[currPar][colors[currPar] - 'a'] += 1;
-    maxColor = std::max(pathValues[currPar][colors[currPar] - 'a'], maxColor);
+    colorMaxes[currPar][colors[currPar] - 'a'] += 1;
+    maxColor = std::max(colorMaxes[currPar][colors[currPar] - 'a'], maxColor);
     for (int child : adjList[currPar]) {
       indegrees[child] -= 1;
       if (indegrees[child] == 0) {
         parents.push(child);
       }
       for (size_t i = 0; i < COLORS; ++i) {
-        pathValues[child][i] = std::max(pathValues[currPar][i], pathValues[child][i]);
-        maxColor = std::max(pathValues[child][i], maxColor);
+        colorMaxes[child][i] = std::max(colorMaxes[currPar][i], colorMaxes[child][i]);
+        maxColor = std::max(colorMaxes[child][i], maxColor);
       }
     }
   }
