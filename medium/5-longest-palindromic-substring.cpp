@@ -9,11 +9,9 @@
 #include <iostream>
 #include <vector>
 
-// idea: traverse 2 at a time and traverse 1 at a time
 std::string longestPalindrome(const std::string& s) {
-  if (s.size() == 1) return s;
-  for (size_t i = 0; i < s.size(); ++i) {
-    
-  }
-  return "";
+  // current idea
+  // make 2d dp table where dp[i,j] is the longest palindrome from i to j
+  // base case i == j and size is 1
+  // ??? from there
 }
