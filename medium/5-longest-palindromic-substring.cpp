@@ -6,12 +6,35 @@
  * Given a string s, return the longest palindromic substring in s.
  */
 
-#include <iostream>
+#include <string>
 #include <vector>
 
+void updTable(const std::string& s, size_t row, size_t col, std::vector<std::vector<std::string>>& dp) {
+  if (col == 0 || col > dp.size() - 1 || row >= dp.size() - 1) return;
+  if (s[row] == s[col]) {
+    dp[row][col] = s[row] + dp[row + 1][col - 1] + s[col];
+    return;
+  }
+  if (dp[row + 1][col].size() > dp[row][col - 1].size()) {
+    dp[row][col] = dp[row + 1][col];
+  } else {
+    dp[row][col] = dp[row][col - 1];
+  }
+}
+
 std::string longestPalindrome(const std::string& s) {
-  // current idea
-  // make 2d dp table where dp[i,j] is the longest palindrome from i to j
-  // base case i == j and size is 1
-  // ??? from there
+  // dp[i,j] is the longest palindrome from i to j
+  std::vector<std::vector<std::string>> dp(s.size(), std::vector<std::string>(s.size(), ""));
+  for (size_t i = 0; i < dp.size(); ++i) {
+    // base case i == j and size is 1
+    dp[i][i] = s[i];
+  }
+  // traverses the table diagonally
+  for (size_t offset = 1; offset < dp.size(); ++offset) {
+    for (size_t row = 0, col = offset; col < dp.size(); ++row, ++col) {
+      updTable(s, row, col, dp);
+    }
+  }
+  updTable(s, 0, s.size() - 1, dp);
+  return dp[0][s.size() - 1];
 }
