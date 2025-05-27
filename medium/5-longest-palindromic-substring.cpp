@@ -8,23 +8,28 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
-void updTable(const std::string& s, size_t row, size_t col, std::vector<std::vector<std::string>>& dp) {
+void updTable(const std::string& s, size_t row, size_t col, std::vector<std::vector<std::pair<size_t, size_t>>>& dp) {
   if (col == 0 || col > dp.size() - 1 || row >= dp.size() - 1) return;
-  size_t diagonal = dp[row + 1][col - 1].size();
+  size_t start = dp[row + 1][col - 1].first;
+  size_t end = dp[row + 1][col - 1].second;
   if (s[row] == s[col]) {
-    if (row + 1 > col - 1 || diagonal == col - row - 1) {
-      dp[row][col] = s[row] + dp[row + 1][col - 1] + s[col];
+    if (row + 1 > col - 1 || (start == row + 1 && end == col - 1)) {
+      dp[row][col].first = row;
+      dp[row][col].second = col;
     }
   }
 }
 
 std::string longestPalindrome(const std::string& s) {
   // dp[i,j] is the longest palindrome from i to j
-  std::vector<std::vector<std::string>> dp(s.size(), std::vector<std::string>(s.size()));
+  std::vector<std::vector<std::pair<size_t, size_t>>> dp(s.size(), std::vector<std::pair<size_t, size_t>>(s.size(),
+        std::pair<int,int>(s.size(), s.size()))); // first is start index, second is end index
   for (size_t i = 0; i < dp.size(); ++i) {
     // base case i == j so size is 1
-    dp[i][i] = s[i];
+    dp[i][i].first = i;
+    dp[i][i].second = i;
   }
   // traverse table diagonally
   for (size_t offset = 1; offset < dp.size(); ++offset) {
@@ -32,13 +37,17 @@ std::string longestPalindrome(const std::string& s) {
       updTable(s, row, col, dp);
     }
   }
-  std::string longest;
+  std::size_t start = 0;
+  std::size_t end = 0;
+  std::size_t longest = 0;
   for (size_t i = 0; i < dp.size(); ++i) {
     for (size_t j = 0; j < dp.size(); ++j) {
-      if (longest.size() < dp[i][j].size()) {
-        longest = dp[i][j];
+      if (dp[i][j].first != dp.size() && (longest < dp[i][j].second - dp[i][j].first + 1)) {
+        longest = dp[i][j].second - dp[i][j].first + 1;
+        start = dp[i][j].first;
+        end = dp[i][j].second;
       }
     }
   }
-  return longest;
+  return s.substr(start, end - start + 1);
 }
