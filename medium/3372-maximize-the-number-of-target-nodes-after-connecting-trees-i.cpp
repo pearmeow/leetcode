@@ -19,11 +19,10 @@
 
 #include <vector>
 #include <unordered_set>
-#include <set>
 #include <queue>
 
 // returns nodes with distance less than or equal to k
-int targetBFS(const std::vector<std::set<int>>& adjList, int k, int rootVertex) {
+int targetBFS(const std::vector<std::unordered_set<int>>& adjList, int k, int rootVertex) {
   std::unordered_set<int> visited;
   std::queue<int> visiting;
   visiting.push(rootVertex);
@@ -51,8 +50,8 @@ int targetBFS(const std::vector<std::set<int>>& adjList, int k, int rootVertex) 
 
 std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1, const std::vector<std::vector<int>>& edges2, int k) {
   if (k == 0) return std::vector<int>(edges1.size() + 1, 1);
-  std::vector<std::set<int>> adjList1(edges1.size() + 1);
-  std::vector<std::set<int>> adjList2(edges2.size() + 1);
+  std::vector<std::unordered_set<int>> adjList1(edges1.size() + 1);
+  std::vector<std::unordered_set<int>> adjList2(edges2.size() + 1);
   for (size_t i = 0; i < edges1.size(); ++i) {
     adjList1[edges1[i][0]].insert(edges1[i][1]);
     adjList1[edges1[i][1]].insert(edges1[i][0]);
