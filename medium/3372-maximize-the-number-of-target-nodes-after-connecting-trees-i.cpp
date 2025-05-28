@@ -22,9 +22,11 @@
 #include <queue>
 
 // returns nodes with distance less than or equal to k
-int targetBFS(const std::vector<std::unordered_set<int>>& adjList, int k, int rootVertex) {
-  std::unordered_set<int> visited;
-  std::queue<int> visiting;
+int targetBFS(const std::vector<std::unordered_set<int>>& adjList, int k, int rootVertex, std::unordered_set<int>& visited, std::queue<int>& visiting) {
+  visited.clear();
+  while (!visiting.empty()) {
+    visiting.pop();
+  }
   visiting.push(rootVertex);
   visited.insert(rootVertex);
   int totalTargets = 0;
@@ -61,12 +63,14 @@ std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1, con
     adjList2[edges2[i][1]].insert(edges2[i][0]);
   }
   int connectedTargets = 0;
+  std::unordered_set<int> visited;
+  std::queue<int> visiting;
   for (size_t i = 0; i < adjList2.size(); ++i) {
-    connectedTargets = std::max(connectedTargets, targetBFS(adjList2, k - 1, i));
+    connectedTargets = std::max(connectedTargets, targetBFS(adjList2, k - 1, i, visited, visiting));
   }
   std::vector<int> maxTargets(adjList1.size(), connectedTargets);
   for (size_t i = 0; i < adjList1.size(); ++i) {
-    maxTargets[i] += targetBFS(adjList1, k, i);
+    maxTargets[i] += targetBFS(adjList1, k, i, visited, visiting);
   }
   return maxTargets;
 }
