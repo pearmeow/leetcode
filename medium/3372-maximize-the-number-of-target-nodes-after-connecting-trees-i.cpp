@@ -52,7 +52,7 @@ int targetBFS(const std::vector<std::vector<int>>& adjList, int k, int rootVerte
 // returns list of nodes with distance less than or equal to k
 std::vector<int> calcTargets(const std::vector<std::vector<int>>& adjList, int k) {
   std::vector<int> targets(adjList.size());
-  for (int i = 0; i < adjList.size(); ++i) {
+  for (size_t i = 0; i < adjList.size(); ++i) {
     targets[i] = targetBFS(adjList, k, i);
   }
   return targets;
