@@ -18,17 +18,15 @@
  */
 
 #include <vector>
-#include <unordered_set>
 #include <queue>
+#include <algorithm>
 
 // returns nodes with distance less than or equal to k
-int targetBFS(const std::vector<std::unordered_set<int>>& adjList, int k, int rootVertex, std::unordered_set<int>& visited, std::queue<int>& visiting) {
-  visited.clear();
-  while (!visiting.empty()) {
-    visiting.pop();
-  }
+int targetBFS(const std::vector<std::vector<int>>& adjList, int k, int rootVertex) {
+  std::queue<int> visiting;
+  std::vector<bool> visited(adjList.size(), false);
   visiting.push(rootVertex);
-  visited.insert(rootVertex);
+  visited[rootVertex] = true;
   int totalTargets = 0;
   int curr = 0;
   size_t qSize = 0;
@@ -37,9 +35,9 @@ int targetBFS(const std::vector<std::unordered_set<int>>& adjList, int k, int ro
     for (size_t j = 0; j < qSize; ++j) {
       curr = visiting.front();
       for (int child : adjList[curr]) {
-        if (visited.find(child) == visited.end()) {
+        if (visited[child] == false) {
           visiting.push(child);
-          visited.insert(child);
+          visited[child] = true;
         }
       }
       visiting.pop();
@@ -47,30 +45,37 @@ int targetBFS(const std::vector<std::unordered_set<int>>& adjList, int k, int ro
     }
     --k;
   }
-  return std::max(1, totalTargets);
+  return totalTargets;
+}
+
+
+// returns list of nodes with distance less than or equal to k
+std::vector<int> calcTargets(const std::vector<std::vector<int>>& adjList, int k) {
+  std::vector<int> targets(adjList.size());
+  for (int i = 0; i < adjList.size(); ++i) {
+    targets[i] = targetBFS(adjList, k, i);
+  }
+  return targets;
 }
 
 std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1, const std::vector<std::vector<int>>& edges2, int k) {
   if (k == 0) return std::vector<int>(edges1.size() + 1, 1);
-  std::vector<std::unordered_set<int>> adjList1(edges1.size() + 1);
-  std::vector<std::unordered_set<int>> adjList2(edges2.size() + 1);
+  std::vector<std::vector<int>> adjList1(edges1.size() + 1);
+  std::vector<std::vector<int>> adjList2(edges2.size() + 1);
   for (size_t i = 0; i < edges1.size(); ++i) {
-    adjList1[edges1[i][0]].insert(edges1[i][1]);
-    adjList1[edges1[i][1]].insert(edges1[i][0]);
+    adjList1[edges1[i][0]].push_back(edges1[i][1]);
+    adjList1[edges1[i][1]].push_back(edges1[i][0]);
   }
   for (size_t i = 0; i < edges2.size(); ++i) {
-    adjList2[edges2[i][0]].insert(edges2[i][1]);
-    adjList2[edges2[i][1]].insert(edges2[i][0]);
+    adjList2[edges2[i][0]].push_back(edges2[i][1]);
+    adjList2[edges2[i][1]].push_back(edges2[i][0]);
   }
   int connectedTargets = 0;
-  std::unordered_set<int> visited;
-  std::queue<int> visiting;
-  for (size_t i = 0; i < adjList2.size(); ++i) {
-    connectedTargets = std::max(connectedTargets, targetBFS(adjList2, k - 1, i, visited, visiting));
-  }
-  std::vector<int> maxTargets(adjList1.size(), connectedTargets);
-  for (size_t i = 0; i < adjList1.size(); ++i) {
-    maxTargets[i] += targetBFS(adjList1, k, i, visited, visiting);
+  std::vector<int> connected = calcTargets(adjList2, k - 1);
+  connectedTargets = *std::max_element(connected.begin(), connected.end());
+  std::vector<int> maxTargets = calcTargets(adjList1, k);
+  for (size_t i = 0; i < maxTargets.size(); ++i) {
+    maxTargets[i] += connectedTargets;
   }
   return maxTargets;
 }
