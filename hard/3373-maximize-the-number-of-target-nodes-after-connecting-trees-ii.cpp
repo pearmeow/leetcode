@@ -23,6 +23,7 @@ bool ODD = false;
 int targetDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& visited,
   bool parity, int root) {
   int res = 0;
+  if (visited[root] == true) return res;
   if (parity == EVEN) ++res;
   visited[root] = true;
   for (size_t i = 0; i < adjList[root].size(); ++i) {
@@ -33,6 +34,8 @@ int targetDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& v
 
 void updateDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& updated, std::vector<int>& maxTargets,
   bool parity, int root, int targetVal) {
+  if (updated[root]) return;
+  updated[root] = true;
   if (parity == EVEN) {
     maxTargets[root] += targetVal;
   } else {
