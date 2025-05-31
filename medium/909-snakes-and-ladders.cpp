@@ -26,8 +26,7 @@
 
 size_t calcPos(size_t rowSize, size_t index) {
   size_t boardSize = rowSize * rowSize;
-  if (index > boardSize) return -1;
-  bool onReverseRow = (index / rowSize) % 2 == 0;
+  bool onReverseRow = (index / boardSize) % 2 != 0;
   if (onReverseRow) {
     return rowSize - (index % rowSize) - 1;
   }
@@ -35,6 +34,7 @@ size_t calcPos(size_t rowSize, size_t index) {
 }
 
 int snakesAndLadders(std::vector<std::vector<int>>& board) {
+  if (board.size() == 1) return 1;
   std::vector<bool> visited(board.size() * board.size(), false);
   std::queue<int> visiting;
   visiting.push(0);
@@ -48,19 +48,20 @@ int snakesAndLadders(std::vector<std::vector<int>>& board) {
       curr = visiting.front();
       visiting.pop();
       for (size_t d6 = 1; d6 <= 6; ++d6) {
-        size_t pos = calcPos(board.size(), curr + d6);
+        if (curr + d6 > board.size() * board.size() - 1) continue;
         size_t row = (curr + d6) / board.size();
-        if (board[row][pos] != -1) {
-          visited[board[row][pos]] = true;
-          visiting.push(board[row][pos]);
-        } else {
+        size_t pos = calcPos(board.size(), curr + d6);
+        if (board[row][pos] != -1 && !visited[board[row][pos] - 1]) {
+          visited[board[row][pos] - 1] = true;
+          visiting.push(board[row][pos] - 1);
+        } else if (board[row][pos] == -1 && !visited[curr + d6]) {
           visited[curr + d6] = true;
           visiting.push(curr + d6);
         }
       }
     }
-    if (visited[board.size() * board.size() - 1]) return moves;
     ++moves;
+    if (visited[board.size() * board.size() - 1]) return moves;
   }
   return -1;
 }
