@@ -25,8 +25,7 @@
 #include <queue>
 
 size_t calcPos(size_t rowSize, size_t index) {
-  size_t boardSize = rowSize * rowSize;
-  bool onReverseRow = (index / boardSize) % 2 != 0;
+  bool onReverseRow = (index / rowSize) % 2 != 0;
   if (onReverseRow) {
     return rowSize - (index % rowSize) - 1;
   }
