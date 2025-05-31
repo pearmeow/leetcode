@@ -33,7 +33,6 @@ size_t calcPos(size_t rowSize, size_t index) {
 }
 
 int snakesAndLadders(std::vector<std::vector<int>>& board) {
-  if (board.size() == 1) return 1;
   std::vector<bool> visited(board.size() * board.size(), false);
   std::queue<int> visiting;
   visiting.push(0);
@@ -63,4 +62,9 @@ int snakesAndLadders(std::vector<std::vector<int>>& board) {
     if (visited[board.size() * board.size() - 1]) return moves;
   }
   return -1;
+}
+
+int main() {
+  std::vector<std::vector<int>> board = {{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1},{-1,35,-1,-1,13,-1},{-1,-1,-1,-1,-1,-1},{-1,15,-1,-1,-1,-1}};
+  snakesAndLadders(board);
 }
