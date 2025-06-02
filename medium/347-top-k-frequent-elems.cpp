@@ -8,38 +8,32 @@
  */
 
 #include <vector>
-#include <queue>
-#include <utility>
 #include <unordered_map>
+#include <algorithm>
 
-class CompSecond {
+class pairComparator {
 public:
-  bool operator() (const std::pair<int, int>& lhs, const std::pair<int, int>& rhs) const {
-    return lhs.second < rhs.second;
+  bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) {
+    return a.second > b.second;
   }
 };
 
 std::vector<int> topKFrequent(std::vector<int>& nums, int k) {
-  std::unordered_map<int, int> frequencies;
-  std::vector<std::pair<int, int>> pairs;
-  std::vector<int> res;
+  std::unordered_map<int, int> posInVector;
+  std::vector<std::pair<int, int>> numCount;
   for (size_t i = 0; i < nums.size(); ++i) {
-    if (frequencies.find(nums[i]) == frequencies.end()) {
-      frequencies[nums[i]] = 1;
-      pairs.push_back({nums[i], 0});
+    if (posInVector.find(nums[i]) == posInVector.end()) {
+      posInVector[nums[i]] = numCount.size();
+      numCount.emplace_back(nums[i], 1);
     } else {
-      ++frequencies[nums[i]];
+      ++numCount[posInVector[nums[i]]].second;
     }
   }
-  std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, CompSecond> pq;
-  for (size_t i = 0; i < pairs.size(); ++i) {
-    pairs[i].second = frequencies[pairs[i].first];
-    pq.push(pairs[i]);
-  }
+  pairComparator comp;
+  sort(numCount.begin(), numCount.end(), comp);
+  std::vector<int> kFreq(k);
   for (size_t i = 0; i < k; ++i) {
-    res.push_back(pq.top().first);
-    pq.pop();
+    kFreq[i] = numCount[i].first;
   }
-
-  return res;
+  return kFreq;
 }
