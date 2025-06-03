@@ -15,9 +15,41 @@
 #include <vector>
 #include <queue>
 
+int OPEN = 1;
+int CLOSED = 0;
+
 int maxCandies(std::vector<int>& status, std::vector<int>& candies, std::vector<std::vector<int>>& keys,
     std::vector<std::vector<int>>& containedBoxes, std::vector<int>& initialBoxes) {
   int totalCandies = 0;
-  
+  int opened = 1;
+  int currBox = 0;
+  size_t qSize = 0;
+  std::vector<bool> ownedKeys(status.size());
+  std::vector<bool> visited(status.size());
+  std::queue<int> visiting;
+  for (int box : initialBoxes) {
+      visiting.push(box);
+  }
+  while (!visiting.empty() && opened > 0) {
+    opened = 0;
+    qSize = visiting.size();
+    for (size_t i = 0; i < qSize; ++i) {
+      currBox = visiting.front();
+      visiting.pop();
+      if (status[currBox] == CLOSED && ownedKeys[currBox] == false && !visited[currBox]) {
+        visiting.push(currBox);
+      } else if (!visited[currBox]) {
+        visited[currBox] = true;
+        ++opened;
+        totalCandies += candies[currBox];
+        for (int box : containedBoxes[currBox]) {
+            visiting.push(box);
+        }
+        for (int key : keys[currBox]) {
+            ownedKeys[key] = true;
+        }
+      }
+    }
+  }
   return totalCandies;
 }
