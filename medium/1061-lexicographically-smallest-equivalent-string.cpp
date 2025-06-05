@@ -19,40 +19,56 @@
 
 #include <string>
 #include <vector>
-#include <unordered_map>
+
+void unionize(std::vector<std::vector<int>>& adjList, char merger, char mergee) {
+  char curr = ' ';
+  for (size_t i = 0; i < adjList[mergee].size(); ++i) {
+      curr = adjList[mergee][i];
+      adjList[curr][0] = merger - 'a';
+      adjList[merger].push_back(curr);
+    }
+    adjList[mergee].clear();
+    adjList[mergee].push_back(merger - 'a');
+    adjList[merger].push_back(mergee - 'a');
+}
 
 std::string smallestEquivalentString(const std::string& s1, const std::string& s2, const std::string& baseStr) {
-  std::vector<char> minimChars;
-  std::unordered_map<char, size_t> whichSet;
-  size_t newSet = 0;
-  size_t currSet = 0;
+  std::vector<std::vector<int>> adjList(26);
   for (size_t i = 0; i < s1.size(); ++i) {
-    if (whichSet.find(s1[i]) == whichSet.end() && whichSet.find(s2[i]) == whichSet.end()) {
-      newSet = minimChars.size();
-      whichSet[s1[i]] = newSet;
-      whichSet[s2[i]] = newSet;
-      if (s1[i] > s2[i]) {
-        minimChars.push_back(s2[i]);
-      } else {
-        minimChars.push_back(s1[i]);
-      }
-    } else if (whichSet.find(s1[i]) == whichSet.end()) {
-      whichSet[s1[i]] = whichSet[s2[i]];
-      if (s1[i] < minimChars[whichSet[s1[i]]]) {
-        minimChars[whichSet[s1[i]]] = s1[i];
-      }
-    } else {
-      whichSet[s2[i]] = whichSet[s1[i]];
-      if (s2[i] < minimChars[whichSet[s2[i]]]) {
-        minimChars[whichSet[s2[i]]] = s2[i];
+    bool s1IsParent = adjList[s1[i] - 'a'].size() > 1;
+    bool s2IsParent = adjList[s2[i] - 'a'].size() > 1;
+    char s1Parent = s1[i];
+    char s2Parent = s2[i];
+    if (!s1IsParent && adjList[s1[i] - 'a'].size() != 0) {
+      if (adjList[s1[i] - 'a'][0] < s1[i] - 'a') {
+        s1Parent = adjList[s1[i] - 'a'][0];
       }
     }
+    if (!s2IsParent && adjList[s2[i] - 'a'].size() != 0) {
+      if (adjList[s2[i] - 'a'][0] < s2[i] - 'a') {
+        s2Parent = adjList[s2[i] - 'a'][0];
+      }
+    }
+    if (s1Parent < s2Parent) {
+      unionize(adjList, s1Parent, s2Parent);
+    } else { // if s2Parent <= s1Parent
+      unionize(adjList, s2Parent, s1Parent);
+    }
   }
-  std::string result = baseStr;
+  std::string smallest = baseStr;
   for (size_t i = 0; i < baseStr.size(); ++i) {
-    if (whichSet.find(baseStr[i]) != whichSet.end()) {
-      result[i] = minimChars[whichSet[baseStr[i]]];
+    if (adjList[baseStr[i] - 'a'].size() == 1) {
+      if (adjList[baseStr[i] - 'a'][0] < baseStr[i] - 'a') {
+        smallest[i] = adjList[baseStr[i] - 'a'][0];
+      }
     }
   }
-  return result;
+  return smallest;
+}
+
+int main() {
+  std::string s1 = "parker";
+  std::string s2 = "morris";
+  std::string baseStr = "parser";
+  smallestEquivalentString(s1, s2, baseStr);
 }
