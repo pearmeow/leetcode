@@ -13,27 +13,29 @@
 
 #include <string>
 #include <stack>
+#include <vector>
 
-char lexMinimChar(const std::string& word, size_t start) {
+void findMins(const std::string& word, std::vector<char>& nextMins) {
     char curr = 'z';
-    for (size_t i = start; i < word.size(); ++i) {
-        if (word[i] < curr || curr == ' ') {
-            curr = word[i];
+    for (size_t i = word.size(); i != 0; --i) {
+        if (word[i - 1] < curr) {
+            curr = word[i - 1];
         }
+        nextMins[i - 1] = curr;
     }
-    return curr;
 }
 
 std::string robotWithString(const std::string& s) {
     std::stack<char> stackStr;
     std::string res = "";
+    std::vector<char> nextMins(s.size());
+    findMins(s, nextMins);
     size_t ind = 0;
     while (ind < s.size()) {
         if (stackStr.empty()) {
             stackStr.push(s[ind]);
             ++ind;
-        }
-        if (lexMinimChar(s, ind) < stackStr.top()) {
+        } else if (nextMins[ind] < stackStr.top()) {
             stackStr.push(s[ind]);
             ++ind;
         } else {
