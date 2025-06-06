@@ -17,38 +17,28 @@
 #include <vector>
 
 void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
-  std::vector<int> n1cpy;
-  // copy the important indicies from nums2 into a copy so we can modify nums2
-  // later
-  for (std::size_t i = 0; i < m; ++i) n1cpy.push_back(nums1[i]);
-  std::size_t pos1 = 0, pos2 = 0;
-  int x = 0;
-  for (std::size_t i = 0; i < nums1.size(); ++i) {
-    if (pos1 < m && pos2 < n) {
-      if (n1cpy[pos1] <= nums2[pos2]) {
-        x = n1cpy[pos1];
-        ++pos1;
-      } else {
-        x = nums2[pos2];
-        ++pos2;
-      }
-    } else if (pos2 >= n) {
-      x = n1cpy[pos1];
-      ++pos1;
-    } else {
-      x = nums2[pos2];
-      ++pos2;
+    std::vector<int> n1cpy;
+    // copy the important indicies from nums2 into a copy so we can modify nums2
+    // later
+    for (std::size_t i = 0; i < m; ++i) n1cpy.push_back(nums1[i]);
+    std::size_t pos1 = 0, pos2 = 0;
+    int x = 0;
+    for (std::size_t i = 0; i < nums1.size(); ++i) {
+        if (pos1 < m && pos2 < n) {
+            if (n1cpy[pos1] <= nums2[pos2]) {
+                x = n1cpy[pos1];
+                ++pos1;
+            } else {
+                x = nums2[pos2];
+                ++pos2;
+            }
+        } else if (pos2 >= n) {
+            x = n1cpy[pos1];
+            ++pos1;
+        } else {
+            x = nums2[pos2];
+            ++pos2;
+        }
+        nums1[i] = x;
     }
-    nums1[i] = x;
-  }
-}
-
-int main() {
-  std::vector<int> nums1 = {1, 2, 3, 0, 0, 0};
-  std::vector<int> nums2 = {2, 5, 6};
-  merge(nums1, 3, nums2, 3);
-  for (int i : nums1) {
-    std::cout << i << " ";
-  }
-  std::cout << std::endl;
 }

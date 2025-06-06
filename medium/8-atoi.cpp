@@ -23,34 +23,32 @@
 #include <iostream>
 
 int myAtoi(const std::string& s) {
-  long long res = 0;
-  bool negative = false;
-  size_t pos = 0;
-  while (s[pos] == ' ' && pos < s.size()) ++pos;
-  if (pos == s.size()) return res;
-  if (s[pos] == '-') {
-    negative = true;
-    ++pos;
-  } else if (s[pos] == '+') {
-    ++pos;
-  }
-
-  for (size_t i = pos; i < s.size(); ++i) {
-    std::cout << s[pos] << " at position " << i << std::endl;
-    if (s[i] >= '0' && s[i] <= '9') {
-      res *= 10;
-      res += (s[i] - '0');
-      if (res > 2147483647 && !negative) {
-        return 2147483647;
-      } else if (negative && res * -1 < -2147483648) {
-        return -2147483648;
-      }
-    } else {
-      break;
+    long long res = 0;
+    bool negative = false;
+    size_t pos = 0;
+    while (s[pos] == ' ' && pos < s.size()) ++pos;
+    if (pos == s.size()) return res;
+    if (s[pos] == '-') {
+        negative = true;
+        ++pos;
+    } else if (s[pos] == '+') {
+        ++pos;
     }
-  }
-  if (negative) res *= -1;
-  return (int)res;
-}
 
-int main() { std::cout << myAtoi("   -42") << '\n'; }
+    for (size_t i = pos; i < s.size(); ++i) {
+        std::cout << s[pos] << " at position " << i << std::endl;
+        if (s[i] >= '0' && s[i] <= '9') {
+            res *= 10;
+            res += (s[i] - '0');
+            if (res > 2147483647 && !negative) {
+                return 2147483647;
+            } else if (negative && res * -1 < -2147483648) {
+                return -2147483648;
+            }
+        } else {
+            break;
+        }
+    }
+    if (negative) res *= -1;
+    return (int)res;
+}

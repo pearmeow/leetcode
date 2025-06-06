@@ -14,28 +14,17 @@
 #include <vector>
 
 std::vector<int> twoSum(std::vector<int>& nums, int target) {
-  std::vector<int> solution;
-  std::unordered_map<int, int> indices;
-  for (size_t i = 0; i < nums.size(); ++i) {
-    int curr = nums[i];
-    int complement = target - nums[i];
-    if (indices.find(complement) != indices.end()) {
-      solution.push_back(indices[complement]);
-      solution.push_back(i);
-      return solution;
+    std::vector<int> solution;
+    std::unordered_map<int, int> indices;
+    for (size_t i = 0; i < nums.size(); ++i) {
+        int curr = nums[i];
+        int complement = target - nums[i];
+        if (indices.find(complement) != indices.end()) {
+            solution.push_back(indices[complement]);
+            solution.push_back(i);
+            return solution;
+        }
+        indices[curr] = i;
     }
-    indices[curr] = i;
-  }
-  return solution;
-}
-
-int main() {
-  std::vector<int> vec1 = {1, 4, 3, 7, 9};
-  std::vector<int> sol1 = twoSum(vec1, 13);
-  std::cout << sol1[0] << ", " << sol1[1];
-
-  std::vector<int> vec2 = {2, 2, 3, 5, 7};
-  std::vector<int> sol2 = twoSum(vec2, 4);
-  std::cout << sol2[0] << ", " << sol2[1];
-
+    return solution;
 }

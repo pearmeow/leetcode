@@ -15,14 +15,14 @@
 #include <string>
 
 char kthCharacter(int k) {
-  std::string start = "a";
-  std::string add = "";
-  while (start.size() < k) {
-    add = "";
-    for (std::size_t i = 0; i < start.size(); ++i) {
-      add += start[i] == 'z' ? 'a' : start[i] + 1;
+    std::string start = "a";
+    std::string add = "";
+    while (start.size() < k) {
+        add = "";
+        for (std::size_t i = 0; i < start.size(); ++i) {
+            add += start[i] == 'z' ? 'a' : start[i] + 1;
+        }
+        start.append(add);
     }
-    start.append(add);
-  }
-  return start[k-1];
+    return start[k-1];
 }

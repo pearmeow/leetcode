@@ -16,24 +16,24 @@
 #include <string>
 
 std::string countAndSay(int n) {
-  if (n == 1) {
-    return "1";
-  }
-  std::string res;
-  std::string prevCase = countAndSay(n - 1);
-  int reps = 0;
-  char curr = prevCase[0];
-  for (size_t i = 0; i < prevCase.size(); ++i) {
-    if (prevCase[i] == curr) {
-      ++reps;
-    } else {
-      res += std::to_string(reps);
-      res.append(1, curr);
-      reps = 1;
-      curr = prevCase[i];
+    if (n == 1) {
+        return "1";
     }
-  }
-  res += std::to_string(reps);
-  res.append(1, curr);
-  return res;
+    std::string res;
+    std::string prevCase = countAndSay(n - 1);
+    int reps = 0;
+    char curr = prevCase[0];
+    for (size_t i = 0; i < prevCase.size(); ++i) {
+        if (prevCase[i] == curr) {
+            ++reps;
+        } else {
+            res += std::to_string(reps);
+            res.append(1, curr);
+            reps = 1;
+            curr = prevCase[i];
+        }
+    }
+    res += std::to_string(reps);
+    res.append(1, curr);
+    return res;
 }

@@ -16,31 +16,31 @@
 #include <vector>
 
 int closestMeetingNode(std::vector<int>& edges, int node1, int node2) {
-  if (node1 == node2) return node1;
-  std::vector<bool> firstPath(edges.size());
-  std::vector<bool> secondPath(edges.size());
-  firstPath[node1] = true;
-  secondPath[node2] = true;
-  int first = node1;
-  int second = node2;
-  while (edges[first] != -1 && firstPath[edges[first]] == false && edges[second] != -1 && secondPath[edges[second]] == false) {
-    first = edges[first];
-    second = edges[second];
-    firstPath[first] = true;
-    secondPath[second] = true;
-    if (firstPath[second] == true && secondPath[first] == true) return std::min(first, second);
-    if (firstPath[second] == true) return second;
-    if (secondPath[first] == true) return first;
-  }
-  while (edges[first] != -1 && firstPath[edges[first]] == false) {
-    first = edges[first];
-    firstPath[first] = true;
-    if (secondPath[first] == true) return first;
-  }
-  while (edges[second] != -1 && secondPath[edges[second]] == false) {
-    second = edges[second];
-    secondPath[second] = true;
-    if (firstPath[second] == true) return second;
-  }
-  return -1;
+    if (node1 == node2) return node1;
+    std::vector<bool> firstPath(edges.size());
+    std::vector<bool> secondPath(edges.size());
+    firstPath[node1] = true;
+    secondPath[node2] = true;
+    int first = node1;
+    int second = node2;
+    while (edges[first] != -1 && firstPath[edges[first]] == false && edges[second] != -1 && secondPath[edges[second]] == false) {
+        first = edges[first];
+        second = edges[second];
+        firstPath[first] = true;
+        secondPath[second] = true;
+        if (firstPath[second] == true && secondPath[first] == true) return std::min(first, second);
+        if (firstPath[second] == true) return second;
+        if (secondPath[first] == true) return first;
+    }
+    while (edges[first] != -1 && firstPath[edges[first]] == false) {
+        first = edges[first];
+        firstPath[first] = true;
+        if (secondPath[first] == true) return first;
+    }
+    while (edges[second] != -1 && secondPath[edges[second]] == false) {
+        second = edges[second];
+        secondPath[second] = true;
+        if (firstPath[second] == true) return second;
+    }
+    return -1;
 }

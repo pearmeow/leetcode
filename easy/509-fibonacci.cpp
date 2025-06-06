@@ -14,14 +14,12 @@
 #include <iostream>
 
 int fib(int n) {
-  if (n == 0 || n == 1) return n;
-  int curr = 1, prev = 0, temp = 0;
-  for (size_t i = 0; i < n - 1; ++i) {
-    temp = prev;
-    prev = curr;
-    curr += temp;
-  }
-  return curr;
+    if (n == 0 || n == 1) return n;
+    int curr = 1, prev = 0, temp = 0;
+    for (size_t i = 0; i < n - 1; ++i) {
+        temp = prev;
+        prev = curr;
+        curr += temp;
+    }
+    return curr;
 }
-
-int main() { std::cout << fib(5) << std::endl; }

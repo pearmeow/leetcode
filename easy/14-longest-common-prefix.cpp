@@ -12,28 +12,23 @@
 #include <vector>
 
 std::string longestCommonPrefix(const std::vector<std::string>& strs) {
-  std::string lcp;
-  char curr = ' ';
-  size_t min_size = strs[0].size();
-  for (size_t i = 0; i < strs.size(); ++i) {
-    min_size = std::min(strs[i].size(), min_size);
-    std::cout << "pos" << i << " " << min_size << "\n";
-  }
-  for (size_t i = 0; i < min_size; ++i) {
-    for (size_t j = 0; j < strs.size(); ++j) {
-      if (curr == ' ') {
-        curr = strs[j][i];
-      } else if (curr != strs[j][i]) {
-        return lcp;
-      }
+    std::string lcp;
+    char curr = ' ';
+    size_t min_size = strs[0].size();
+    for (size_t i = 0; i < strs.size(); ++i) {
+        min_size = std::min(strs[i].size(), min_size);
+        std::cout << "pos" << i << " " << min_size << "\n";
     }
-    lcp += curr;
-    curr = ' ';
-  }
-  return lcp;
-}
-
-int main() {
-  std::vector<std::string> vec = {"flowwww", "flowwww", "flowwww", "flowwww"};
-  std::cout << longestCommonPrefix(vec);
+    for (size_t i = 0; i < min_size; ++i) {
+        for (size_t j = 0; j < strs.size(); ++j) {
+            if (curr == ' ') {
+                curr = strs[j][i];
+            } else if (curr != strs[j][i]) {
+                return lcp;
+            }
+        }
+        lcp += curr;
+        curr = ' ';
+    }
+    return lcp;
 }

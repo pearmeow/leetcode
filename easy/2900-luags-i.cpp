@@ -19,13 +19,13 @@
 #include <vector>
 
 std::vector<std::string> getLongestSubsequence(std::vector<std::string>& words, std::vector<int>& groups) {
-  bool bit = groups[0];
-  std::vector<std::string> sub;
-  for (size_t i = 0; i < std::min(words.size(), groups.size()); ++i) {
-    if (groups[i] == bit) {
-      sub.push_back(words[i]);
-      bit = !bit;
+    bool bit = groups[0];
+    std::vector<std::string> sub;
+    for (size_t i = 0; i < std::min(words.size(), groups.size()); ++i) {
+        if (groups[i] == bit) {
+            sub.push_back(words[i]);
+            bit = !bit;
+        }
     }
-  }
-  return sub;
+    return sub;
 }

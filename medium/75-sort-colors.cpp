@@ -13,26 +13,26 @@
 #include <utility>
 
 void sortColors(std::vector<int>& nums) {
-  if (nums.size() < 2) return;
-  size_t back = nums.size() - 1;
-  size_t front = 0;
-  while (nums[back] == 2 && back != 0) --back;
-  while (nums[front] == 0 && front < nums.size() - 1) ++front;
-  if (back == 0 || front == nums.size() - 1) return;
-  size_t curr = front;
-  while (curr <= back) {
-    if (nums[curr] == 2) {
-      std::swap(nums[curr], nums[back]);
-      --back;
-      if (nums[curr] == 0) {
-        std::swap(nums[curr], nums[front]);
-        ++front;
-      }
-      while (nums[back] == 2 && back != 0) --back;
-    } else if (nums[curr] == 0) {
-      std::swap(nums[curr], nums[front]);
-      ++front;
+    if (nums.size() < 2) return;
+    size_t back = nums.size() - 1;
+    size_t front = 0;
+    while (nums[back] == 2 && back != 0) --back;
+    while (nums[front] == 0 && front < nums.size() - 1) ++front;
+    if (back == 0 || front == nums.size() - 1) return;
+    size_t curr = front;
+    while (curr <= back) {
+        if (nums[curr] == 2) {
+            std::swap(nums[curr], nums[back]);
+            --back;
+            if (nums[curr] == 0) {
+                std::swap(nums[curr], nums[front]);
+                ++front;
+            }
+            while (nums[back] == 2 && back != 0) --back;
+        } else if (nums[curr] == 0) {
+            std::swap(nums[curr], nums[front]);
+            ++front;
+        }
+        ++curr;
     }
-    ++curr;
-  }
 }

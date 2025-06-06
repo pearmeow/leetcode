@@ -21,11 +21,11 @@
 #include <vector>
 
 void unionize(std::vector<std::vector<int>>& adjList, char merger, char mergee) {
-  char curr = ' ';
-  for (size_t i = 0; i < adjList[mergee - 'a'].size(); ++i) {
-      curr = adjList[mergee - 'a'][i];
-      adjList[curr][0] = merger - 'a';
-      adjList[merger - 'a'].push_back(curr);
+    char curr = ' ';
+    for (size_t i = 0; i < adjList[mergee - 'a'].size(); ++i) {
+        curr = adjList[mergee - 'a'][i];
+        adjList[curr][0] = merger - 'a';
+        adjList[merger - 'a'].push_back(curr);
     }
     adjList[mergee - 'a'].clear();
     adjList[mergee - 'a'].push_back(merger - 'a');
@@ -33,42 +33,35 @@ void unionize(std::vector<std::vector<int>>& adjList, char merger, char mergee) 
 }
 
 std::string smallestEquivalentString(const std::string& s1, const std::string& s2, const std::string& baseStr) {
-  std::vector<std::vector<int>> adjList(26);
-  for (size_t i = 0; i < s1.size(); ++i) {
-    bool s1IsParent = adjList[s1[i] - 'a'].size() > 1;
-    bool s2IsParent = adjList[s2[i] - 'a'].size() > 1;
-    char s1Parent = s1[i];
-    char s2Parent = s2[i];
-    if (!s1IsParent && adjList[s1[i] - 'a'].size() != 0) {
-      if (adjList[s1[i] - 'a'][0] < s1[i] - 'a') {
-        s1Parent = adjList[s1[i] - 'a'][0] + 'a';
-      }
+    std::vector<std::vector<int>> adjList(26);
+    for (size_t i = 0; i < s1.size(); ++i) {
+        bool s1IsParent = adjList[s1[i] - 'a'].size() > 1;
+        bool s2IsParent = adjList[s2[i] - 'a'].size() > 1;
+        char s1Parent = s1[i];
+        char s2Parent = s2[i];
+        if (!s1IsParent && adjList[s1[i] - 'a'].size() != 0) {
+            if (adjList[s1[i] - 'a'][0] < s1[i] - 'a') {
+                s1Parent = adjList[s1[i] - 'a'][0] + 'a';
+            }
+        }
+        if (!s2IsParent && adjList[s2[i] - 'a'].size() != 0) {
+            if (adjList[s2[i] - 'a'][0] < s2[i] - 'a') {
+                s2Parent = adjList[s2[i] - 'a'][0] + 'a';
+            }
+        }
+        if (s1Parent < s2Parent) {
+            unionize(adjList, s1Parent, s2Parent);
+        } else if (s1Parent > s2Parent) {
+            unionize(adjList, s2Parent, s1Parent);
+        }
     }
-    if (!s2IsParent && adjList[s2[i] - 'a'].size() != 0) {
-      if (adjList[s2[i] - 'a'][0] < s2[i] - 'a') {
-        s2Parent = adjList[s2[i] - 'a'][0] + 'a';
-      }
+    std::string smallest = baseStr;
+    for (size_t i = 0; i < baseStr.size(); ++i) {
+        if (adjList[baseStr[i] - 'a'].size() == 1) {
+            if (adjList[baseStr[i] - 'a'][0] < baseStr[i] - 'a') {
+                smallest[i] = adjList[baseStr[i] - 'a'][0] + 'a';
+            }
+        }
     }
-    if (s1Parent < s2Parent) {
-      unionize(adjList, s1Parent, s2Parent);
-    } else if (s1Parent > s2Parent) {
-      unionize(adjList, s2Parent, s1Parent);
-    }
-  }
-  std::string smallest = baseStr;
-  for (size_t i = 0; i < baseStr.size(); ++i) {
-    if (adjList[baseStr[i] - 'a'].size() == 1) {
-      if (adjList[baseStr[i] - 'a'][0] < baseStr[i] - 'a') {
-        smallest[i] = adjList[baseStr[i] - 'a'][0] + 'a';
-      }
-    }
-  }
-  return smallest;
-}
-
-int main() {
-  std::string s1 = "hello";
-  std::string s2 = "world";
-  std::string baseStr = "hold";
-  smallestEquivalentString(s1, s2, baseStr);
+    return smallest;
 }

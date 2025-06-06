@@ -14,30 +14,30 @@
 #include <vector>
 
 std::string largest(const std::string& word, int numFriends, size_t startIndex) {
-  size_t remainingWord = word.size() - startIndex;
-  size_t remainingFriends = numFriends - startIndex - 1;
-  return word.substr(startIndex, remainingWord - remainingFriends);
+    size_t remainingWord = word.size() - startIndex;
+    size_t remainingFriends = numFriends - startIndex - 1;
+    return word.substr(startIndex, remainingWord - remainingFriends);
 }
 
 bool lexComp(const std::string& word1, const std::string& word2) {
-  size_t maxSize = std::max(word1.size(), word2.size());
-  for (size_t i = 0; i < maxSize; ++i) {
-    if (word1[i] != word2[i]) return word1[i] > word2[i];
-  }
-  return word1.size() > word2.size();
+    size_t maxSize = std::max(word1.size(), word2.size());
+    for (size_t i = 0; i < maxSize; ++i) {
+        if (word1[i] != word2[i]) return word1[i] > word2[i];
+    }
+    return word1.size() > word2.size();
 }
 
 std::string answerString(const std::string& word, int numFriends) {
-  if (numFriends == 1) return word;
-  size_t maxInd = 0;
-  std::vector<std::string> perms(word.size());
-  for (size_t i = 0; i < perms.size(); ++i) {
-    perms[i] = largest(word, numFriends, i);
-  }
-  for (size_t i = 1; i < perms.size(); ++i) {
-    if (lexComp(perms[maxInd], perms[i]) == false) {
-      maxInd = i;
+    if (numFriends == 1) return word;
+    size_t maxInd = 0;
+    std::vector<std::string> perms(word.size());
+    for (size_t i = 0; i < perms.size(); ++i) {
+        perms[i] = largest(word, numFriends, i);
     }
-  }
-  return perms[maxInd];
+    for (size_t i = 1; i < perms.size(); ++i) {
+        if (lexComp(perms[maxInd], perms[i]) == false) {
+            maxInd = i;
+        }
+    }
+    return perms[maxInd];
 }

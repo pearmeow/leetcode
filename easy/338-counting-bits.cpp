@@ -10,16 +10,16 @@
 #include <vector>
 
 std::vector<int> countBits(int n) {
-  size_t size = 1, curr = 1, index = 0;
-  std::vector<int> bits(n + 1, 0);
-  while (curr < bits.size()) {
-    if (curr == size) {
-      size = size * 2;
-      index = 0;
+    size_t size = 1, curr = 1, index = 0;
+    std::vector<int> bits(n + 1, 0);
+    while (curr < bits.size()) {
+        if (curr == size) {
+            size = size * 2;
+            index = 0;
+        }
+        bits[curr] = bits[index] + 1;
+        ++index;
+        ++curr;
     }
-    bits[curr] = bits[index] + 1;
-    ++index;
-    ++curr;
-  }
-  return bits;
+    return bits;
 }

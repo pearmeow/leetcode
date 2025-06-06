@@ -25,42 +25,42 @@
 #include <queue>
 
 size_t calcPos(size_t rowSize, size_t index) {
-  bool onReverseRow = (index / rowSize) % 2 != 0;
-  if (onReverseRow) {
-    return rowSize - (index % rowSize) - 1;
-  }
-  return index % rowSize;
+    bool onReverseRow = (index / rowSize) % 2 != 0;
+    if (onReverseRow) {
+        return rowSize - (index % rowSize) - 1;
+    }
+    return index % rowSize;
 }
 
 int snakesAndLadders(std::vector<std::vector<int>>& board) {
-  std::vector<bool> visited(board.size() * board.size(), false);
-  std::vector<std::vector<int>> reverseBoard(board.rbegin(), board.rend());
-  std::queue<int> visiting;
-  visiting.push(0);
-  visited[0] = true;
-  int moves = 0;
-  int curr = 0;
-  size_t qSize = 0;
-  while (!visiting.empty()) {
-    qSize = visiting.size();
-    for (size_t i = 0; i < qSize; ++i) {
-      curr = visiting.front();
-      visiting.pop();
-      for (size_t d6 = 1; d6 <= 6; ++d6) {
-        if (curr + d6 > visited.size() - 1) continue;
-        size_t row = (curr + d6) / board.size();
-        size_t pos = calcPos(board.size(), curr + d6);
-        if (reverseBoard[row][pos] != -1 && !visited[reverseBoard[row][pos] - 1]) {
-          visited[reverseBoard[row][pos] - 1] = true;
-          visiting.push(reverseBoard[row][pos] - 1);
-        } else if (reverseBoard[row][pos] == -1 && !visited[curr + d6]) {
-          visited[curr + d6] = true;
-          visiting.push(curr + d6);
+    std::vector<bool> visited(board.size() * board.size(), false);
+    std::vector<std::vector<int>> reverseBoard(board.rbegin(), board.rend());
+    std::queue<int> visiting;
+    visiting.push(0);
+    visited[0] = true;
+    int moves = 0;
+    int curr = 0;
+    size_t qSize = 0;
+    while (!visiting.empty()) {
+        qSize = visiting.size();
+        for (size_t i = 0; i < qSize; ++i) {
+            curr = visiting.front();
+            visiting.pop();
+            for (size_t d6 = 1; d6 <= 6; ++d6) {
+                if (curr + d6 > visited.size() - 1) continue;
+                size_t row = (curr + d6) / board.size();
+                size_t pos = calcPos(board.size(), curr + d6);
+                if (reverseBoard[row][pos] != -1 && !visited[reverseBoard[row][pos] - 1]) {
+                    visited[reverseBoard[row][pos] - 1] = true;
+                    visiting.push(reverseBoard[row][pos] - 1);
+                } else if (reverseBoard[row][pos] == -1 && !visited[curr + d6]) {
+                    visited[curr + d6] = true;
+                    visiting.push(curr + d6);
+                }
+            }
         }
-      }
+        ++moves;
+        if (visited[visited.size() - 1]) return moves;
     }
-    ++moves;
-    if (visited[visited.size() - 1]) return moves;
-  }
-  return -1;
+    return -1;
 }

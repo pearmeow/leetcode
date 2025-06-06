@@ -17,17 +17,17 @@ bool RIGHT = true;
 bool LEFT = false;
 
 int lastRemaining(int n) {
-  int remaining = n;
-  int head = 1;
-  int step = 1;
-  bool direction = RIGHT;
-  while (remaining > 1) {
-    if (direction == RIGHT || (direction == LEFT && remaining % 2 == 1)) {
-      head += step;
+    int remaining = n;
+    int head = 1;
+    int step = 1;
+    bool direction = RIGHT;
+    while (remaining > 1) {
+        if (direction == RIGHT || (direction == LEFT && remaining % 2 == 1)) {
+            head += step;
+        }
+        direction = !direction;
+        remaining = remaining / 2;
+        step *= 2;
     }
-    direction = !direction;
-    remaining = remaining / 2;
-    step *= 2;
-  }
-  return head;
+    return head;
 }

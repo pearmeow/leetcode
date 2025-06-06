@@ -11,31 +11,31 @@
 #include <string>
 
 std::string findFrequencies(const std::string& str) {
-  std::vector<int> freq(26, 0);
-  std::string res;
-  for (char c : str) {
-    ++freq[c - 'a'];
-  }
-  for (size_t i = 0; i < freq.size(); ++i) {
-    res += freq[i];
-    res += "#";
-  }
-  return res;
+    std::vector<int> freq(26, 0);
+    std::string res;
+    for (char c : str) {
+        ++freq[c - 'a'];
+    }
+    for (size_t i = 0; i < freq.size(); ++i) {
+        res += freq[i];
+        res += "#";
+    }
+    return res;
 }
 
 std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs) {
-  std::vector<std::vector<std::string>> res;
-  std::unordered_map<std::string, int> anagrams;
-  int counter = 0;
-  for (size_t i = 0; i < strs.size(); ++i) {
-    std::string freq = findFrequencies(strs[i]);
-    if (anagrams.find(freq) == anagrams.end()) {
-      anagrams[freq] = counter;
-      ++counter;
-      res.emplace_back(1, strs[i]);
-    } else {
-      res[anagrams[freq]].push_back(strs[i]);
+    std::vector<std::vector<std::string>> res;
+    std::unordered_map<std::string, int> anagrams;
+    int counter = 0;
+    for (size_t i = 0; i < strs.size(); ++i) {
+        std::string freq = findFrequencies(strs[i]);
+        if (anagrams.find(freq) == anagrams.end()) {
+            anagrams[freq] = counter;
+            ++counter;
+            res.emplace_back(1, strs[i]);
+        } else {
+            res[anagrams[freq]].push_back(strs[i]);
+        }
     }
-  }
-  return res;
+    return res;
 }

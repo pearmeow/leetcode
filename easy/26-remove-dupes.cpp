@@ -9,14 +9,14 @@
 #include <vector>
 
 int removeDuplicates(std::vector<int>& nums) {
-  size_t insert = 0;
-  int curr = nums[0];
-  for (size_t i = 1; i < nums.size(); ++i) {
-    if (nums[i] != curr) {
-      ++insert;
-      nums[insert] = nums[i];
-      curr = nums[i];
+    size_t insert = 0;
+    int curr = nums[0];
+    for (size_t i = 1; i < nums.size(); ++i) {
+        if (nums[i] != curr) {
+            ++insert;
+            nums[insert] = nums[i];
+            curr = nums[i];
+        }
     }
-  }
-  return insert + 1;
+    return insert + 1;
 }

@@ -21,54 +21,54 @@ bool EVEN = true;
 bool ODD = false;
 
 int targetDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& visited,
-  bool parity, int root) {
-  int res = 0;
-  if (visited[root] == true) return res;
-  if (parity == EVEN) ++res;
-  visited[root] = true;
-  for (size_t i = 0; i < adjList[root].size(); ++i) {
-    res += targetDFS(adjList, visited, !parity, adjList[root][i]);
-  }
-  return res;
+        bool parity, int root) {
+    int res = 0;
+    if (visited[root] == true) return res;
+    if (parity == EVEN) ++res;
+    visited[root] = true;
+    for (size_t i = 0; i < adjList[root].size(); ++i) {
+        res += targetDFS(adjList, visited, !parity, adjList[root][i]);
+    }
+    return res;
 }
 
 void updateDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& updated, std::vector<int>& maxTargets,
-  bool parity, int root, int targetVal) {
-  if (updated[root]) return;
-  updated[root] = true;
-  if (parity == EVEN) {
-    maxTargets[root] += targetVal;
-  } else {
-    maxTargets[root] += adjList.size() - targetVal;
-  }
-  for (size_t i = 0; i < adjList[root].size(); ++i) {
-    updateDFS(adjList, updated, maxTargets, !parity, adjList[root][i], targetVal);
-  }
+        bool parity, int root, int targetVal) {
+    if (updated[root]) return;
+    updated[root] = true;
+    if (parity == EVEN) {
+        maxTargets[root] += targetVal;
+    } else {
+        maxTargets[root] += adjList.size() - targetVal;
+    }
+    for (size_t i = 0; i < adjList[root].size(); ++i) {
+        updateDFS(adjList, updated, maxTargets, !parity, adjList[root][i], targetVal);
+    }
 }
 
 std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1,
-  const std::vector<std::vector<int>>& edges2) {
-  std::vector<std::vector<int>> adjList1(edges1.size() + 1);
-  std::vector<std::vector<int>> adjList2(edges2.size() + 1);
-  for (size_t i = 0; i < edges1.size(); ++i) {
-    int vertex = edges1[i][0];
-    int otherVertex = edges1[i][1];
-    adjList1[vertex].push_back(otherVertex);
-    adjList1[otherVertex].push_back(vertex);
-  }
-  for (size_t i = 0; i < edges2.size(); ++i) {
-    int vertex = edges2[i][0];
-    int otherVertex = edges2[i][1];
-    adjList2[vertex].push_back(otherVertex);
-    adjList2[otherVertex].push_back(vertex);
-  }
-  std::vector<bool> visited2(adjList2.size(), false);
-  int otherMax = targetDFS(adjList2, visited2, EVEN, 0);
-  otherMax = std::max(otherMax, ((int)adjList2.size() - otherMax));
-  std::vector<bool> visited1(adjList1.size(), false);
-  int targets = targetDFS(adjList1, visited1, EVEN, 0);
-  std::vector<bool> updated(adjList1.size(), false);
-  std::vector<int> maxTargets(adjList1.size(), otherMax);
-  updateDFS(adjList1, updated, maxTargets, EVEN, 0, targets);
-  return maxTargets;
+        const std::vector<std::vector<int>>& edges2) {
+    std::vector<std::vector<int>> adjList1(edges1.size() + 1);
+    std::vector<std::vector<int>> adjList2(edges2.size() + 1);
+    for (size_t i = 0; i < edges1.size(); ++i) {
+        int vertex = edges1[i][0];
+        int otherVertex = edges1[i][1];
+        adjList1[vertex].push_back(otherVertex);
+        adjList1[otherVertex].push_back(vertex);
+    }
+    for (size_t i = 0; i < edges2.size(); ++i) {
+        int vertex = edges2[i][0];
+        int otherVertex = edges2[i][1];
+        adjList2[vertex].push_back(otherVertex);
+        adjList2[otherVertex].push_back(vertex);
+    }
+    std::vector<bool> visited2(adjList2.size(), false);
+    int otherMax = targetDFS(adjList2, visited2, EVEN, 0);
+    otherMax = std::max(otherMax, ((int)adjList2.size() - otherMax));
+    std::vector<bool> visited1(adjList1.size(), false);
+    int targets = targetDFS(adjList1, visited1, EVEN, 0);
+    std::vector<bool> updated(adjList1.size(), false);
+    std::vector<int> maxTargets(adjList1.size(), otherMax);
+    updateDFS(adjList1, updated, maxTargets, EVEN, 0, targets);
+    return maxTargets;
 }

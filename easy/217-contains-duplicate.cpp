@@ -12,22 +12,12 @@
 #include <unordered_set>
 
 bool containsDuplicate(std::vector<int>& nums) {
-  std::unordered_set<int> set;
-  for (size_t i = 0; i < nums.size(); ++i) {
-    if (set.find(nums[i]) != set.end()) {
-      return true;
+    std::unordered_set<int> set;
+    for (size_t i = 0; i < nums.size(); ++i) {
+        if (set.find(nums[i]) != set.end()) {
+            return true;
+        }
+        set.insert(nums[i]);
     }
-    set.insert(nums[i]);
-  }
-  return false;
-}
-
-int main() {
-  std::vector<int> testVec = {1, 2, 3, 4, 1};
-  if (containsDuplicate(testVec)) {
-    std::cout << "There exists a duplicate\n";
-  } else {
-    std::cout << "There is no duplicate\n";
-  }
-  return 0;
+    return false;
 }

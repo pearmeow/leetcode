@@ -12,5 +12,5 @@
  */
 
 bool divisorGame(int n) {
-  return false;
+    return false;
 }

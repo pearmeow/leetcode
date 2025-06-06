@@ -21,40 +21,40 @@
 const int COLORS = 26;
 
 int largestPathValue(const std::string& colors, const std::vector<std::vector<int>>& edges) {
-  std::vector<std::vector<int>> adjList(colors.size());
-  std::vector<int> indegrees(colors.size());
-  for (const std::vector<int>& edge : edges) {
-    int parent = edge[0];
-    int child = edge[1];
-    adjList[parent].push_back(child);
-    ++indegrees[child];
-  }
-  std::vector<std::vector<int>> colorMaxes(colors.size(), std::vector<int>(COLORS));
-  std::queue<int> parents;
-  for (size_t i = 0; i < indegrees.size(); ++i) {
-    if (indegrees[i] == 0) {
-      parents.push(i);
+    std::vector<std::vector<int>> adjList(colors.size());
+    std::vector<int> indegrees(colors.size());
+    for (const std::vector<int>& edge : edges) {
+        int parent = edge[0];
+        int child = edge[1];
+        adjList[parent].push_back(child);
+        ++indegrees[child];
     }
-  }
-  int maxColor = 0;
-  int totalParents = 0;
-  while (!parents.empty()) {
-    ++totalParents;
-    int currPar = parents.front();
-    parents.pop();
-    colorMaxes[currPar][colors[currPar] - 'a'] += 1;
-    maxColor = std::max(colorMaxes[currPar][colors[currPar] - 'a'], maxColor);
-    for (int child : adjList[currPar]) {
-      indegrees[child] -= 1;
-      if (indegrees[child] == 0) {
-        parents.push(child);
-      }
-      for (size_t i = 0; i < COLORS; ++i) {
-        colorMaxes[child][i] = std::max(colorMaxes[currPar][i], colorMaxes[child][i]);
-        maxColor = std::max(colorMaxes[child][i], maxColor);
-      }
+    std::vector<std::vector<int>> colorMaxes(colors.size(), std::vector<int>(COLORS));
+    std::queue<int> parents;
+    for (size_t i = 0; i < indegrees.size(); ++i) {
+        if (indegrees[i] == 0) {
+            parents.push(i);
+        }
     }
-  }
-  if (totalParents != colors.size()) return -1;
-  return maxColor;
+    int maxColor = 0;
+    int totalParents = 0;
+    while (!parents.empty()) {
+        ++totalParents;
+        int currPar = parents.front();
+        parents.pop();
+        colorMaxes[currPar][colors[currPar] - 'a'] += 1;
+        maxColor = std::max(colorMaxes[currPar][colors[currPar] - 'a'], maxColor);
+        for (int child : adjList[currPar]) {
+            indegrees[child] -= 1;
+            if (indegrees[child] == 0) {
+                parents.push(child);
+            }
+            for (size_t i = 0; i < COLORS; ++i) {
+                colorMaxes[child][i] = std::max(colorMaxes[currPar][i], colorMaxes[child][i]);
+                maxColor = std::max(colorMaxes[child][i], maxColor);
+            }
+        }
+    }
+    if (totalParents != colors.size()) return -1;
+    return maxColor;
 }
