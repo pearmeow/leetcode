@@ -13,6 +13,9 @@
  * Return the longest ZigZag path contained in that tree.
  */
 
+#include <algorithm>
+#include <tuple>
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -22,6 +25,22 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+std::tuple<int, int, int> helper(TreeNode* root) {
+    if (root == nullptr) return {-1, -1, -1};
+    std::tuple<int, int, int> left = helper(root->left);
+    std::tuple<int, int, int> right = helper(root->right);
+    int maxLeft = std::get<1>(left) + 1;
+    int maxRight = std::get<0>(right) + 1;
+    int maxInTree = std::max(std::max(std::get<2>(left), std::get<2>(right)), std::max(maxLeft, maxRight));
+    return {maxLeft, maxRight, maxInTree};
+}
+
 int longestZigZag(TreeNode* root) {
-    return 0;
+    if (root == nullptr) return 0;
+    std::tuple<int, int, int> left = helper(root->left);
+    std::tuple<int, int, int> right = helper(root->right);
+    int maxLeft = std::get<1>(left) + 1;
+    int maxRight = std::get<0>(right) + 1;
+    int maxInTree = std::max(std::max(std::get<2>(left), std::get<2>(right)), std::max(maxLeft, maxRight));
+    return maxInTree;
 }
