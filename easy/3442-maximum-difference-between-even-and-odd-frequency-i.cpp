@@ -25,16 +25,12 @@ int maxDifference(const std::string& s) {
     int oddMin = 0;
     for (size_t i = 0; i < freq.size(); ++i) {
         if (freq[i] % 2 == 0) {
-            evenMax = std::max(evenMax, freq[i]);
             if (evenMin == 0 || (evenMin > freq[i] && freq[i] != 0)) {
                 evenMin = freq[i];
             }
         } else {
             oddMax = std::max(oddMax, freq[i]);
-            if (oddMin == 0 || (oddMin > freq[i] && freq[i] != 0)) {
-                oddMin = freq[i];
-            }
         }
     }
-    return std::max(std::max(oddMax - evenMin, oddMax - evenMax), std::max(oddMin - evenMin, oddMin - evenMax));
+    return oddMax - evenMin;
 }
