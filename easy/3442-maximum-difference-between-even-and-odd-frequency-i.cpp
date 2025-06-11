@@ -19,10 +19,8 @@ int maxDifference(const std::string& s) {
     for (size_t i = 0; i < s.size(); ++i) {
         ++freq[s[i] - 'a'];
     }
-    int evenMax = 0;
     int evenMin = 0;
     int oddMax = 0;
-    int oddMin = 0;
     for (size_t i = 0; i < freq.size(); ++i) {
         if (freq[i] % 2 == 0) {
             if (evenMin == 0 || (evenMin > freq[i] && freq[i] != 0)) {
