@@ -1,6 +1,6 @@
 /**
  * @file 108-sorted-array-to-bst.cpp
- * @name Perry Huang
+ * @author Perry Huang
  * @date 4/11/2024
  * 108. Convert Sorted Array to Binary Search Tree
  * Given an integer array nums where the elements are sorted in ascending order,

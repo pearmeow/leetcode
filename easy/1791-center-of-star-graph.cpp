@@ -1,6 +1,6 @@
 /**
  * @file 1791-center-of-star-graph.cpp
- * @name Perry Huang
+ * @author Perry Huang
  * @date 4/11/2024
  * 1791. Find Center of Star Graph
  * There is an undirected star graph consisting of n nodes labeled from 1 to n. 
