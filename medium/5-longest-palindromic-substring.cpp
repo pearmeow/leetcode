@@ -1,14 +1,13 @@
 /**
- * @file: 5-longest-palindromic-substring.cpp
- * @author: Perry Huang
- * @date: 2/1/2024
+ * @file 5-longest-palindromic-substring.cpp
+ * @author Perry Huang
+ * @date 2024-02-01
  * 5. Longest Palindromic Substring
  * Given a string s, return the longest palindromic substring in s.
  */
 
 #include <string>
 #include <vector>
-#include <iostream>
 
 void updTable(const std::string& s, size_t row, size_t col, std::vector<std::vector<std::pair<size_t, size_t>>>& dp) {
     if (col == 0 || col > dp.size() - 1 || row >= dp.size() - 1) return;

@@ -1,12 +1,11 @@
 /**
- * @file: 211-search-words-data-structure.cpp
- * @author: Perry Huang
- * @date: 3/4/2024
+ * @file 211-search-words-data-structure.cpp
+ * @author Perry Huang
+ * @date 3/4/2024
  * 211. Design Add and Search words Data Structure
  * Design a data structure that supports adding new m_words and finding if a string matches any previously added string.
  */
 
-#include <iostream>
 #include <string>
 
 class WordDictionary {

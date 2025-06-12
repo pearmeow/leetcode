@@ -12,8 +12,6 @@
 
 #include <vector>
 #include <string>
-// #include <iostream>
-// #include <unordered_set>
 
 bool helper(std::vector<std::vector<char>>& board, const std::string& word,
         int row, int col, int strInd, std::vector<std::vector<int>>& used) {
@@ -36,7 +34,6 @@ bool helper(std::vector<std::vector<char>>& board, const std::string& word,
 }
 
 bool exist(std::vector<std::vector<char>>& board, const std::string& word) {
-    // std::unordered_set<std::string> existing_strings;
     std::vector<std::vector<int>> used(board.size(), std::vector<int>(board[0].size(), 0));
     for (std::size_t i = 0; i < used.size(); ++i) {
         for (std::size_t j = 0; j < used[i].size(); ++j) {

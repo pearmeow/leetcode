@@ -1,7 +1,7 @@
 /**
  * @file 509-fibonacci.cpp
  * @author Perry Huang
- * @date 3/2/2024
+ * @date 2024-03-02
  * 509. Fibonacci Number
  * The Fibonacci numbers, commonly denoted F(n) form a sequence,
  * called the Fibonacci sequence, such that each number is the
@@ -11,12 +11,12 @@
  * Given n, calculate F(n).
  */
 
-#include <iostream>
+#include <cstdio> // for size_t
 
 int fib(int n) {
     if (n == 0 || n == 1) return n;
     int curr = 1, prev = 0, temp = 0;
-    for (size_t i = 0; i < n - 1; ++i) {
+    for (std::size_t i = 0; i < n - 1; ++i) {
         temp = prev;
         prev = curr;
         curr += temp;

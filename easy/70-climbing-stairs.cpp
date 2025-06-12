@@ -1,14 +1,13 @@
 /**
- * @file: 70-climbing-stairs.cpp
- * @author: Perry Huang
- * @date: 3/2/2024
+ * @file 70-climbing-stairs.cpp
+ * @author Perry Huang
+ * @date 2024-03-02
  * 70. Climbing Stairs
  * You are climbing a staircase. It takes n steps to reach the top.
  * Each time you can either climb 1 or 2 steps. In how many distinct ways can you
  * climb to the top?
  */
 
-#include <iostream>
 #include <vector>
 
 int helper(int n, std::vector<int>& memo) {

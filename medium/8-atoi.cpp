@@ -1,7 +1,7 @@
 /**
  * @file 8-atoi.cpp
  * @author Perry Huang
- * @date 2/24/2024
+ * @date 2024-02-24
  *
  * 8. String to Integer (atoi)
  * Description of problem:
@@ -20,7 +20,7 @@
  * to 231 - 1. Return the integer as the final result.
  */
 
-#include <iostream>
+#include <string>
 
 int myAtoi(const std::string& s) {
     long long res = 0;
@@ -36,7 +36,6 @@ int myAtoi(const std::string& s) {
     }
 
     for (size_t i = pos; i < s.size(); ++i) {
-        std::cout << s[pos] << " at position " << i << std::endl;
         if (s[i] >= '0' && s[i] <= '9') {
             res *= 10;
             res += (s[i] - '0');

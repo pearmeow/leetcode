@@ -1,7 +1,7 @@
 /**
- * @file: 15-3sum.cpp
- * @author: Perry Huang
- * @date: 2/26/2024
+ * @file 15-3sum.cpp
+ * @author Perry Huang
+ * @date 2024-02-26
  * 15. 3Sum
  * Given an integer array nums, return all the triplets
  * [nums[i], nums[j], nums[k]] such that
@@ -10,8 +10,6 @@
  * Notice that the solution set must not contain duplicate triplets.
  */
 
-#include <iostream>
-#include <unordered_map>
 #include <vector>
 
 std::vector<int>& mergeSort(std::vector<int>& unsorted) {

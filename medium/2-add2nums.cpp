@@ -11,8 +11,6 @@
  * number 0 itself.
  */
 
-#include <iostream>
-
 // Definition for singly-linked list.
 struct ListNode {
     int val;

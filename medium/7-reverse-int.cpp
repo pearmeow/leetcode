@@ -9,8 +9,6 @@
  * Assume the environment does not allow you to store 64-bit integers (signed or
  * unsigned).
  */
-#include <iostream>
-#include <vector>
 
 int reverse(int x) {
     unsigned int rvrs = 0, orig = 0, count = 0, negative = 1;

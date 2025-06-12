@@ -6,7 +6,7 @@
  * Given an integer x, return true if x is a palindrome, and false otherwise.
  */
 
-#include <iostream>
+#include <cstdio> // for size_t definition
 
 bool isPalindrome(int x) {
     if (x < 0) return false;

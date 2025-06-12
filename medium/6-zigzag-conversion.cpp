@@ -14,7 +14,6 @@
  * of rows: Adding strings to strings is faster than adding chars 1 by 1
  */
 
-#include <iostream>
 #include <string>
 #include <vector>
 

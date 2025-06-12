@@ -7,7 +7,6 @@
  * and return false if every element is distinct.
  */
 
-#include <iostream>
 #include <vector>
 #include <unordered_set>
 

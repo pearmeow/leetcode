@@ -7,7 +7,6 @@
  * substring without repeating characters.
  */
 
-#include <iostream>  //for testing
 #include <string>
 #include <unordered_map>
 

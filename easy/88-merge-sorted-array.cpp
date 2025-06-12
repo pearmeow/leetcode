@@ -13,7 +13,6 @@
  * last n elements are set to 0 and should be ignored. nums2 has a length of n.
  */
 
-#include <iostream>
 #include <vector>
 
 void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {

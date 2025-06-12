@@ -1,7 +1,7 @@
 /**
- * @file : 11-most-water-container.cpp
- * @author : Perry Huang
- * @date 2/25/2024
+ * @file 11-most-water-container.cpp
+ * @author Perry Huang
+ * @date 2024-02-25
  * 11. Container With Most Water
  * Description of problem:
  * You are given an integer array height of length n.
@@ -12,7 +12,6 @@
  * container.
  */
 
-#include <iostream>
 #include <vector>
 
 int maxArea(const std::vector<int>& height) {
