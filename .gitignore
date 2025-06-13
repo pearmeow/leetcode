@@ -2,12 +2,9 @@
 *
 !/**/
 !*.*
-**/*Zone.Identifier
-.vs
-.vscode
-build
-lmao
-.histfile
+
+# But not makefile because it counts as extensionless
+!makefile
 
 # Prerequisites
 *.d
@@ -41,6 +38,3 @@ lmao
 *.exe
 *.out
 *.app
-
-# Not makefile
-!makefile
