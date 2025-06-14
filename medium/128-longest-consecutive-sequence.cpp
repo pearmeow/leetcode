@@ -10,6 +10,7 @@
 #include <vector>
 #include <unordered_map>
 
+// Hashmap solution
 int longestConsecutive(std::vector<int>& nums) {
     int longest = 0;
     std::unordered_map<int, bool> numSet;
