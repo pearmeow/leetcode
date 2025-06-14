@@ -1,4 +1,4 @@
-default: run
+default: easy
 
 run: compile
 	./$(ARGS)
