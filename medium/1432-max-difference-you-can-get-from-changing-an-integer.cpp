@@ -26,7 +26,7 @@ int maxDiff(int num) {
     int change = -1;
     int swap = -1;
     int firstDigit = -1;
-    for (auto it = minDigits.rbegin(); it < minDigits.rend(); ++it) {
+    for (auto it = minDigits.rbegin(); it != minDigits.rend(); ++it) {
         if (it == minDigits.rbegin()) {
             firstDigit = *it;
             if (*it != 1) {
@@ -45,7 +45,7 @@ int maxDiff(int num) {
     }
     change = -1;
     swap = -1;
-    for (auto it = maxDigits.rbegin(); it < maxDigits.rend(); ++it) {
+    for (auto it = maxDigits.rbegin(); it != maxDigits.rend(); ++it) {
         if (it == maxDigits.rbegin()) {
             if (*it != 9) {
                 swap = *it;
