@@ -68,7 +68,7 @@ double solveQuery(const std::vector<std::vector<std::string>>& equations,
     for (auto& [key, val] : visited) {
         val = false;
     }
-    //empty queue
+    // empty queue
     theQueue = std::queue<std::tuple<const std::string*, const std::string*, double>>();
     return res;
 }
