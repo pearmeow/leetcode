@@ -79,9 +79,8 @@ double solveQuery(
     for (auto& [key, val] : visited) {
         val = false;
     }
-    // empty queue with swap
-    std::queue<std::tuple<const std::string*, const std::string*, double>> eq;
-    std::swap(theQueue, eq);
+    // empty queue
+    theQueue = {};
     return res;
 }
 
