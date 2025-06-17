@@ -20,9 +20,8 @@
 #include <string>
 #include <vector>
 
-double findEqValue(const std::vector<std::vector<std::string>>& equations,
-                   const std::vector<double>& values, const std::string& s1,
-                   const std::string& s2) {
+double findEqValue(const std::vector<std::vector<std::string>>& equations, const std::vector<double>& values,
+                   const std::string& s1, const std::string& s2) {
     for (size_t i = 0; i < equations.size(); ++i) {
         const std::string& dividend = equations[i][0];
         const std::string& divisor = equations[i][1];
@@ -35,15 +34,12 @@ double findEqValue(const std::vector<std::vector<std::string>>& equations,
     return -1.0;
 }
 
-double solveQuery(
-    const std::vector<std::vector<std::string>>& equations,
-    const std::vector<double>& values, const std::vector<std::string>& query,
-    const std::map<std::string, std::vector<const std::string*>>& adjList,
-    std::map<std::string, bool>& visited,
-    std::queue<std::tuple<const std::string*, const std::string*, double>>&
-        theQueue) {
-    if (adjList.find(query[0]) == adjList.end() ||
-        adjList.find(query[1]) == adjList.end()) {
+double solveQuery(const std::vector<std::vector<std::string>>& equations, const std::vector<double>& values,
+                  const std::vector<std::string>& query,
+                  const std::map<std::string, std::vector<const std::string*>>& adjList,
+                  std::map<std::string, bool>& visited,
+                  std::queue<std::tuple<const std::string*, const std::string*, double>>& theQueue) {
+    if (adjList.find(query[0]) == adjList.end() || adjList.find(query[1]) == adjList.end()) {
         return -1.0;
     } else if (query[0] == query[1]) {
         return 1.0;
@@ -84,10 +80,9 @@ double solveQuery(
     return res;
 }
 
-std::vector<double> calcEquation(
-    const std::vector<std::vector<std::string>>& equations,
-    const std::vector<double>& values,
-    const std::vector<std::vector<std::string>>& queries) {
+std::vector<double> calcEquation(const std::vector<std::vector<std::string>>& equations,
+                                 const std::vector<double>& values,
+                                 const std::vector<std::vector<std::string>>& queries) {
     std::map<std::string, std::vector<const std::string*>> adjList;
     std::map<std::string, bool> visited;
     for (size_t i = 0; i < equations.size(); ++i) {
@@ -98,12 +93,10 @@ std::vector<double> calcEquation(
         visited[dividend] = false;
         visited[divisor] = false;
     }
-    std::queue<std::tuple<const std::string*, const std::string*, double>>
-        theQueue;
+    std::queue<std::tuple<const std::string*, const std::string*, double>> theQueue;
     std::vector<double> res(queries.size(), -1.0);
     for (size_t i = 0; i < res.size(); ++i) {
-        res[i] = solveQuery(equations, values, queries[i], adjList, visited,
-                            theQueue);
+        res[i] = solveQuery(equations, values, queries[i], adjList, visited, theQueue);
     }
     return res;
 }
