@@ -14,9 +14,9 @@
  * The answer and all the intermediate calculations can be represented in a 32-bit integer.
  */
 
-#include <vector>
-#include <string>
 #include <stack>
+#include <string>
+#include <vector>
 
 int evalRPN(std::vector<std::string>& tokens) {
     std::stack<int> nums;
@@ -30,17 +30,17 @@ int evalRPN(std::vector<std::string>& tokens) {
             nums.pop();
             op1 = nums.top();
             nums.pop();
-            switch(s[0]) {
-                case('+'):
+            switch (s[0]) {
+                case ('+'):
                     nums.push(op1 + op2);
                     break;
-                case('-'):
+                case ('-'):
                     nums.push(op1 - op2);
                     break;
-                case('*'):
+                case ('*'):
                     nums.push(op1 * op2);
                     break;
-                case('/'):
+                case ('/'):
                     nums.push(op1 / op2);
                     break;
             }

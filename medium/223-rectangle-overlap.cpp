@@ -3,9 +3,9 @@
  * @author Perry Huang
  * @date 2024-10-11
  * 223. Rectangle Area
- * Given the coordinates of two rectilinear rectangles in a 2D plane, return the total area covered by the two rectangles.
+ * Given the coordinates of two rectilinear rectangles in a 2D plane, return the total area covered by the two
+ * rectangles.
  */
-
 
 #include <unordered_set>
 

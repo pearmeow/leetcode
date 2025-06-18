@@ -10,8 +10,8 @@
  * Return the lexicographically smallest resulting string after removing all '*' characters.
  */
 
-#include <string>
 #include <queue>
+#include <string>
 #include <utility>
 
 std::string clearStars(std::string s) {
@@ -19,8 +19,8 @@ std::string clearStars(std::string s) {
         if (a.first == b.first) return a.second > b.second;
         return a.first > b.first;
     };
-    std::priority_queue<std::pair<char, size_t>, std::vector<std::pair<char, size_t>>,
-        decltype(lexComp)> minChars(lexComp);
+    std::priority_queue<std::pair<char, size_t>, std::vector<std::pair<char, size_t>>, decltype(lexComp)> minChars(
+        lexComp);
     for (size_t i = 0; i < s.size(); ++i) {
         if (s[i] == '*') {
             size_t leastInd = minChars.top().second;

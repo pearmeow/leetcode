@@ -21,8 +21,8 @@
  * If it is not possible to reach the square, return -1.
  */
 
-#include <vector>
 #include <queue>
+#include <vector>
 
 size_t calcPos(size_t rowSize, size_t index) {
     bool onReverseRow = (index / rowSize) % 2 != 0;

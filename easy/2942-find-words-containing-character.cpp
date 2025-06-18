@@ -8,8 +8,8 @@
  * Note that the returned array may be in any order.
  */
 
-#include <vector>
 #include <string>
+#include <vector>
 
 bool hasChar(const std::string& word, char x) {
     for (size_t i = 0; i < word.size(); ++i) {

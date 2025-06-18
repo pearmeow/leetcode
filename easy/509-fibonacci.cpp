@@ -11,7 +11,7 @@
  * Given n, calculate F(n).
  */
 
-#include <cstdio> // for size_t
+#include <cstdio>  // for size_t
 
 int fib(int n) {
     if (n == 0 || n == 1) return n;

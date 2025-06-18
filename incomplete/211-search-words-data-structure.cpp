@@ -9,23 +9,20 @@
 #include <string>
 
 class WordDictionary {
-    public:
-        WordDictionary() {
-        }
+   public:
+    WordDictionary() {}
 
-        void end() { hasEnd = true; }
+    void end() {
+        hasEnd = true;
+    }
 
-        void addWord(const std::string& word) {
+    void addWord(const std::string& word) {}
 
-        }
+    bool search(const std::string& word) {}
 
-        bool search(const std::string& word) {
-        }
-
-    private:
-        bool hasEnd;
-        WordDictionary** words;
-
+   private:
+    bool hasEnd;
+    WordDictionary** words;
 };
 
 /**

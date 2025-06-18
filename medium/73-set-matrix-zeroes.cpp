@@ -6,8 +6,8 @@
  * Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
  * You must do it in place.
  */
-#include <vector>
 #include <cmath>
+#include <vector>
 
 void setZeroes(std::vector<std::vector<int>>& matrix) {
     bool x0 = false, y0 = false;

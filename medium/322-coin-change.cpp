@@ -10,8 +10,8 @@
  * You may assume that you have an infinite number of each kind of coin.
  */
 
-#include <vector>
 #include <climits>
+#include <vector>
 
 int coinChange(std::vector<int>& coins, int amount) {
     std::vector<int> leastAmounts(amount + 1, INT_MAX);

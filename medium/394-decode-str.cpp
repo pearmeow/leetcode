@@ -4,8 +4,8 @@
  * @date 2024-10-15
  */
 
-#include <string>
 #include <stack>
+#include <string>
 
 std::string decodeString(const std::string& s) {
     std::string curr, res;
@@ -36,4 +36,3 @@ std::string decodeString(const std::string& s) {
 
     return res;
 }
-

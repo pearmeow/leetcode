@@ -23,8 +23,9 @@ void updTable(const std::string& s, size_t row, size_t col, std::vector<std::vec
 
 std::string longestPalindrome(const std::string& s) {
     // dp[i,j] is the longest palindrome from i to j
-    std::vector<std::vector<std::pair<size_t, size_t>>> dp(s.size(), std::vector<std::pair<size_t, size_t>>(s.size(),
-                std::pair<int,int>(s.size(), s.size()))); // first is start index, second is end index
+    std::vector<std::vector<std::pair<size_t, size_t>>> dp(
+        s.size(), std::vector<std::pair<size_t, size_t>>(
+                      s.size(), std::pair<int, int>(s.size(), s.size())));  // first is start index, second is end index
     for (size_t i = 0; i < dp.size(); ++i) {
         // base case i == j so size is 1
         dp[i][i].first = i;

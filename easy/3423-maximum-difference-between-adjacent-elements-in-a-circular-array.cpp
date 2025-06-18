@@ -7,8 +7,8 @@
  * Note: In a circular array, the first and last elements are adjacent.
  */
 
-#include <vector>
 #include <cmath>
+#include <vector>
 
 int maxAdjacentDistance(const std::vector<int>& nums) {
     int distance = std::abs(nums[0] - nums[nums.size() - 1]);

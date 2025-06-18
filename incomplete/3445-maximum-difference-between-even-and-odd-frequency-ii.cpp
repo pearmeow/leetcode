@@ -30,7 +30,7 @@ int maxDifference(const std::string& s, int k) {
             int oddMax = 0;
             int evenMin = 0;
             for (int num : nums) {
-                if (num % 2 == 0) { // even
+                if (num % 2 == 0) {  // even
                     if (num != 0) {
                         if (evenMin == 0) {
                             evenMin = num;

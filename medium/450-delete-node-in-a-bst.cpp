@@ -50,7 +50,7 @@ TreeNode* deleteNode(TreeNode* root, int key) {
             prev->right = swap->left;
         }
     } else if (head->left != nullptr) {
-        if (prev == nullptr) { // root case
+        if (prev == nullptr) {  // root case
             return head->left;
         }
         if (prev->left != nullptr) {
@@ -63,7 +63,7 @@ TreeNode* deleteNode(TreeNode* root, int key) {
             prev->right = head->left;
         }
     } else if (head->right != nullptr) {
-        if (prev == nullptr) { // root case
+        if (prev == nullptr) {  // root case
             return head->right;
         }
         if (prev->left != nullptr) {
@@ -76,7 +76,7 @@ TreeNode* deleteNode(TreeNode* root, int key) {
             prev->right = head->right;
         }
     } else {
-        if (prev == nullptr) { // root case
+        if (prev == nullptr) {  // root case
             return nullptr;
         }
         if (prev->left != nullptr) {

@@ -13,13 +13,13 @@
  * Note that a node is always target to itself.
  * Return an array of n integers answer, where answer[i] is the maximum possible number of nodes target to node i of the
  * first tree if you have to connect one node from the first tree to another node in the second tree.
- * Note that queries are independent from each other. 
+ * Note that queries are independent from each other.
  * That is, for every query you will remove the added edge before proceeding to the next query.
  */
 
-#include <vector>
-#include <queue>
 #include <algorithm>
+#include <queue>
+#include <vector>
 
 // returns nodes with distance less than or equal to k
 int targetBFS(const std::vector<std::vector<int>>& adjList, int k, int rootVertex) {
@@ -48,7 +48,6 @@ int targetBFS(const std::vector<std::vector<int>>& adjList, int k, int rootVerte
     return totalTargets;
 }
 
-
 // returns list of nodes with distance less than or equal to k
 std::vector<int> calcTargets(const std::vector<std::vector<int>>& adjList, int k) {
     std::vector<int> targets(adjList.size());
@@ -58,7 +57,8 @@ std::vector<int> calcTargets(const std::vector<std::vector<int>>& adjList, int k
     return targets;
 }
 
-std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1, const std::vector<std::vector<int>>& edges2, int k) {
+std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1,
+                                const std::vector<std::vector<int>>& edges2, int k) {
     if (k == 0) return std::vector<int>(edges1.size() + 1, 1);
     std::vector<std::vector<int>> adjList1(edges1.size() + 1);
     std::vector<std::vector<int>> adjList2(edges2.size() + 1);

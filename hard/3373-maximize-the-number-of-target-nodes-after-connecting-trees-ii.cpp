@@ -9,7 +9,7 @@
  * edges2[i] = [ui, vi] indicates that there is an edge between nodes ui and vi in the second tree.
  * Node u is target to node v if the number of edges on the path from u to v is even.
  * Note that a node is always target to itself.
- * Return an array of n integers answer, where answer[i] is the maximum possible number of nodes that are target to node 
+ * Return an array of n integers answer, where answer[i] is the maximum possible number of nodes that are target to node
  * i of the first tree if you had to connect one node from the first tree to another node in the second tree.
  * Note that queries are independent from each other.
  * That is, for every query you will remove the added edge before proceeding to the next query.
@@ -20,8 +20,7 @@
 bool EVEN = true;
 bool ODD = false;
 
-int targetDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& visited,
-        bool parity, int root) {
+int targetDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& visited, bool parity, int root) {
     int res = 0;
     if (visited[root] == true) return res;
     if (parity == EVEN) ++res;
@@ -33,7 +32,7 @@ int targetDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& v
 }
 
 void updateDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& updated, std::vector<int>& maxTargets,
-        bool parity, int root, int targetVal) {
+               bool parity, int root, int targetVal) {
     if (updated[root]) return;
     updated[root] = true;
     if (parity == EVEN) {
@@ -47,7 +46,7 @@ void updateDFS(const std::vector<std::vector<int>>& adjList, std::vector<bool>& 
 }
 
 std::vector<int> maxTargetNodes(const std::vector<std::vector<int>>& edges1,
-        const std::vector<std::vector<int>>& edges2) {
+                                const std::vector<std::vector<int>>& edges2) {
     std::vector<std::vector<int>> adjList1(edges1.size() + 1);
     std::vector<std::vector<int>> adjList2(edges2.size() + 1);
     for (size_t i = 0; i < edges1.size(); ++i) {

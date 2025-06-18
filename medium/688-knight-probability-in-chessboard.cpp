@@ -23,18 +23,15 @@
 const int X[8] = {2, 2, 1, 1, -1, -1, -2, -2};
 const int Y[8] = {1, -1, 2, -2, 2, -2, 1, -1};
 
-double helper(int boardLength, int moves, int r, int c,
-        std::vector<std::vector<std::vector<double>>>& memo);
+double helper(int boardLength, int moves, int r, int c, std::vector<std::vector<std::vector<double>>>& memo);
 
 double knightProbability(int boardLength, int moves, int r, int c) {
     std::vector<std::vector<std::vector<double>>> memo(
-            moves + 1, std::vector<std::vector<double>>(
-                boardLength, std::vector<double>(boardLength, -1.0)));
+        moves + 1, std::vector<std::vector<double>>(boardLength, std::vector<double>(boardLength, -1.0)));
     return helper(boardLength, moves, r, c, memo);
 }
 
-double helper(int boardLength, int moves, int r, int c,
-        std::vector<std::vector<std::vector<double>>>& memo) {
+double helper(int boardLength, int moves, int r, int c, std::vector<std::vector<std::vector<double>>>& memo) {
     if (moves == 0) return 1.0;
     if (memo[moves][r][c] != -1) {
         return memo[moves][r][c];

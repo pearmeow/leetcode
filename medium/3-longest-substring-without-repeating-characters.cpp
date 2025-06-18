@@ -5,8 +5,8 @@
  * Given a string s, find the length of the longest substring without duplicate characters.
  */
 
-#include <string>
 #include <map>
+#include <string>
 
 int lengthOfLongestSubstring(const std::string& s) {
     std::map<char, size_t> positions;

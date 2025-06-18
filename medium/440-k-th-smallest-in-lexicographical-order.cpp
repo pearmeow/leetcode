@@ -43,7 +43,7 @@ int findKthNumber(int n, int k) {
                 --digits;
             }
             int mode = (i == firstDigit) ? 0 : 1;
-            if (subSize == subtreeSize(digits)) mode = 1; // full subtree edge case
+            if (subSize == subtreeSize(digits)) mode = 1;  // full subtree edge case
             kthNum = kthNumHelper(subSize, k, i, digits - 1, mode, nDigits);
             break;
         }
@@ -55,8 +55,8 @@ int findKthNumber(int n, int k) {
 // mode: 1 more or less, aka full subtree
 int kthNumHelper(int n, int k, int root, int digitsLeft, int mode, const std::vector<int>& nDigits) {
     if (k == 1) return root;
-    k -= 1; // subtract root from the count
-    n -= 1; // also subtract root from the total elems in subtree
+    k -= 1;  // subtract root from the count
+    n -= 1;  // also subtract root from the total elems in subtree
     int subSize = subtreeSize(digitsLeft);
     int kthNum = 0;
     if (mode == 0) {
@@ -80,12 +80,12 @@ int kthNumHelper(int n, int k, int root, int digitsLeft, int mode, const std::ve
                     --digitsLeft;
                 }
                 mode = (i == currDigit) ? 0 : 1;
-                if (subSize == subtreeSize(currDigit)) mode = 1; // full subtree edge case
+                if (subSize == subtreeSize(currDigit)) mode = 1;  // full subtree edge case
                 kthNum = kthNumHelper(subSize, k, root * 10 + i, digitsLeft - 1, mode, nDigits);
                 break;
             }
         }
-    } else { // mode == 1
+    } else {  // mode == 1
         // just iterate through the full subtrees and subtract k
         for (int i = 0; i < 10; ++i) {
             if (k > subSize) {
@@ -109,10 +109,10 @@ int subtreeSize(int levels) {
 }
 
 int main() {
-    int ans = findKthNumber(10000, 10); // should be 10006
-    ans = findKthNumber(10, 4); // should be 3
-    ans = findKthNumber(10, 5); // should be 4
-    ans = findKthNumber(10, 6); // should be 5
-    ans = findKthNumber(10, 7); // should be 6
-    ans = findKthNumber(10, 1); // should be 1
+    int ans = findKthNumber(10000, 10);  // should be 10006
+    ans = findKthNumber(10, 4);          // should be 3
+    ans = findKthNumber(10, 5);          // should be 4
+    ans = findKthNumber(10, 6);          // should be 5
+    ans = findKthNumber(10, 7);          // should be 6
+    ans = findKthNumber(10, 1);          // should be 1
 }

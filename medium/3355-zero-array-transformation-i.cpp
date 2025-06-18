@@ -15,12 +15,12 @@
 #include <vector>
 
 bool isZeroArray(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
-    std::vector<int> diff_vec(nums.size() + 1, 0); // +1 for difference array
-    for (size_t i = 0; i < queries.size(); ++i) {  // how does this loop work?
-        ++diff_vec[queries[i][0]]; // the start of the range is incremented
-        diff_vec[queries[i][1] + 1] -= 1; // the index at the end of the range +1 is decremented
-    } // arriving at an index after this loop will give you the number of ranges included
-      // and when they end they are subtracted away
+    std::vector<int> diff_vec(nums.size() + 1, 0);  // +1 for difference array
+    for (size_t i = 0; i < queries.size(); ++i) {   // how does this loop work?
+        ++diff_vec[queries[i][0]];                  // the start of the range is incremented
+        diff_vec[queries[i][1] + 1] -= 1;           // the index at the end of the range +1 is decremented
+    }  // arriving at an index after this loop will give you the number of ranges included
+       // and when they end they are subtracted away
     int diff = 0;
     for (size_t i = 0; i < nums.size(); ++i) {
         diff += diff_vec[i];

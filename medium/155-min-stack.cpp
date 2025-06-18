@@ -1,9 +1,9 @@
-#include <vector>
 #include <utility>
+#include <vector>
 
 // pop, top, and getMin will never be called on empty stack
 class MinStack {
-public:
+   public:
     MinStack() {}
 
     void push(int val) {
@@ -25,6 +25,7 @@ public:
     int getMin() {
         return theStack[theStack.size() - 1].second;
     }
-private:
+
+   private:
     std::vector<std::pair<int, int>> theStack;
 };

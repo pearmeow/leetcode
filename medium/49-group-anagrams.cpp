@@ -2,13 +2,13 @@
  * @file 49-group-anagrams.cpp
  * @author Perry Huang
  * @date 2025-01-12
- * 49. Group Anagrams 
+ * 49. Group Anagrams
  * Given an array of strings strs, group the anagrams together. You can return the answer in any order.
  */
 
-#include <vector>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 std::string findFrequencies(const std::string& str) {
     std::vector<int> freq(26, 0);

@@ -7,8 +7,8 @@
  * You must write an algorithm that runs in O(n) time.
  */
 
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 // Hashmap solution
 int longestConsecutive(std::vector<int>& nums) {

@@ -11,8 +11,8 @@
  * Return the lexicographically smallest string that can be written on the paper.
  */
 
-#include <string>
 #include <stack>
+#include <string>
 #include <vector>
 
 void findMins(const std::string& word, std::vector<char>& nextMins) {

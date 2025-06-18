@@ -14,14 +14,14 @@
  * Return the maximum number of candies you can get following the rules above.
  */
 
-#include <vector>
 #include <queue>
+#include <vector>
 
 int OPEN = 1;
 int CLOSED = 0;
 
 int maxCandies(std::vector<int>& status, std::vector<int>& candies, std::vector<std::vector<int>>& keys,
-        std::vector<std::vector<int>>& containedBoxes, std::vector<int>& initialBoxes) {
+               std::vector<std::vector<int>>& containedBoxes, std::vector<int>& initialBoxes) {
     int totalCandies = 0;
     int opened = 1;
     int currBox = 0;

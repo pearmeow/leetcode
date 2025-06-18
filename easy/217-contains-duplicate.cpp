@@ -3,12 +3,12 @@
  * @author Perry Huang
  * @date 2025-01-09
  * 217. Contains Duplicate
- * Given an integer array nums, return true if any value appears at least twice in the array, 
+ * Given an integer array nums, return true if any value appears at least twice in the array,
  * and return false if every element is distinct.
  */
 
-#include <vector>
 #include <unordered_set>
+#include <vector>
 
 bool containsDuplicate(std::vector<int>& nums) {
     std::unordered_set<int> set;

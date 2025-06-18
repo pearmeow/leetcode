@@ -21,6 +21,6 @@ int helper(int n, std::vector<int>& memo) {
 }
 
 int climbStairs(int n) {
-    std::vector<int> memo(n + 1, 0); // 1 stair: 1 way, 2 stairs: 2 ways
+    std::vector<int> memo(n + 1, 0);  // 1 stair: 1 way, 2 stairs: 2 ways
     return helper(n, memo);
 }

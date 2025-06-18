@@ -11,8 +11,8 @@
  * Return the minimum maximum difference among all p pairs. We define the maximum of an empty set to be zero.
  */
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 int can(const std::vector<int>& nums, int diff) {
     int res = 0;
@@ -33,9 +33,9 @@ int minimizeMax(std::vector<int>& nums, int p) {
     int mid = 0;
     while (low < high) {
         mid = (high + low) / 2;
-        if (can(nums, mid) >= p) { // enough pairs, so go lower
+        if (can(nums, mid) >= p) {  // enough pairs, so go lower
             high = mid;
-        } else { // not enough pairs, so go higher
+        } else {  // not enough pairs, so go higher
             low = mid + 1;
         }
     }

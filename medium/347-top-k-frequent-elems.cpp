@@ -7,15 +7,15 @@
  * You may return the answer in any order.
  */
 
-#include <vector>
-#include <unordered_map>
 #include <algorithm>
+#include <unordered_map>
+#include <vector>
 
 class pairComparator {
-    public:
-        bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) {
-            return a.second > b.second;
-        }
+   public:
+    bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) {
+        return a.second > b.second;
+    }
 };
 
 std::vector<int> topKFrequent(std::vector<int>& nums, int k) {
