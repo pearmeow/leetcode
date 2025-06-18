@@ -11,11 +11,15 @@
 
 #include <vector>
 
-int maxProfit(std::vector<int>& prices) {
-    int profit = 0, minimum = prices[0];
-    for (size_t i = 0; i < prices.size(); ++i) {
-        profit = std::max(prices[i] - minimum, profit);
-        if (prices[i] < minimum) minimum = prices[i];
+int maxProfit(const std::vector<int>& prices) {
+    int minPrice = prices[0];
+    int maxProfit = 0;
+    for (size_t i = 1; i < prices.size(); ++i) {
+        if (minPrice > prices[i]) {
+            minPrice = prices[i];
+        } else {
+            maxProfit = std::max(maxProfit, prices[i] - minPrice);
+        }
     }
-    return profit;
+    return maxProfit;
 }
