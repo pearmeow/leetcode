@@ -10,6 +10,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <unordered_map>
 
 int findLHS(std::vector<int>& nums) {
     std::sort(nums.begin(), nums.end());
@@ -40,4 +41,31 @@ int findLHS(std::vector<int>& nums) {
         res = std::max(prevTotal + currTotal, res);
     }
     return res;
+}
+
+// Hashmap version
+int findLHSHashMap(std::vector<int>& nums) {
+    std::unordered_map<int, int> freqs;
+    for (int i : nums) {
+        if (freqs.find(i) == freqs.end()) {
+            freqs[i] = 1;
+        } else {
+            ++freqs[i];
+        }
+    }
+    int theMax = 0;
+    for (const std::pair<int, int>& curr : freqs) {
+        int prev = 0;
+        int next = 0;
+        if (freqs.find(curr.first - 1) != freqs.end()) {
+            prev = freqs.at(curr.first - 1);
+        }
+        if (freqs.find(curr.first + 1) != freqs.end()) {
+            next = freqs.at(curr.first + 1);
+        }
+        if (prev != 0 || next != 0) {
+            theMax = std::max(theMax, std::max(curr.second + next, curr.second + prev));
+        }
+    }
+    return theMax;
 }
