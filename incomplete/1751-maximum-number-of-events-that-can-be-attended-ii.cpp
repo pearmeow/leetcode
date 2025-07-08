@@ -12,10 +12,47 @@
  */
 
 #include <algorithm>
-#include <set>
 #include <vector>
 
 int maxValue(std::vector<std::vector<int>>& events, int k) {
     std::sort(events.begin(), events.end(),
-              [](const std::vector<int>& a, const std::vector<int>& b) { return a[0] > b[0]; });
+              [](const std::vector<int>& a, const std::vector<int>& b) { return a[0] < b[0]; });
+    std::vector<int> uniqueStarts;
+    uniqueStarts.push_back(events[0][0]);
+    for (size_t i = 1; i < events.size(); ++i) {
+        if (events[i][0] != uniqueStarts[uniqueStarts.size() - 1]) {
+            uniqueStarts.push_back(events[i][0]);
+        }
+    }
+    std::vector<std::vector<int>> dp(uniqueStarts.size(), std::vector<int>(k, 0));
+    size_t lastDay = uniqueStarts.size() - 1;
+    int maxVal = 0;
+    int endDay = 0;
+    for (size_t offset = 1; offset <= events.size(); ++offset) {
+        std::vector<int>& currEvent = events[events.size() - offset];
+        if (currEvent[0] != uniqueStarts[lastDay]) {
+            --lastDay;
+        }
+        endDay = currEvent[1];
+        for (size_t j = 0; j < k; ++j) {
+            dp[lastDay][j] = std::max(dp[lastDay][j], currEvent[2]);
+        }
+        auto nextEvent = std::upper_bound(uniqueStarts.begin(), uniqueStarts.end() - 1, endDay);
+        if (uniqueStarts[nextEvent - uniqueStarts.begin()] > endDay) {
+            for (size_t j = 1; j < k; ++j) {
+                dp[lastDay][j] = std::max(dp[lastDay][j], currEvent[2] + dp[nextEvent - uniqueStarts.begin()][j - 1]);
+            }
+        }
+        if (lastDay + 1 != uniqueStarts.size()) {
+            for (size_t j = 0; j < k; ++j) {
+                dp[lastDay][j] = std::max(dp[lastDay][j], dp[lastDay + 1][j]);
+            }
+        }
+    }
+    for (const std::vector<int>& vec : dp) {
+        for (int i : vec) {
+            maxVal = std::max(maxVal, i);
+        }
+    }
+    return maxVal;
 }
