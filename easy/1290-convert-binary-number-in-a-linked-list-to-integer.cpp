@@ -17,5 +17,10 @@ struct ListNode {
 };
 
 int getDecimalValue(ListNode* head) {
-    return 0;
+    int res = 0;
+    while (head != nullptr) {
+        res = (res << 1) | head->val;
+        head = head->next;
+    }
+    return res;
 }
