@@ -13,7 +13,7 @@
 
 #include <vector>
 
-int maximumLength(std::vector<int>& nums) {
+int maximumLength(const std::vector<int>& nums) {
     int evens = 0;
     int odds = 0;
     int alternating = 0;
