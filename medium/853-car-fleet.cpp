@@ -17,20 +17,20 @@
 #include <stack>
 
 int carFleet(int target, std::vector<int>& position, std::vector<int>& speed) {
-    std::stack<double> monInc;
+    std::stack<double> monDec;
     std::vector<std::pair<int, int>> sortedCars;
     for (size_t i = 0; i < position.size(); ++i) {
         sortedCars.emplace_back(position[i], speed[i]);
     }
-    std::sort(sortedCars.begin(), sortedCars.end(), std::greater<std::pair<int, int>>());
+    std::sort(sortedCars.begin(), sortedCars.end(), std::less<std::pair<int, int>>());
     for (size_t i = 0; i < sortedCars.size(); ++i) {
-        double remDist = target - sortedCars[i].second;
+        double remDist = target - sortedCars[i].first;
         double eta = (remDist / (double)sortedCars[i].second);
-        while (!monInc.empty() && eta <= monInc.top()) {
-            monInc.pop();
+        while (!monDec.empty() && eta >= monDec.top()) {
+            monDec.pop();
         }
-        monInc.push(eta);
+        monDec.push(eta);
     }
-    int res = monInc.size();
+    int res = monDec.size();
     return res;
 }
