@@ -13,6 +13,12 @@
 
 #include <string>
 
-int maximumGain(const std::string& s, int x, int y) {
-
+int maximumGain(std::string s, int x, int y) {
+    std::string mostPts = "ba";
+    std::string leastPts = "ab";
+    if (x > y) {
+        mostPts = "ab";
+        leastPts = "ba";
+    }
+    
 }
