@@ -17,6 +17,7 @@ int countSubstrings(const std::string& s) {
     for (size_t xy = 0; xy < substr_palinds.size(); ++xy) {
         substr_palinds[xy][xy] = 1; // all length 1 substrings are palindromes
     }
+    int res = s.size();
     for (size_t y = 1; y < substr_palinds.size(); ++y) {
         int incr = 0;
         for (size_t x = 0; x < substr_palinds.size(); ++x) {
@@ -28,15 +29,10 @@ int countSubstrings(const std::string& s) {
                     substr_palinds[x][y + incr] = 0;
                 } else {
                     substr_palinds[x][y + incr] = 1;
+                    ++res;
                 }
             }
             ++incr;
-        }
-    }
-    int res = 0;
-    for (const std::vector<int>& vec : substr_palinds) {
-        for (int i : vec) {
-            res += i;
         }
     }
     return res;
