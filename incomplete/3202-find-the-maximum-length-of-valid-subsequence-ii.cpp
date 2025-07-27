@@ -11,8 +11,10 @@
 
 #include <vector>
 
-int maximumLength(std::vector<int>& nums, int k) {
-    std::vector<std::vector<int>> dp(nums.size(), std::vector<int>(k, 0));
-    int curr = 0;
-
-}
+class Solution {
+   public:
+    int maximumLength(std::vector<int>& nums, int k) {
+        std::vector<std::vector<int>> dp(nums.size(), std::vector<int>(k, 0));
+        int curr = 0;
+    }
+};
