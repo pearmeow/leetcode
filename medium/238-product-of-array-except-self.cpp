@@ -12,7 +12,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::vector<int> productExceptSelf(const std::vector<int>& nums) {
         std::vector<int> res(nums.size(), 1);
         int prev = 1;

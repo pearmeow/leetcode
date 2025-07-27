@@ -21,7 +21,7 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     int myAtoi(const std::string& s) {
         long long res = 0;
         bool negative = false;

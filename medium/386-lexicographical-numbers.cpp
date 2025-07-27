@@ -10,7 +10,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::vector<int> lexicalOrder(int n) {
         std::vector<int> res(n);
         int curr = 1;

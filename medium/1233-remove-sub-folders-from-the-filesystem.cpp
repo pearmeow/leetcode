@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::vector<std::string> removeSubfolders(std::vector<std::string>& folder) {
         auto comp = [](const std::string& a, const std::string& b) { return a.size() < b.size(); };
         std::sort(folder.begin(), folder.end(), comp);

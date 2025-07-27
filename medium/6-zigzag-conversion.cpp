@@ -18,7 +18,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::string convert(const std::string& s, int numRows) {
         std::vector<std::string> rows(numRows);
         std::string res;

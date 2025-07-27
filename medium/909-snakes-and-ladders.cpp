@@ -23,7 +23,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     size_t calcPos(size_t rowSize, size_t index) {
         bool onReverseRow = (index / rowSize) % 2 != 0;
         if (onReverseRow) {

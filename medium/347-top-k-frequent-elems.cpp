@@ -12,9 +12,9 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     class pairComparator {
-       public:
+    public:
         bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) {
             return a.second > b.second;
         }

@@ -14,7 +14,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maximumLength(const std::vector<int>& nums) {
         int evens = 0;
         int odds = 0;

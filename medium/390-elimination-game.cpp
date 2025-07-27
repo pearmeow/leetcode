@@ -14,7 +14,7 @@
  */
 
 class Solution {
-   public:
+public:
     bool RIGHT = true;
     bool LEFT = false;
 

@@ -18,7 +18,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     bool EVEN = true;
     bool ODD = false;
 

@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int minimumDeletions(const std::string& word, int k) {
         std::vector<int> freqs(26, 0);
         for (char c : word) {

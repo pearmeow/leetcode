@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int OPEN = 1;
     int CLOSED = 0;
 

@@ -12,7 +12,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int countSubstrings(const std::string& s) {
         // substr_palinds[x][y] represents the palindromes in [x, y]
         std::vector<std::vector<int>> substr_palinds(s.size(), std::vector<int>(s.size(), 0));

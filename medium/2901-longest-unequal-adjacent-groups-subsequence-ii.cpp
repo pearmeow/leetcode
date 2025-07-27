@@ -20,7 +20,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int hamm_dist(const std::string& str1, const std::string& str2) {
         if (str1.size() != str2.size()) return -1;
         int res = 0;

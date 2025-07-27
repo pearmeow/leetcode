@@ -13,7 +13,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void sortColors(std::vector<int>& nums) {
         if (nums.size() < 2) return;
         size_t back = nums.size() - 1;

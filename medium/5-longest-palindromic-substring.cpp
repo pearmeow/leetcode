@@ -10,7 +10,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void updTable(const std::string& s, size_t row, size_t col,
                   std::vector<std::vector<std::pair<size_t, size_t>>>& dp) {
         if (col == 0 || col > dp.size() - 1 || row >= dp.size() - 1) return;

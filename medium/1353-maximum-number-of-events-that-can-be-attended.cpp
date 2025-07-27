@@ -13,7 +13,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxEvents(std::vector<std::vector<int>>& events) {
         auto comp = [](const std::vector<int>& a, const std::vector<int>& b) { return a[0] < b[0]; };
         std::sort(events.begin(), events.end(), comp);

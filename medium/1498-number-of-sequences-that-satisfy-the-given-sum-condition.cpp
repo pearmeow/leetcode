@@ -12,7 +12,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     long long myPow(long long base, long long exp) {
         if (exp == 0) {
             return 1;

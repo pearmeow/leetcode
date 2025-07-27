@@ -14,7 +14,7 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     int maximumGain(std::string s, int x, int y) {
         std::string mostPts = "ba";
         std::string leastPts = "ab";

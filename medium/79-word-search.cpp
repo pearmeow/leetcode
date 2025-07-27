@@ -14,7 +14,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     bool helper(std::vector<std::vector<char>>& board, const std::string& word, int row, int col, int strInd,
                 std::vector<std::vector<int>>& used) {
         if (strInd >= word.size()) return true;  // done because we matched the entire string

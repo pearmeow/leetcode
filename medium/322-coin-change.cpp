@@ -14,7 +14,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int coinChange(std::vector<int>& coins, int amount) {
         std::vector<int> leastAmounts(amount + 1, INT_MAX);
         leastAmounts[0] = 0;

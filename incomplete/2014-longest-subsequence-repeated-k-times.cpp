@@ -16,6 +16,6 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     std::string longestSubsequenceRepeatedK(std::string& s, int k) {}
 };

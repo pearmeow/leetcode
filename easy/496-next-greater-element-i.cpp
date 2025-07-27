@@ -9,12 +9,12 @@
  * Return an array ans of length nums1.length such that ans[i] is the next greater element as described above.
  */
 
-#include <vector>
-#include <unordered_map>
 #include <stack>
+#include <unordered_map>
+#include <vector>
 
 class Solution {
-   public:
+public:
     std::vector<int> nextGreaterElement(std::vector<int>& nums1, std::vector<int>& nums2) {
         std::unordered_map<int, int> next_greater;
         std::stack<int> monDec;

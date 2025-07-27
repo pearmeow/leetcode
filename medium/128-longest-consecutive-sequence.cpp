@@ -11,7 +11,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     // Hashmap solution
     int longestConsecutive(std::vector<int>& nums) {
         int longest = 0;

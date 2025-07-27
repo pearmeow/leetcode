@@ -11,7 +11,7 @@
  */
 
 class Solution {
-   public:
+public:
     struct TreeNode {
         int val;
         TreeNode* left;

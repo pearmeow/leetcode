@@ -21,7 +21,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     double findEqValue(const std::vector<std::vector<std::string>>& equations, const std::vector<double>& values,
                        const std::string& s1, const std::string& s2) {
         for (size_t i = 0; i < equations.size(); ++i) {

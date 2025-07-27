@@ -19,7 +19,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int evalRPN(std::vector<std::string>& tokens) {
         std::stack<int> nums;
         int op1 = 0;

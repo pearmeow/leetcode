@@ -14,7 +14,7 @@
 #include <cmath>
 
 class Solution {
-   public:
+public:
     int minimumPossibleSum(long long n, long long target) {
         long long minSum = 0;
         long long bound = target / 2;

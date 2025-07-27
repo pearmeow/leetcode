@@ -15,7 +15,7 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     int longestSubsequence(const std::string& s, int k) {
         long long res = 0;
         long long currTotal = 0;

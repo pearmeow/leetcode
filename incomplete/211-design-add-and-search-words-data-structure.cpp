@@ -10,9 +10,9 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     class WordDictionary {
-       public:
+    public:
         WordDictionary() {}
 
         void end() {
@@ -23,7 +23,7 @@ class Solution {
 
         bool search(const std::string& word) {}
 
-       private:
+    private:
         bool hasEnd;
         WordDictionary** words;
     };

@@ -10,7 +10,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int lengthOfLIS(const std::vector<int>& nums) {
         std::vector<int> dp(nums.size(), 1);
         int curr = 0;

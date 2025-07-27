@@ -9,7 +9,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxSubArray(std::vector<int>& nums) {
         if (nums.size() == 0) return 0;
         int curr = 0;

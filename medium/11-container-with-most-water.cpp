@@ -14,7 +14,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxArea(const std::vector<int>& height) {
         int res = 0, p1 = 0, p2 = height.size() - 1;
         while (p1 != p2) {

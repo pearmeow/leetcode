@@ -18,7 +18,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxFreeTime(int eventTime, std::vector<int>& startTime, std::vector<int>& endTime) {
         std::map<int, int> distances;
         int prevEnd = 0;

@@ -11,7 +11,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     struct dimensions {
         int length = 0;
         int width = 0;

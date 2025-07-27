@@ -13,7 +13,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::vector<int>& mergeSort(std::vector<int>& unsorted) {
         if (unsorted.size() == 1) return unsorted;
         size_t mid = unsorted.size() / 2;

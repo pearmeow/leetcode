@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxRemoval(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
         std::sort(queries.begin(), queries.end(), [](const std::vector<int>& a, const std::vector<int>& b) {
             return a[0] < b[0];

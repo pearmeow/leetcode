@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     bool isZeroArray(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
         std::vector<int> diff_vec(nums.size() + 1, 0);  // +1 for difference array
         for (size_t i = 0; i < queries.size(); ++i) {   // how does this loop work?

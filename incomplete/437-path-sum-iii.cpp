@@ -12,7 +12,7 @@
 #include <unordered_map>
 
 class Solution {
-   public:
+public:
     struct TreeNode {
         int val;
         TreeNode* left;

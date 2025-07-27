@@ -16,7 +16,7 @@
 #include <vector>
 
 class FindSumPairs {
-   public:
+public:
     FindSumPairs(std::vector<int>& nums1, std::vector<int>& nums2) : nums1(nums1), nums2(nums2) {
         for (int i : nums1) {
             if (freqs1.find(i) == freqs1.end()) {
@@ -50,7 +50,7 @@ class FindSumPairs {
         return res;
     }
 
-   private:
+private:
     std::vector<int> nums1;
     std::vector<int> nums2;
     std::unordered_map<int, int> freqs1;

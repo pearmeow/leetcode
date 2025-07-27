@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     char kthCharacter(long long k, std::vector<int>& operations) {
         if (k == 1) {
             return 'a';

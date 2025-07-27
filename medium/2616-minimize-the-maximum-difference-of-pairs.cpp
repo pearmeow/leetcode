@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int can(const std::vector<int>& nums, int diff) {
         int res = 0;
         for (size_t i = 0; i < nums.size() - 1; ++i) {

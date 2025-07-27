@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxDiff(int num) {
         std::vector<int> minDigits;
         while (num > 0) {

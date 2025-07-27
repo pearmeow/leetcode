@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int closestMeetingNode(std::vector<int>& edges, int node1, int node2) {
         if (node1 == node2) return node1;
         std::vector<bool> firstPath(edges.size());

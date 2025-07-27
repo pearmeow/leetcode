@@ -14,7 +14,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::string largest(const std::string& word, int numFriends, size_t startIndex) {
         size_t remainingWord = word.size() - startIndex;
         size_t remainingFriends = numFriends - startIndex - 1;

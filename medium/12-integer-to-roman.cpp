@@ -10,7 +10,7 @@
 #include <unordered_map>
 
 class Solution {
-   public:
+public:
     std::string intToRoman(int num) {
         std::string romNum;
         std::unordered_map<int, std::string> values = {

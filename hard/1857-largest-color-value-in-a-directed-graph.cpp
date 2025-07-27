@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     const int COLORS = 26;
 
     int largestPathValue(const std::string& colors, const std::vector<std::vector<int>>& edges) {

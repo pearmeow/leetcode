@@ -10,7 +10,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void genParen(std::vector<std::string>& combins, std::string curr, int left, int right, int n) {
         if (left == n && right == n) {
             combins.push_back(curr);

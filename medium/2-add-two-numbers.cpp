@@ -11,7 +11,7 @@
  */
 
 class Solution {
-   public:
+public:
     // Definition for singly-linked list.
     struct ListNode {
         int val;

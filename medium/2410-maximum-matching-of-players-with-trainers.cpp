@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int matchPlayersAndTrainers(std::vector<int>& players, std::vector<int>& trainers) {
         std::sort(players.begin(), players.end());
         std::sort(trainers.begin(), trainers.end());

@@ -16,7 +16,7 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     std::string decodeString(const std::string& s) {
         std::string curr, res;
         std::stack<char> braces;

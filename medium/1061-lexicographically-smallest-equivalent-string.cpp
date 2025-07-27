@@ -21,7 +21,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void unionize(std::vector<std::vector<int>>& adjList, char merger, char mergee) {
         char curr = ' ';
         for (size_t i = 0; i < adjList[mergee - 'a'].size(); ++i) {

@@ -9,7 +9,7 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     int lengthOfLongestSubstring(const std::string& s) {
         std::map<char, size_t> positions;
         size_t maxSize = 0;

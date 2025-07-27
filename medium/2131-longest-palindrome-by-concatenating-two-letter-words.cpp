@@ -15,7 +15,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int longestPalindrome(std::vector<std::string>& words) {
         int res = 0;
         int oddCouples = 0;  // a "couple" is a word that is a palindrome

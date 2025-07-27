@@ -13,7 +13,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxDifference(const std::string& s, int k) {
         std::vector<int> nums(5, 0);
         int res = 0;

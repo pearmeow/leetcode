@@ -11,7 +11,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::string findFrequencies(const std::string& str) {
         std::vector<int> freq(26, 0);
         std::string res;

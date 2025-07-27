@@ -10,7 +10,7 @@
 #include <unordered_set>
 
 class Solution {
-   public:
+public:
     int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2) {
         std::unordered_set<int> xVals, yVals;
         int xOverlap = 0, yOverlap = 0, xCtr = 0, yCtr = 0;

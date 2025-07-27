@@ -16,7 +16,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void reset(std::vector<bool>& hasNum) {
         for (size_t i = 0; i < hasNum.size(); ++i) {
             hasNum[i] = false;

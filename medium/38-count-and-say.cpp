@@ -16,7 +16,7 @@
 #include <string>
 
 class Solution {
-   public:
+public:
     std::string countAndSay(int n) {
         if (n == 1) {
             return "1";

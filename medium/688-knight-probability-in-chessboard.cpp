@@ -21,7 +21,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     const int X[8] = {2, 2, 1, 1, -1, -1, -2, -2};
     const int Y[8] = {1, -1, 2, -2, 2, -2, 1, -1};
 

@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int carFleet(int target, std::vector<int>& position, std::vector<int>& speed) {
         std::stack<double> monDec;
         std::vector<std::pair<int, int>> sortedCars;

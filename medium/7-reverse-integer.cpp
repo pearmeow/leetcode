@@ -11,7 +11,7 @@
  */
 
 class Solution {
-   public:
+public:
     int reverse(int x) {
         unsigned int rvrs = 0, orig = 0, count = 0, negative = 1;
         int maximum[] = {2, 1, 4, 7, 4, 8, 3, 6, 4, 8};

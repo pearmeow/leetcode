@@ -9,7 +9,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int findKthNumber(int n, int k) {
         if (n < 10) return k;
         int kthNum = 0;

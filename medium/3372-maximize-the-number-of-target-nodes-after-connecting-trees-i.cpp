@@ -22,7 +22,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     // returns nodes with distance less than or equal to k
     int targetBFS(const std::vector<std::vector<int>>& adjList, int k, int rootVertex) {
         std::queue<int> visiting;

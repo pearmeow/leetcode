@@ -17,7 +17,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maxFreeTime(int eventTime, size_t k, std::vector<int>& startTime, std::vector<int>& endTime) {
         std::vector<std::pair<int, int>> events;
         // sentinel to represent the beginning of event

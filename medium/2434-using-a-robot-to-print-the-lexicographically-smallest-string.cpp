@@ -16,7 +16,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void findMins(const std::string& word, std::vector<char>& nextMins) {
         char curr = 'z';
         for (size_t i = word.size(); i != 0; --i) {

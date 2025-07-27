@@ -12,7 +12,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::vector<int> dailyTemperatures(const std::vector<int>& temperatures) {
         std::vector<int> res(temperatures.size(), 0);
         std::stack<std::pair<int, size_t>> monDecStack;

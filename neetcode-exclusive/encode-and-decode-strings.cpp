@@ -12,7 +12,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     std::string encode(const std::vector<std::string>& strs) {
         std::string res;
         for (const std::string& s : strs) {

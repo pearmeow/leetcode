@@ -13,7 +13,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     int maximumUniqueSubarray(const std::vector<int>& nums) {
         std::unordered_map<int, size_t> num_index;
         std::vector<int> prefix_sums(nums.size(), 0);

@@ -20,7 +20,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     long long mostBooked(long long n, std::vector<std::vector<int>>& meetings) {
         std::priority_queue<long long, std::vector<long long>, std::greater<long long>> freeRooms;
         std::vector<long long> bookCount(n, 0);

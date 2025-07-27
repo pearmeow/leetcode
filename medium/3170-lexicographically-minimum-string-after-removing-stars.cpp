@@ -14,7 +14,7 @@
 #include <utility>
 
 class Solution {
-   public:
+public:
     std::string clearStars(std::string s) {
         auto lexComp = [](const std::pair<char, int>& a, const std::pair<char, int>& b) {
             if (a.first == b.first) return a.second > b.second;

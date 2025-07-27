@@ -10,7 +10,7 @@
 #include <vector>
 
 class Solution {
-   public:
+public:
     void setZeroes(std::vector<std::vector<int>>& matrix) {
         bool x0 = false, y0 = false;
         for (size_t col = 0; col < matrix[0].size(); ++col) {
