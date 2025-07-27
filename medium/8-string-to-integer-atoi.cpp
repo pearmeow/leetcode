@@ -3,7 +3,6 @@
  * @author Perry Huang
  * @date 2024-02-24
  * 8. String to Integer (atoi)
- * Description of problem:
  * The algorithm for myAtoi(string s) is as follows:
  * Read in and ignore any leading whitespace.
  * Check if the next character (if not already at the end of the string) is '-' or
