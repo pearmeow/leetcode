@@ -1,5 +1,5 @@
 /**
- * @file 4-median-of-2-sorted-arrays.cpp
+ * @file 4-median-of-two-sorted-arrays.cpp
  * @author Perry Huang
  * @date 2024-10-12
  * 4. Median of Two Sorted Arrays
