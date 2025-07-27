@@ -1,5 +1,5 @@
 /**
- * @file 223-rectangle-overlap.cpp
+ * @file 223-rectangle-area.cpp
  * @author Perry Huang
  * @date 2024-10-11
  * 223. Rectangle Area

@@ -1,9 +1,8 @@
 /**
- * @file 2-add2nums.cpp
+ * @file 2-add-two-numbers.cpp
  * @author Perry Huang
  * @date 2024-10-12
  * 2. Add Two Numbers
- * Description of problem:
  * You are given two non-empty linked lists repheadenting two non-negative
  * integers. The digits are stored in reverse order, and each of their nodes
  * contains a single digit. Add the two numbers and return the sum as a linked

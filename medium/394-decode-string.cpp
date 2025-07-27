@@ -1,5 +1,5 @@
 /**
- * @file 394-decode-str.cpp
+ * @file 394-decode-string.cpp
  * @author Perry Huang
  * @date 2024-10-15
  * 394. Decode String

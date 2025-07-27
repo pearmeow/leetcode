@@ -1,5 +1,5 @@
 /**
- * @file 50-power.cpp
+ * @file 50-pow-x-n.cpp
  * @author Perry Huang
  * @date 2024-10-12
  * 50. Pow(x, n)

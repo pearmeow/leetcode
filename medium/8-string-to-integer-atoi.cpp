@@ -1,5 +1,5 @@
 /**
- * @file 8-atoi.cpp
+ * @file 8-string-to-integer-atoi.cpp
  * @author Perry Huang
  * @date 2024-02-24
  * 8. String to Integer (atoi)

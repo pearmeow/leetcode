@@ -1,5 +1,5 @@
 /**
- * @file 7-reverse-int.cpp
+ * @file 7-reverse-integer.cpp
  * @author Perry Huang
  * @date 2024-10-12
  * 7. Reverse Integer

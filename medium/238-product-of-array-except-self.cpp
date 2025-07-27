@@ -1,5 +1,5 @@
 /**
- * @file 238-product-except-self.cpp
+ * @file 238-product-of-array-except-self.cpp
  * @author Perry Huang
  * @date 2025-06-12
  * 238. Product of Array Except Self

@@ -1,5 +1,5 @@
 /**
- * @file 2901-luags-ii.cpp
+ * @file 2901-longest-unequal-adjacent-groups-subsequence-ii.cpp
  * @author Perry Huang
  * @date 2025-05-16
  * 2901. Longest Unequal Adjacent Groups Subsequence II

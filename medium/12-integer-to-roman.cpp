@@ -1,5 +1,5 @@
 /**
- * @file 12-int-to-rom-numeral.cpp
+ * @file 12-integer-to-roman.cpp
  * @author Perry Huang
  * @date 2024-02-25
  * 12. Integer to Roman

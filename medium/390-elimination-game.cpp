@@ -1,5 +1,5 @@
 /**
- * @file 390-elim-game.cpp
+ * @file 390-elimination-game.cpp
  * @author Perry Huang
  * @date 2024-10-14
  * 390. Elimination Game
