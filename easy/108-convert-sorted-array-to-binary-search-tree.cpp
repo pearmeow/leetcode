@@ -1,5 +1,5 @@
 /**
- * @file 108-sorted-array-to-bst.cpp
+ * @file 108-convert-sorted-array-to-binary-search-tree.cpp
  * @author Perry Huang
  * @date 2024-04-11
  * 108. Convert Sorted Array to Binary Search Tree

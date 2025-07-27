@@ -1,5 +1,5 @@
 /**
- * @file 26-remove-dupes.cpp
+ * @file 26-remove-duplicates-from-sorted-array.cpp
  * @author Perry Huang
  * @date 2024-11-04
  * 26. Remove Duplicates from Sorted Array

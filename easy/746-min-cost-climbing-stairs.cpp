@@ -1,5 +1,5 @@
 /**
- * @file 746-min-cost-stairs.cpp
+ * @file 746-min-cost-climbing-stairs.cpp
  * @author Perry Huang
  * @date 2024-10-27
  * 746. Min Cost Climbing Stairs

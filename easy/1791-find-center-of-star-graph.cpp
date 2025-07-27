@@ -1,5 +1,5 @@
 /**
- * @file 1791-center-of-star-graph.cpp
+ * @file 1791-find-center-of-star-graph.cpp
  * @author Perry Huang
  * @date 2024-04-11
  * 1791. Find Center of Star Graph

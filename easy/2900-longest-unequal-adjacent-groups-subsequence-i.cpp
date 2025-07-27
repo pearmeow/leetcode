@@ -1,5 +1,5 @@
 /**
- * @file 2900-luags-I.cpp
+ * @file 2900-longest-unequal-adjacent-groups-subsequence-i.cpp
  * @author Perry Huang
  * @date 2025-05-15
  * 2900. Longest Unequal Adjacent Groups Subsequence I

@@ -1,5 +1,5 @@
 /**
- * @file 9-palindrome-num.cpp
+ * @file 9-palindrome-number.cpp
  * @author Perry Huang
  * @date 2024-10-12
  * 9. Palindrome Number

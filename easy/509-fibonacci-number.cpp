@@ -1,5 +1,5 @@
 /**
- * @file 509-fibonacci.cpp
+ * @file 509-fibonacci-number.cpp
  * @author Perry Huang
  * @date 2024-03-02
  * 509. Fibonacci Number

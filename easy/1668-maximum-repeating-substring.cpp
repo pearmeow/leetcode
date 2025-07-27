@@ -1,5 +1,5 @@
 /**
- * @file 1668-max-repeating.cpp
+ * @file 1668-maximum-repeating-substring.cpp
  * @author Perry Huang
  * @date 2024-10-30
  * 1668. Maximum Repeating Substring
