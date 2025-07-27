@@ -10,8 +10,29 @@
  */
 
 #include <vector>
+#include <unordered_map>
+#include <stack>
 
 class Solution {
    public:
-    std::vector<int> nextGreaterElement(std::vector<int>& nums1, std::vector<int>& nums2) {}
+    std::vector<int> nextGreaterElement(std::vector<int>& nums1, std::vector<int>& nums2) {
+        std::unordered_map<int, int> next_greater;
+        std::stack<int> monDec;
+        std::vector<int> res;
+        for (int i : nums2) {
+            while (!monDec.empty() && monDec.top() < i) {
+                next_greater[monDec.top()] = i;
+                monDec.pop();
+            }
+            monDec.push(i);
+        }
+        for (int i : nums1) {
+            if (next_greater.find(i) == next_greater.end()) {
+                res.push_back(-1);
+            } else {
+                res.push_back(next_greater[i]);
+            }
+        }
+        return res;
+    }
 };
