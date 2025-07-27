@@ -10,21 +10,23 @@
 
 #include <string>
 
-std::string makeFancyString(const std::string& s) {
-    int count = 0;
-    char curr = s[0];
-    std::string res = "";
-    for (char c : s) {
-        if (c == curr) {
-            if (count != 2) {
-                ++count;
+class Solution {
+    std::string makeFancyString(const std::string& s) {
+        int count = 0;
+        char curr = s[0];
+        std::string res = "";
+        for (char c : s) {
+            if (c == curr) {
+                if (count != 2) {
+                    ++count;
+                    res += c;
+                }
+            } else {
+                curr = c;
+                count = 1;
                 res += c;
             }
-        } else {
-            curr = c;
-            count = 1;
-            res += c;
         }
+        return res;
     }
-    return res;
-}
+};

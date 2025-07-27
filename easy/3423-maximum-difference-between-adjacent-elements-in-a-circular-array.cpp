@@ -10,10 +10,12 @@
 #include <cmath>
 #include <vector>
 
-int maxAdjacentDistance(const std::vector<int>& nums) {
-    int distance = std::abs(nums[0] - nums[nums.size() - 1]);
-    for (size_t i = 0; i < nums.size() - 1; ++i) {
-        distance = std::max(distance, std::abs(nums[i] - nums[i + 1]));
+class Solution {
+    int maxAdjacentDistance(const std::vector<int>& nums) {
+        int distance = std::abs(nums[0] - nums[nums.size() - 1]);
+        for (size_t i = 0; i < nums.size() - 1; ++i) {
+            distance = std::max(distance, std::abs(nums[i] - nums[i + 1]));
+        }
+        return distance;
     }
-    return distance;
-}
+};

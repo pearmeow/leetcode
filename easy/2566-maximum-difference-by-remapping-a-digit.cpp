@@ -15,34 +15,36 @@
 
 #include <vector>
 
-int minMaxDifference(int num) {
-    std::vector<int> maxNum;
-    while (num != 0) {
-        maxNum.push_back(num % 10);
-        num /= 10;
+class Solution {
+    int minMaxDifference(int num) {
+        std::vector<int> maxNum;
+        while (num != 0) {
+            maxNum.push_back(num % 10);
+            num /= 10;
+        }
+        std::vector<int> minNum(maxNum);
+        int maxRemap = -1;
+        int minRemap = -1;
+        for (size_t i = maxNum.size(); i > 0; --i) {
+            if (maxRemap == -1 && maxNum[i - 1] != 9) {
+                maxRemap = maxNum[i - 1];
+            }
+            if (minRemap == -1 && maxNum[i - 1] != 0) {
+                minRemap = maxNum[i - 1];
+            }
+        }
+        int theMax = 0;
+        int theMin = 0;
+        for (size_t i = maxNum.size(); i > 0; --i) {
+            if (maxNum[i - 1] == maxRemap) {
+                maxNum[i - 1] = 9;
+            }
+            if (minNum[i - 1] == minRemap) {
+                minNum[i - 1] = 0;
+            }
+            theMax = theMax * 10 + maxNum[i - 1];
+            theMin = theMin * 10 + minNum[i - 1];
+        }
+        return theMax - theMin;
     }
-    std::vector<int> minNum(maxNum);
-    int maxRemap = -1;
-    int minRemap = -1;
-    for (size_t i = maxNum.size(); i > 0; --i) {
-        if (maxRemap == -1 && maxNum[i - 1] != 9) {
-            maxRemap = maxNum[i - 1];
-        }
-        if (minRemap == -1 && maxNum[i - 1] != 0) {
-            minRemap = maxNum[i - 1];
-        }
-    }
-    int theMax = 0;
-    int theMin = 0;
-    for (size_t i = maxNum.size(); i > 0; --i) {
-        if (maxNum[i - 1] == maxRemap) {
-            maxNum[i - 1] = 9;
-        }
-        if (minNum[i - 1] == minRemap) {
-            minNum[i - 1] = 0;
-        }
-        theMax = theMax * 10 + maxNum[i - 1];
-        theMin = theMin * 10 + minNum[i - 1];
-    }
-    return theMax - theMin;
-}
+};

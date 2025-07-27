@@ -13,25 +13,27 @@
 #include <stack>
 #include <string>
 
-bool isValid(const std::string& s) {
-    std::stack<char> brackets;
-    for (char c : s) {
-        if (c == '(' || c == '{' || c == '[') {
-            brackets.push(c);
-        } else {
-            if (brackets.empty()) {
-                return false;
-            }
-            if (brackets.top() == '(' && c == ')') {
-                brackets.pop();
-            } else if (brackets.top() == '{' && c == '}') {
-                brackets.pop();
-            } else if (brackets.top() == '[' && c == ']') {
-                brackets.pop();
+class Solution {
+    bool isValid(const std::string& s) {
+        std::stack<char> brackets;
+        for (char c : s) {
+            if (c == '(' || c == '{' || c == '[') {
+                brackets.push(c);
             } else {
-                return false;
+                if (brackets.empty()) {
+                    return false;
+                }
+                if (brackets.top() == '(' && c == ')') {
+                    brackets.pop();
+                } else if (brackets.top() == '{' && c == '}') {
+                    brackets.pop();
+                } else if (brackets.top() == '[' && c == ']') {
+                    brackets.pop();
+                } else {
+                    return false;
+                }
             }
         }
+        return brackets.empty();
     }
-    return brackets.empty();
-}
+};

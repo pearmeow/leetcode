@@ -9,24 +9,26 @@
  * in the subarray is maximized. Return the maximum sum of such a subarray.
  */
 
-#include <vector>
 #include <unordered_set>
+#include <vector>
 
-int maxSum(const std::vector<int>& nums) {
-    int most = nums[0];
-    int sum = 0;
-    std::unordered_set<int> found;
-    for (int i : nums) {
-        if (found.find(i) == found.end()) {
-            found.insert(i);
-            if (i > 0) {
-                sum += i;
+class Solution {
+    int maxSum(const std::vector<int>& nums) {
+        int most = nums[0];
+        int sum = 0;
+        std::unordered_set<int> found;
+        for (int i : nums) {
+            if (found.find(i) == found.end()) {
+                found.insert(i);
+                if (i > 0) {
+                    sum += i;
+                }
+                most = std::max(most, i);
             }
-            most = std::max(most, i);
         }
+        if (most < 0) {
+            return most;
+        }
+        return sum;
     }
-    if (most < 0) {
-        return most;
-    }
-    return sum;
-}
+};

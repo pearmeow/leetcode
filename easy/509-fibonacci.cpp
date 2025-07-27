@@ -13,13 +13,15 @@
 
 #include <cstdio>  // for size_t
 
-int fib(int n) {
-    if (n == 0 || n == 1) return n;
-    int curr = 1, prev = 0, temp = 0;
-    for (std::size_t i = 0; i < n - 1; ++i) {
-        temp = prev;
-        prev = curr;
-        curr += temp;
+class Solution {
+    int fib(int n) {
+        if (n == 0 || n == 1) return n;
+        int curr = 1, prev = 0, temp = 0;
+        for (std::size_t i = 0; i < n - 1; ++i) {
+            temp = prev;
+            prev = curr;
+            curr += temp;
+        }
+        return curr;
     }
-    return curr;
-}
+};

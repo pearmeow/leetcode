@@ -11,17 +11,19 @@
 #include <string>
 #include <vector>
 
-bool hasChar(const std::string& word, char x) {
-    for (size_t i = 0; i < word.size(); ++i) {
-        if (word[i] == x) return true;
+class Solution {
+    bool hasChar(const std::string& word, char x) {
+        for (size_t i = 0; i < word.size(); ++i) {
+            if (word[i] == x) return true;
+        }
+        return false;
     }
-    return false;
-}
 
-std::vector<int> findWordsContaining(std::vector<std::string>& words, char x) {
-    std::vector<int> res;
-    for (size_t i = 0; i < words.size(); ++i) {
-        if (hasChar(words[i], x)) res.push_back(i);
+    std::vector<int> findWordsContaining(std::vector<std::string>& words, char x) {
+        std::vector<int> res;
+        for (size_t i = 0; i < words.size(); ++i) {
+            if (hasChar(words[i], x)) res.push_back(i);
+        }
+        return res;
     }
-    return res;
-}
+};

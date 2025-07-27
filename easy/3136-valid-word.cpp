@@ -19,22 +19,24 @@
 #include <set>
 #include <string>
 
-bool isValid(const std::string& word) {
-    if (word.size() < 3) {
-        return false;
-    }
-    std::bitset<2> bits(0b00);
-    std::set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
-    for (char c : word) {
-        if (c >= '0' && c <= '9') {
-            continue;
-        } else if (vowels.find(c) != vowels.end()) {
-            bits[0] = true;
-        } else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-            bits[1] = true;
-        } else {
+class Solution {
+    bool isValid(const std::string& word) {
+        if (word.size() < 3) {
             return false;
         }
+        std::bitset<2> bits(0b00);
+        std::set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+        for (char c : word) {
+            if (c >= '0' && c <= '9') {
+                continue;
+            } else if (vowels.find(c) != vowels.end()) {
+                bits[0] = true;
+            } else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+                bits[1] = true;
+            } else {
+                return false;
+            }
+        }
+        return bits[0] && bits[1];
     }
-    return bits[0] && bits[1];
-}
+};

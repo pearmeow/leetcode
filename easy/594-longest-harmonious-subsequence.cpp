@@ -9,63 +9,65 @@
  */
 
 #include <algorithm>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
-int findLHS(std::vector<int>& nums) {
-    std::sort(nums.begin(), nums.end());
-    int res = 0;
-    int curr = nums[0];
-    int currTotal = 1;
-    int prevTotal = 0;
-    for (size_t i = 1; i < nums.size(); ++i) {
-        if (nums[i] == curr) {
-            ++currTotal;
-        } else if (nums[i] - 1 == curr) {
-            if (prevTotal != 0) {
-                res = std::max(prevTotal + currTotal, res);
+class Solution {
+    int findLHS(std::vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        int res = 0;
+        int curr = nums[0];
+        int currTotal = 1;
+        int prevTotal = 0;
+        for (size_t i = 1; i < nums.size(); ++i) {
+            if (nums[i] == curr) {
+                ++currTotal;
+            } else if (nums[i] - 1 == curr) {
+                if (prevTotal != 0) {
+                    res = std::max(prevTotal + currTotal, res);
+                }
+                curr = nums[i];
+                prevTotal = currTotal;
+                currTotal = 1;
+            } else {
+                if (prevTotal != 0) {
+                    res = std::max(prevTotal + currTotal, res);
+                }
+                curr = nums[i];
+                prevTotal = 0;
+                currTotal = 1;
             }
-            curr = nums[i];
-            prevTotal = currTotal;
-            currTotal = 1;
-        } else {
-            if (prevTotal != 0) {
-                res = std::max(prevTotal + currTotal, res);
-            }
-            curr = nums[i];
-            prevTotal = 0;
-            currTotal = 1;
         }
+        if (prevTotal != 0) {
+            res = std::max(prevTotal + currTotal, res);
+        }
+        return res;
     }
-    if (prevTotal != 0) {
-        res = std::max(prevTotal + currTotal, res);
-    }
-    return res;
-}
 
-// Hashmap version
-int findLHSHashMap(std::vector<int>& nums) {
-    std::unordered_map<int, int> freqs;
-    for (int i : nums) {
-        if (freqs.find(i) == freqs.end()) {
-            freqs[i] = 1;
-        } else {
-            ++freqs[i];
+    // Hashmap version
+    int findLHSHashMap(std::vector<int>& nums) {
+        std::unordered_map<int, int> freqs;
+        for (int i : nums) {
+            if (freqs.find(i) == freqs.end()) {
+                freqs[i] = 1;
+            } else {
+                ++freqs[i];
+            }
         }
+        int theMax = 0;
+        for (const std::pair<int, int>& curr : freqs) {
+            int prev = 0;
+            int next = 0;
+            if (freqs.find(curr.first - 1) != freqs.end()) {
+                prev = freqs.at(curr.first - 1);
+            }
+            if (freqs.find(curr.first + 1) != freqs.end()) {
+                next = freqs.at(curr.first + 1);
+            }
+            if (prev != 0 || next != 0) {
+                theMax = std::max(theMax, std::max(curr.second + next, curr.second + prev));
+            }
+        }
+        return theMax;
     }
-    int theMax = 0;
-    for (const std::pair<int, int>& curr : freqs) {
-        int prev = 0;
-        int next = 0;
-        if (freqs.find(curr.first - 1) != freqs.end()) {
-            prev = freqs.at(curr.first - 1);
-        }
-        if (freqs.find(curr.first + 1) != freqs.end()) {
-            next = freqs.at(curr.first + 1);
-        }
-        if (prev != 0 || next != 0) {
-            theMax = std::max(theMax, std::max(curr.second + next, curr.second + prev));
-        }
-    }
-    return theMax;
-}
+};

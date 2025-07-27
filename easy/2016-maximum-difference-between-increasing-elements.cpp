@@ -10,15 +10,17 @@
 
 #include <vector>
 
-int maximumDifference(std::vector<int>& nums) {
-    int theMin = nums[0];
-    int maxDiff = -1;
-    for (int num : nums) {
-        if (theMin < num) {
-            maxDiff = std::max(maxDiff, num - theMin);
-        } else {
-            theMin = num;
+class Solution {
+    int maximumDifference(std::vector<int>& nums) {
+        int theMin = nums[0];
+        int maxDiff = -1;
+        for (int num : nums) {
+            if (theMin < num) {
+                maxDiff = std::max(maxDiff, num - theMin);
+            } else {
+                theMin = num;
+            }
         }
+        return maxDiff;
     }
-    return maxDiff;
-}
+};

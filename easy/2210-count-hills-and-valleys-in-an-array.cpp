@@ -12,43 +12,45 @@
 
 #include <vector>
 
-int countHillValley(const std::vector<int>& nums) {
-    std::vector<int> curr_hill_valley;
-    int res = 0;
-    for (int i : nums) {
-        size_t currSize = curr_hill_valley.size();
-        if (currSize == 0) {
-            curr_hill_valley.push_back(i);
-        } else if (currSize < 3) {
-            if (curr_hill_valley[currSize - 1] != i) {
+class Solution {
+    int countHillValley(const std::vector<int>& nums) {
+        std::vector<int> curr_hill_valley;
+        int res = 0;
+        for (int i : nums) {
+            size_t currSize = curr_hill_valley.size();
+            if (currSize == 0) {
                 curr_hill_valley.push_back(i);
-            }
-        } else {
-            if (curr_hill_valley[currSize - 1] != i) {
-                int left = curr_hill_valley[0];
-                int mid = curr_hill_valley[1];
-                int right = curr_hill_valley[2];
-                if (mid > left && mid > right) {
-                    ++res;
-                } else if (mid < left && mid < right) {
-                    ++res;
+            } else if (currSize < 3) {
+                if (curr_hill_valley[currSize - 1] != i) {
+                    curr_hill_valley.push_back(i);
                 }
-                curr_hill_valley[0] = mid;
-                curr_hill_valley[1] = right;
-                curr_hill_valley[2] = i;
+            } else {
+                if (curr_hill_valley[currSize - 1] != i) {
+                    int left = curr_hill_valley[0];
+                    int mid = curr_hill_valley[1];
+                    int right = curr_hill_valley[2];
+                    if (mid > left && mid > right) {
+                        ++res;
+                    } else if (mid < left && mid < right) {
+                        ++res;
+                    }
+                    curr_hill_valley[0] = mid;
+                    curr_hill_valley[1] = right;
+                    curr_hill_valley[2] = i;
+                }
             }
         }
-    }
-    if (curr_hill_valley.size() < 3) {
+        if (curr_hill_valley.size() < 3) {
+            return res;
+        }
+        int left = curr_hill_valley[0];
+        int mid = curr_hill_valley[1];
+        int right = curr_hill_valley[2];
+        if (mid > left && mid > right) {
+            ++res;
+        } else if (mid < left && mid < right) {
+            ++res;
+        }
         return res;
     }
-    int left = curr_hill_valley[0];
-    int mid = curr_hill_valley[1];
-    int right = curr_hill_valley[2];
-    if (mid > left && mid > right) {
-        ++res;
-    } else if (mid < left && mid < right) {
-        ++res;
-    }
-    return res;
-}
+};

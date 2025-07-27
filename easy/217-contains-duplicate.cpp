@@ -10,13 +10,15 @@
 #include <unordered_set>
 #include <vector>
 
-bool containsDuplicate(std::vector<int>& nums) {
-    std::unordered_set<int> set;
-    for (size_t i = 0; i < nums.size(); ++i) {
-        if (set.find(nums[i]) != set.end()) {
-            return true;
+class Solution {
+    bool containsDuplicate(std::vector<int>& nums) {
+        std::unordered_set<int> set;
+        for (size_t i = 0; i < nums.size(); ++i) {
+            if (set.find(nums[i]) != set.end()) {
+                return true;
+            }
+            set.insert(nums[i]);
         }
-        set.insert(nums[i]);
+        return false;
     }
-    return false;
-}
+};

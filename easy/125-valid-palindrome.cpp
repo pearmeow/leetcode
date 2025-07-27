@@ -10,24 +10,26 @@
 
 #include <string>
 
-bool isPalindrome(const std::string& s) {
-    size_t left = 0;
-    size_t right = s.size() - 1;
-    while (left < right) {
-        while (!std::isalnum(s[left]) && left < s.size()) {
+class Solution {
+    bool isPalindrome(const std::string& s) {
+        size_t left = 0;
+        size_t right = s.size() - 1;
+        while (left < right) {
+            while (!std::isalnum(s[left]) && left < s.size()) {
+                ++left;
+            }
+            while (!std::isalnum(s[right]) && right > 0) {
+                --right;
+            }
+            if (left >= right) {
+                break;
+            }
+            if (std::tolower(s[left]) != std::tolower(s[right])) {
+                return false;
+            }
             ++left;
-        }
-        while (!std::isalnum(s[right]) && right > 0) {
             --right;
         }
-        if (left >= right) {
-            break;
-        }
-        if (std::tolower(s[left]) != std::tolower(s[right])) {
-            return false;
-        }
-        ++left;
-        --right;
+        return true;
     }
-    return true;
-}
+};

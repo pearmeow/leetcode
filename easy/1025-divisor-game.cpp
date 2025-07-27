@@ -11,6 +11,8 @@
  * the game, assuming both players play optimally.
  */
 
-bool divisorGame(int n) {
-    return (n % 2) == 0;
-}
+class Solution {
+    bool divisorGame(int n) {
+        return (n % 2) == 0;
+    }
+};

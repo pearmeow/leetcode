@@ -12,18 +12,20 @@
 #include <unordered_map>
 #include <vector>
 
-std::vector<int> twoSum(std::vector<int>& nums, int target) {
-    std::vector<int> solution;
-    std::unordered_map<int, int> indices;
-    for (size_t i = 0; i < nums.size(); ++i) {
-        int curr = nums[i];
-        int complement = target - nums[i];
-        if (indices.find(complement) != indices.end()) {
-            solution.push_back(indices[complement]);
-            solution.push_back(i);
-            return solution;
+class Solution {
+    std::vector<int> twoSum(std::vector<int>& nums, int target) {
+        std::vector<int> solution;
+        std::unordered_map<int, int> indices;
+        for (size_t i = 0; i < nums.size(); ++i) {
+            int curr = nums[i];
+            int complement = target - nums[i];
+            if (indices.find(complement) != indices.end()) {
+                solution.push_back(indices[complement]);
+                solution.push_back(i);
+                return solution;
+            }
+            indices[curr] = i;
         }
-        indices[curr] = i;
+        return solution;
     }
-    return solution;
-}
+};
