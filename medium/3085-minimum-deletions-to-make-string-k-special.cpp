@@ -9,34 +9,37 @@
  * Return the minimum number of characters you need to delete to make word k-special.
  */
 
-#include <string>
-#include <vector>
 #include <algorithm>
 #include <climits>
+#include <string>
+#include <vector>
 
-int minimumDeletions(const std::string& word, int k) {
-    std::vector<int> freqs(26, 0);
-    for (char c : word) {
-        ++freqs[c - 'a'];
-    }
-    int minDels = INT_MAX;
-    int currMin = 0;
-    int prevDels = 0;
-    size_t start = 0;
-    size_t end = 0;
-    std::sort(freqs.begin(), freqs.end());
-    for (size_t i = 0; i < freqs.size(); ++i) {
-        if (freqs[i] == 0) {
-            continue;
+class Solution {
+   public:
+    int minimumDeletions(const std::string& word, int k) {
+        std::vector<int> freqs(26, 0);
+        for (char c : word) {
+            ++freqs[c - 'a'];
         }
-        currMin = prevDels;
-        for (size_t j = i + 1; j < freqs.size(); ++j) {
-            if (freqs[j] - freqs[i] > k) {
-                currMin += freqs[j] - freqs[i] - k;
+        int minDels = INT_MAX;
+        int currMin = 0;
+        int prevDels = 0;
+        size_t start = 0;
+        size_t end = 0;
+        std::sort(freqs.begin(), freqs.end());
+        for (size_t i = 0; i < freqs.size(); ++i) {
+            if (freqs[i] == 0) {
+                continue;
             }
+            currMin = prevDels;
+            for (size_t j = i + 1; j < freqs.size(); ++j) {
+                if (freqs[j] - freqs[i] > k) {
+                    currMin += freqs[j] - freqs[i] - k;
+                }
+            }
+            minDels = std::min(minDels, currMin);
+            prevDels += freqs[i];
         }
-        minDels = std::min(minDels, currMin);
-        prevDels += freqs[i];
+        return minDels;
     }
-    return minDels;
-}
+};

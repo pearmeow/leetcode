@@ -10,24 +10,27 @@
 #include <unordered_map>
 #include <vector>
 
-// Hashmap solution
-int longestConsecutive(std::vector<int>& nums) {
-    int longest = 0;
-    std::unordered_map<int, bool> numSet;
-    for (int num : nums) {
-        numSet[num] = false;
-    }
-    int curr = 0;
-    for (int num : nums) {
-        curr = 0;
-        if (numSet.find(num - 1) == numSet.end()) {
-            while (numSet.find(num) != numSet.end() && numSet[num] == false) {
-                numSet[num] = true;
-                ++curr;
-                ++num;
-            }
+class Solution {
+   public:
+    // Hashmap solution
+    int longestConsecutive(std::vector<int>& nums) {
+        int longest = 0;
+        std::unordered_map<int, bool> numSet;
+        for (int num : nums) {
+            numSet[num] = false;
         }
-        longest = std::max(longest, curr);
+        int curr = 0;
+        for (int num : nums) {
+            curr = 0;
+            if (numSet.find(num - 1) == numSet.end()) {
+                while (numSet.find(num) != numSet.end() && numSet[num] == false) {
+                    numSet[num] = true;
+                    ++curr;
+                    ++num;
+                }
+            }
+            longest = std::max(longest, curr);
+        }
+        return longest;
     }
-    return longest;
-}
+};

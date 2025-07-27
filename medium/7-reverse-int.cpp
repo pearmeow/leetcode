@@ -10,34 +10,37 @@
  * unsigned).
  */
 
-int reverse(int x) {
-    unsigned int rvrs = 0, orig = 0, count = 0, negative = 1;
-    int maximum[] = {2, 1, 4, 7, 4, 8, 3, 6, 4, 8};
-    int curr[10];
-    if (x < 0) {
-        maximum[9] = 7;
-        negative = -1;
-        orig = x * negative;
-    } else {
-        orig = x;
-    }
+class Solution {
+   public:
+    int reverse(int x) {
+        unsigned int rvrs = 0, orig = 0, count = 0, negative = 1;
+        int maximum[] = {2, 1, 4, 7, 4, 8, 3, 6, 4, 8};
+        int curr[10];
+        if (x < 0) {
+            maximum[9] = 7;
+            negative = -1;
+            orig = x * negative;
+        } else {
+            orig = x;
+        }
 
-    while (orig) {
-        rvrs *= 10;
-        rvrs += orig % 10;
-        curr[count] = orig % 10;
-        orig /= 10;
-        count += 1;
-    }
-    if (count < 10) {
-        return rvrs * negative;
-    }
-    for (int i = 0; i < 10; ++i) {
-        if (curr[i] > maximum[i]) {
-            return 0;
-        } else if (curr[i] < maximum[i]) {
+        while (orig) {
+            rvrs *= 10;
+            rvrs += orig % 10;
+            curr[count] = orig % 10;
+            orig /= 10;
+            count += 1;
+        }
+        if (count < 10) {
             return rvrs * negative;
         }
+        for (int i = 0; i < 10; ++i) {
+            if (curr[i] > maximum[i]) {
+                return 0;
+            } else if (curr[i] < maximum[i]) {
+                return rvrs * negative;
+            }
+        }
+        return rvrs * negative;
     }
-    return rvrs * negative;
-}
+};

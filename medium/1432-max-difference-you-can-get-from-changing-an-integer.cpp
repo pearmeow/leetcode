@@ -14,52 +14,55 @@
 
 #include <vector>
 
-int maxDiff(int num) {
-    std::vector<int> minDigits;
-    while (num > 0) {
-        minDigits.push_back(num % 10);
-        num /= 10;
-    }
-    std::vector<int> maxDigits(minDigits);
-    int minNum = 0;
-    int maxNum = 0;
-    int change = -1;
-    int swap = -1;
-    int firstDigit = -1;
-    for (auto it = minDigits.rbegin(); it != minDigits.rend(); ++it) {
-        if (it == minDigits.rbegin()) {
-            firstDigit = *it;
-            if (*it != 1) {
+class Solution {
+   public:
+    int maxDiff(int num) {
+        std::vector<int> minDigits;
+        while (num > 0) {
+            minDigits.push_back(num % 10);
+            num /= 10;
+        }
+        std::vector<int> maxDigits(minDigits);
+        int minNum = 0;
+        int maxNum = 0;
+        int change = -1;
+        int swap = -1;
+        int firstDigit = -1;
+        for (auto it = minDigits.rbegin(); it != minDigits.rend(); ++it) {
+            if (it == minDigits.rbegin()) {
+                firstDigit = *it;
+                if (*it != 1) {
+                    swap = *it;
+                    change = 1;
+                    *it = change;
+                }
+            } else if (change == -1 && *it != firstDigit && *it != 0) {
                 swap = *it;
-                change = 1;
+                change = 0;
+                *it = change;
+            } else if (*it == swap) {
                 *it = change;
             }
-        } else if (change == -1 && *it != firstDigit && *it != 0) {
-            swap = *it;
-            change = 0;
-            *it = change;
-        } else if (*it == swap) {
-            *it = change;
+            minNum = minNum * 10 + *it;
         }
-        minNum = minNum * 10 + *it;
-    }
-    change = -1;
-    swap = -1;
-    for (auto it = maxDigits.rbegin(); it != maxDigits.rend(); ++it) {
-        if (it == maxDigits.rbegin()) {
-            if (*it != 9) {
+        change = -1;
+        swap = -1;
+        for (auto it = maxDigits.rbegin(); it != maxDigits.rend(); ++it) {
+            if (it == maxDigits.rbegin()) {
+                if (*it != 9) {
+                    swap = *it;
+                    change = 9;
+                    *it = change;
+                }
+            } else if (change == -1 && *it != 9) {
                 swap = *it;
                 change = 9;
                 *it = change;
+            } else if (*it == swap) {
+                *it = change;
             }
-        } else if (change == -1 && *it != 9) {
-            swap = *it;
-            change = 9;
-            *it = change;
-        } else if (*it == swap) {
-            *it = change;
+            maxNum = maxNum * 10 + *it;
         }
-        maxNum = maxNum * 10 + *it;
+        return maxNum - minNum;
     }
-    return maxNum - minNum;
-}
+};

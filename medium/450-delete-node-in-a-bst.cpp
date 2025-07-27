@@ -1,4 +1,4 @@
-/*
+/**
  * @file 450-delete-node-in-a-bst.cpp
  * @author Perry Huang
  * @date 2025-06-13
@@ -10,99 +10,87 @@
  * If the node is found, delete the node.
  */
 
-struct TreeNode {
-    int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
-};
+class Solution {
+   public:
+    struct TreeNode {
+        int val;
+        TreeNode* left;
+        TreeNode* right;
+        TreeNode() : val(0), left(nullptr), right(nullptr) {}
+        TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+        TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
+    };
 
-TreeNode* deleteNode(TreeNode* root, int key) {
-    if (root == nullptr) return root;
-    TreeNode* prev = nullptr;
-    TreeNode* head = root;
-    while (head != nullptr) {
-        if (head->val == key) {
-            break;
-        } else if (head->val < key) {
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (root == nullptr) return root;
+        TreeNode* prev = nullptr;
+        TreeNode* head = root;
+        while (head != nullptr) {
+            if (head->val == key) {
+                break;
+            } else if (head->val < key) {
+                prev = head;
+                head = head->right;
+            } else {
+                prev = head;
+                head = head->left;
+            }
+        }
+        if (head == nullptr) return root;
+        if (head->left != nullptr && head->right != nullptr) {
+            // always go left!
             prev = head;
-            head = head->right;
-        } else {
-            prev = head;
-            head = head->left;
-        }
-    }
-    if (head == nullptr) return root;
-    if (head->left != nullptr && head->right != nullptr) {
-        // always go left!
-        prev = head;
-        TreeNode* swap = head->left;
-        while (swap->right != nullptr) {
-            prev = swap;
-            swap = swap->right;
-        }
-        head->val = swap->val;
-        if (prev == head) {
-            prev->left = swap->left;
-        } else {
-            prev->right = swap->left;
-        }
-    } else if (head->left != nullptr) {
-        if (prev == nullptr) {  // root case
-            return head->left;
-        }
-        if (prev->left != nullptr) {
-            if (prev->left->val == key) {
-                prev->left = head->left;
+            TreeNode* swap = head->left;
+            while (swap->right != nullptr) {
+                prev = swap;
+                swap = swap->right;
+            }
+            head->val = swap->val;
+            if (prev == head) {
+                prev->left = swap->left;
+            } else {
+                prev->right = swap->left;
+            }
+        } else if (head->left != nullptr) {
+            if (prev == nullptr) {  // root case
+                return head->left;
+            }
+            if (prev->left != nullptr) {
+                if (prev->left->val == key) {
+                    prev->left = head->left;
+                } else {
+                    prev->right = head->left;
+                }
             } else {
                 prev->right = head->left;
             }
-        } else {
-            prev->right = head->left;
-        }
-    } else if (head->right != nullptr) {
-        if (prev == nullptr) {  // root case
-            return head->right;
-        }
-        if (prev->left != nullptr) {
-            if (prev->left->val == key) {
-                prev->left = head->right;
+        } else if (head->right != nullptr) {
+            if (prev == nullptr) {  // root case
+                return head->right;
+            }
+            if (prev->left != nullptr) {
+                if (prev->left->val == key) {
+                    prev->left = head->right;
+                } else {
+                    prev->right = head->right;
+                }
             } else {
                 prev->right = head->right;
             }
         } else {
-            prev->right = head->right;
-        }
-    } else {
-        if (prev == nullptr) {  // root case
-            return nullptr;
-        }
-        if (prev->left != nullptr) {
-            if (prev->left->val == key) {
-                prev->left = nullptr;
+            if (prev == nullptr) {  // root case
+                return nullptr;
+            }
+            if (prev->left != nullptr) {
+                if (prev->left->val == key) {
+                    prev->left = nullptr;
+                } else {
+                    prev->right = nullptr;
+                }
             } else {
                 prev->right = nullptr;
             }
-        } else {
-            prev->right = nullptr;
         }
+        return root;
     }
-    return root;
-}
-
-int main() {
-    TreeNode root(2);
-    TreeNode child1(1);
-    root.left = &child1;
-    TreeNode child2(3);
-    root.right = &child2;
-    TreeNode child4(5);
-    child2.right = &child4;
-    TreeNode child5(4);
-    TreeNode child6(6);
-    child4.left = &child5;
-    child4.right = &child6;
-    deleteNode(&root, 3);
-}
+};

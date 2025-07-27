@@ -15,37 +15,40 @@
 #include <string>
 #include <vector>
 
-void findMins(const std::string& word, std::vector<char>& nextMins) {
-    char curr = 'z';
-    for (size_t i = word.size(); i != 0; --i) {
-        if (word[i - 1] < curr) {
-            curr = word[i - 1];
+class Solution {
+   public:
+    void findMins(const std::string& word, std::vector<char>& nextMins) {
+        char curr = 'z';
+        for (size_t i = word.size(); i != 0; --i) {
+            if (word[i - 1] < curr) {
+                curr = word[i - 1];
+            }
+            nextMins[i - 1] = curr;
         }
-        nextMins[i - 1] = curr;
     }
-}
 
-std::string robotWithString(const std::string& s) {
-    std::stack<char> stackStr;
-    std::string res = "";
-    std::vector<char> nextMins(s.size());
-    findMins(s, nextMins);
-    size_t ind = 0;
-    while (ind < s.size()) {
-        if (stackStr.empty()) {
-            stackStr.push(s[ind]);
-            ++ind;
-        } else if (nextMins[ind] < stackStr.top()) {
-            stackStr.push(s[ind]);
-            ++ind;
-        } else {
+    std::string robotWithString(const std::string& s) {
+        std::stack<char> stackStr;
+        std::string res = "";
+        std::vector<char> nextMins(s.size());
+        findMins(s, nextMins);
+        size_t ind = 0;
+        while (ind < s.size()) {
+            if (stackStr.empty()) {
+                stackStr.push(s[ind]);
+                ++ind;
+            } else if (nextMins[ind] < stackStr.top()) {
+                stackStr.push(s[ind]);
+                ++ind;
+            } else {
+                res += stackStr.top();
+                stackStr.pop();
+            }
+        }
+        while (!stackStr.empty()) {
             res += stackStr.top();
             stackStr.pop();
         }
+        return res;
     }
-    while (!stackStr.empty()) {
-        res += stackStr.top();
-        stackStr.pop();
-    }
-    return res;
-}
+};

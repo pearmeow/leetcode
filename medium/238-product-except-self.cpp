@@ -11,15 +11,18 @@
 
 #include <vector>
 
-std::vector<int> productExceptSelf(const std::vector<int>& nums) {
-    std::vector<int> res(nums.size(), 1);
-    int prev = 1;
-    int prevReverse = 1;
-    for (std::size_t i = 1; i < nums.size(); ++i) {
-        prev *= nums[i - 1];
-        res[i] *= prev;
-        prevReverse *= nums[nums.size() - i];
-        res[nums.size() - i - 1] *= prevReverse;
+class Solution {
+   public:
+    std::vector<int> productExceptSelf(const std::vector<int>& nums) {
+        std::vector<int> res(nums.size(), 1);
+        int prev = 1;
+        int prevReverse = 1;
+        for (std::size_t i = 1; i < nums.size(); ++i) {
+            prev *= nums[i - 1];
+            res[i] *= prev;
+            prevReverse *= nums[nums.size() - i];
+            res[nums.size() - i - 1] *= prevReverse;
+        }
+        return res;
     }
-    return res;
-}
+};

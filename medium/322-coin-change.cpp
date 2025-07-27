@@ -13,21 +13,24 @@
 #include <climits>
 #include <vector>
 
-int coinChange(std::vector<int>& coins, int amount) {
-    std::vector<int> leastAmounts(amount + 1, INT_MAX);
-    leastAmounts[0] = 0;
-    for (size_t i = 0; i < leastAmounts.size(); ++i) {
-        for (int coinVal : coins) {
-            if (i < coinVal) {
-                continue;
-            }
-            if (leastAmounts[i - coinVal] != INT_MAX) {
-                leastAmounts[i] = std::min(leastAmounts[i], leastAmounts[i - coinVal] + 1);
+class Solution {
+   public:
+    int coinChange(std::vector<int>& coins, int amount) {
+        std::vector<int> leastAmounts(amount + 1, INT_MAX);
+        leastAmounts[0] = 0;
+        for (size_t i = 0; i < leastAmounts.size(); ++i) {
+            for (int coinVal : coins) {
+                if (i < coinVal) {
+                    continue;
+                }
+                if (leastAmounts[i - coinVal] != INT_MAX) {
+                    leastAmounts[i] = std::min(leastAmounts[i], leastAmounts[i - coinVal] + 1);
+                }
             }
         }
+        if (leastAmounts[amount] == INT_MAX) {
+            return -1;
+        }
+        return leastAmounts[amount];
     }
-    if (leastAmounts[amount] == INT_MAX) {
-        return -1;
-    }
-    return leastAmounts[amount];
-}
+};

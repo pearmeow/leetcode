@@ -2,7 +2,6 @@
  * @file 8-atoi.cpp
  * @author Perry Huang
  * @date 2024-02-24
- *
  * 8. String to Integer (atoi)
  * Description of problem:
  * The algorithm for myAtoi(string s) is as follows:
@@ -22,32 +21,35 @@
 
 #include <string>
 
-int myAtoi(const std::string& s) {
-    long long res = 0;
-    bool negative = false;
-    size_t pos = 0;
-    while (s[pos] == ' ' && pos < s.size()) ++pos;
-    if (pos == s.size()) return res;
-    if (s[pos] == '-') {
-        negative = true;
-        ++pos;
-    } else if (s[pos] == '+') {
-        ++pos;
-    }
-
-    for (size_t i = pos; i < s.size(); ++i) {
-        if (s[i] >= '0' && s[i] <= '9') {
-            res *= 10;
-            res += (s[i] - '0');
-            if (res > 2147483647 && !negative) {
-                return 2147483647;
-            } else if (negative && res * -1 < -2147483648) {
-                return -2147483648;
-            }
-        } else {
-            break;
+class Solution {
+   public:
+    int myAtoi(const std::string& s) {
+        long long res = 0;
+        bool negative = false;
+        size_t pos = 0;
+        while (s[pos] == ' ' && pos < s.size()) ++pos;
+        if (pos == s.size()) return res;
+        if (s[pos] == '-') {
+            negative = true;
+            ++pos;
+        } else if (s[pos] == '+') {
+            ++pos;
         }
+
+        for (size_t i = pos; i < s.size(); ++i) {
+            if (s[i] >= '0' && s[i] <= '9') {
+                res *= 10;
+                res += (s[i] - '0');
+                if (res > 2147483647 && !negative) {
+                    return 2147483647;
+                } else if (negative && res * -1 < -2147483648) {
+                    return -2147483648;
+                }
+            } else {
+                break;
+            }
+        }
+        if (negative) res *= -1;
+        return (int)res;
     }
-    if (negative) res *= -1;
-    return (int)res;
-}
+};

@@ -17,25 +17,28 @@
 #include <string>
 #include <vector>
 
-std::string convert(const std::string& s, int numRows) {
-    std::vector<std::string> rows(numRows);
-    std::string res;
-    int zig = 0;
-    bool zag = false;
-    if (numRows == 1) return s;
-    for (size_t i = 0; i < s.size(); ++i) {
-        if (zig == numRows - 1)
-            zag = true;
-        else if (zig == 0)
-            zag = false;
-        rows[zig] += s[i];
-        if (zag)
-            zig -= 1;
-        else
-            zig += 1;
+class Solution {
+   public:
+    std::string convert(const std::string& s, int numRows) {
+        std::vector<std::string> rows(numRows);
+        std::string res;
+        int zig = 0;
+        bool zag = false;
+        if (numRows == 1) return s;
+        for (size_t i = 0; i < s.size(); ++i) {
+            if (zig == numRows - 1)
+                zag = true;
+            else if (zig == 0)
+                zag = false;
+            rows[zig] += s[i];
+            if (zag)
+                zig -= 1;
+            else
+                zig += 1;
+        }
+        for (size_t i = 0; i < rows.size(); ++i) {
+            res += rows[i];
+        }
+        return res;
     }
-    for (size_t i = 0; i < rows.size(); ++i) {
-        res += rows[i];
-    }
-    return res;
-}
+};

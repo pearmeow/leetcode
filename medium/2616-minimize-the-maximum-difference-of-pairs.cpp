@@ -14,30 +14,33 @@
 #include <algorithm>
 #include <vector>
 
-int can(const std::vector<int>& nums, int diff) {
-    int res = 0;
-    for (size_t i = 0; i < nums.size() - 1; ++i) {
-        if (std::abs(nums[i] - nums[i + 1]) <= diff) {
-            ++res;
-            ++i;
+class Solution {
+   public:
+    int can(const std::vector<int>& nums, int diff) {
+        int res = 0;
+        for (size_t i = 0; i < nums.size() - 1; ++i) {
+            if (std::abs(nums[i] - nums[i + 1]) <= diff) {
+                ++res;
+                ++i;
+            }
         }
+        return res;
     }
-    return res;
-}
 
-int minimizeMax(std::vector<int>& nums, int p) {
-    if (p == 0) return 0;
-    std::sort(nums.begin(), nums.end());
-    int low = 0;
-    int high = nums[nums.size() - 1] - nums[0];
-    int mid = 0;
-    while (low < high) {
-        mid = (high + low) / 2;
-        if (can(nums, mid) >= p) {  // enough pairs, so go lower
-            high = mid;
-        } else {  // not enough pairs, so go higher
-            low = mid + 1;
+    int minimizeMax(std::vector<int>& nums, int p) {
+        if (p == 0) return 0;
+        std::sort(nums.begin(), nums.end());
+        int low = 0;
+        int high = nums[nums.size() - 1] - nums[0];
+        int mid = 0;
+        while (low < high) {
+            mid = (high + low) / 2;
+            if (can(nums, mid) >= p) {  // enough pairs, so go lower
+                high = mid;
+            } else {  // not enough pairs, so go higher
+                low = mid + 1;
+            }
         }
+        return low;
     }
-    return low;
-}
+};

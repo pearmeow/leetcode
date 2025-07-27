@@ -18,33 +18,36 @@
 #include <string>
 #include <vector>
 
-int evalRPN(std::vector<std::string>& tokens) {
-    std::stack<int> nums;
-    int op1 = 0;
-    int op2 = 0;
-    for (const std::string& s : tokens) {
-        if (s != "+" && s != "-" && s != "*" && s != "/") {
-            nums.push(std::stoi(s));
-        } else {
-            op2 = nums.top();
-            nums.pop();
-            op1 = nums.top();
-            nums.pop();
-            switch (s[0]) {
-                case ('+'):
-                    nums.push(op1 + op2);
-                    break;
-                case ('-'):
-                    nums.push(op1 - op2);
-                    break;
-                case ('*'):
-                    nums.push(op1 * op2);
-                    break;
-                case ('/'):
-                    nums.push(op1 / op2);
-                    break;
+class Solution {
+   public:
+    int evalRPN(std::vector<std::string>& tokens) {
+        std::stack<int> nums;
+        int op1 = 0;
+        int op2 = 0;
+        for (const std::string& s : tokens) {
+            if (s != "+" && s != "-" && s != "*" && s != "/") {
+                nums.push(std::stoi(s));
+            } else {
+                op2 = nums.top();
+                nums.pop();
+                op1 = nums.top();
+                nums.pop();
+                switch (s[0]) {
+                    case ('+'):
+                        nums.push(op1 + op2);
+                        break;
+                    case ('-'):
+                        nums.push(op1 - op2);
+                        break;
+                    case ('*'):
+                        nums.push(op1 * op2);
+                        break;
+                    case ('/'):
+                        nums.push(op1 / op2);
+                        break;
+                }
             }
         }
+        return nums.top();
     }
-    return nums.top();
-}
+};
