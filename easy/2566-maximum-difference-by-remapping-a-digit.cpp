@@ -1,4 +1,4 @@
-/*
+/**
  * @file 2566-maximum-difference-by-remapping-a-digit.cpp
  * @author Perry Huang
  * @date 2025-06-13

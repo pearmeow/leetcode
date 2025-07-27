@@ -1,4 +1,4 @@
-/*
+/**
  * @file 3442-maximum-difference-between-even-and-odd-frequency-i.cpp
  * @author Perry Huang
  * @date 2025-06-09
