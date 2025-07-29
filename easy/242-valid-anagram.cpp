@@ -10,6 +10,7 @@
 #include <unordered_map>
 
 class Solution {
+public:
     bool isAnagram(const std::string& s, const std::string& t) {
         if (s.size() != t.size()) return false;
         std::unordered_map<char, int> chars;

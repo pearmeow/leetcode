@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::vector<int> findKDistantIndices(std::vector<int>& nums, int key, int k) {
         std::vector<int> res;
         for (size_t i = 0; i < nums.size(); ++i) {

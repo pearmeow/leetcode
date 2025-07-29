@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     int maximumDifference(std::vector<int>& nums) {
         int theMin = nums[0];
         int maxDiff = -1;

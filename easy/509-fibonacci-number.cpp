@@ -14,6 +14,7 @@
 #include <cstdio>  // for size_t
 
 class Solution {
+public:
     int fib(int n) {
         if (n == 0 || n == 1) return n;
         int curr = 1, prev = 0, temp = 0;

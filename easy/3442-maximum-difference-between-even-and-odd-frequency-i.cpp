@@ -15,6 +15,7 @@
 #include <vector>
 
 class Solution {
+public:
     int maxDifference(const std::string& s) {
         std::vector<int> freq(26);
         for (size_t i = 0; i < s.size(); ++i) {

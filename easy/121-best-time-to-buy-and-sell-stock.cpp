@@ -12,6 +12,7 @@
 #include <vector>
 
 class Solution {
+public:
     int maxProfit(const std::vector<int>& prices) {
         int minPrice = prices[0];
         int maxProfit = 0;

@@ -12,6 +12,7 @@
 #include <string>
 
 class Solution {
+public:
     int maxRepeating(std::string sequence, std::string word) {
         int count = 0, tempCount = 0;
         for (size_t i = 0; i < word.size(); ++i) {

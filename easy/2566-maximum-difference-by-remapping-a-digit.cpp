@@ -16,6 +16,7 @@
 #include <vector>
 
 class Solution {
+public:
     int minMaxDifference(int num) {
         std::vector<int> maxNum;
         while (num != 0) {

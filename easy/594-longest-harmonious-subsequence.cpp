@@ -13,6 +13,7 @@
 #include <vector>
 
 class Solution {
+public:
     int findLHS(std::vector<int>& nums) {
         std::sort(nums.begin(), nums.end());
         int res = 0;

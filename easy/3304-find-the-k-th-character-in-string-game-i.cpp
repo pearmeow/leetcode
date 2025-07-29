@@ -16,6 +16,7 @@
 #include <cmath>
 
 class Solution {
+public:
     // Doesn't account for z case
     char kthCharacter(int k) {
         if (k == 1) {

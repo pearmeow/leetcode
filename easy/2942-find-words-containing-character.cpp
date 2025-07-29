@@ -12,6 +12,7 @@
 #include <vector>
 
 class Solution {
+public:
     bool hasChar(const std::string& word, char x) {
         for (size_t i = 0; i < word.size(); ++i) {
             if (word[i] == x) return true;

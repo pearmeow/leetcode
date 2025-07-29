@@ -13,6 +13,7 @@
 #include <vector>
 
 class Solution {
+public:
     int countHillValley(const std::vector<int>& nums) {
         std::vector<int> curr_hill_valley;
         int res = 0;

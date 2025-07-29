@@ -12,6 +12,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::vector<int>& plusOne(std::vector<int>& digits) {
         int carry = 0;
         for (std::size_t digit = digits.size(); digit > 0; --digit) {

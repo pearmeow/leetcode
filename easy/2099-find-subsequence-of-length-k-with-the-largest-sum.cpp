@@ -14,6 +14,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::vector<int> maxSubsequence(std::vector<int>& nums, int k) {
         auto comp = [](const std::pair<int, int>& a, const std::pair<int, int>& b) { return a.first < b.first; };
         std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, decltype(comp)> pq(comp);

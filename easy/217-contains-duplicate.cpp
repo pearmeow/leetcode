@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     bool containsDuplicate(std::vector<int>& nums) {
         std::unordered_set<int> set;
         for (size_t i = 0; i < nums.size(); ++i) {

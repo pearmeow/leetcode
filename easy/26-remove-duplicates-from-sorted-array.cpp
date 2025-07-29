@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     int removeDuplicates(std::vector<int>& nums) {
         size_t insert = 0;
         int curr = nums[0];

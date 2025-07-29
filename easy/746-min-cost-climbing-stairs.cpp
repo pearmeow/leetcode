@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     int minCostClimbingStairs(std::vector<int>& cost) {
         for (size_t i = cost.size() - 2; i > 0; --i) {
             cost[i - 1] = cost[i - 1] + std::min(cost[i], cost[i + 1]);  // determine the minimum as you go

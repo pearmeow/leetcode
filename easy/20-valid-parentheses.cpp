@@ -14,6 +14,7 @@
 #include <string>
 
 class Solution {
+public:
     bool isValid(const std::string& s) {
         std::stack<char> brackets;
         for (char c : s) {

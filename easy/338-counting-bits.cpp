@@ -10,6 +10,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::vector<int> countBits(int n) {
         size_t size = 1, curr = 1, index = 0;
         std::vector<int> bits(n + 1, 0);

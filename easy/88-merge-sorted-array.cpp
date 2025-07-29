@@ -16,6 +16,7 @@
 #include <vector>
 
 class Solution {
+public:
     void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
         std::vector<int> n1cpy;
         // copy the important indicies from nums2 into a copy so we can modify nums2

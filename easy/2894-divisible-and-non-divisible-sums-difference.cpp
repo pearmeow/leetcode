@@ -11,6 +11,7 @@
  */
 
 class Solution {
+public:
     int differenceOfSums(int n, int m) {
         // sum formula of all numbers 1 to n
         int num1 = (n * (n + 1)) / 2;

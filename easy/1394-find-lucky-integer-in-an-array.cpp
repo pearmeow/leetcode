@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     int findLucky(std::vector<int>& arr) {
         std::map<int, int> freqs;
         for (int i : arr) {

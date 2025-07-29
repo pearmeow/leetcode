@@ -11,6 +11,7 @@
 #include <string>
 
 class Solution {
+public:
     bool isPalindrome(const std::string& s) {
         size_t left = 0;
         size_t right = s.size() - 1;

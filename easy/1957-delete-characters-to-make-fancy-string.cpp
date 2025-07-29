@@ -11,6 +11,7 @@
 #include <string>
 
 class Solution {
+public:
     std::string makeFancyString(const std::string& s) {
         int count = 0;
         char curr = s[0];

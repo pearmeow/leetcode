@@ -9,6 +9,7 @@
 #include <cstdio>  // for size_t definition
 
 class Solution {
+public:
     bool isPalindrome(int x) {
         if (x < 0) return false;
         std::size_t rvrs = 0, count = 0, orig = x;

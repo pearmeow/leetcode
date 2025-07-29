@@ -17,6 +17,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::vector<std::string> getLongestSubsequence(std::vector<std::string>& words, std::vector<int>& groups) {
         bool bit = groups[0];
         std::vector<std::string> sub;

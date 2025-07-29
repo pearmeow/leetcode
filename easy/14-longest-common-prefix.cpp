@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::string longestCommonPrefix(const std::vector<std::string>& strs) {
         std::string lcp;
         char curr = ' ';

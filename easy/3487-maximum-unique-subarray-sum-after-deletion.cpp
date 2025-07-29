@@ -13,6 +13,7 @@
 #include <vector>
 
 class Solution {
+public:
     int maxSum(const std::vector<int>& nums) {
         int most = nums[0];
         int sum = 0;

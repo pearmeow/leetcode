@@ -11,6 +11,7 @@
 #include <vector>
 
 class Solution {
+public:
     int helper(int n, std::vector<int>& memo) {
         if (memo[n] != 0) return memo[n];
         if (n <= 2) {

@@ -10,6 +10,7 @@
 #include <unordered_map>
 
 class Solution {
+public:
     int romanToInt(const std::string& s) {
         int num = 0;
         std::unordered_map<char, int> values = {{'I', 1},   {'V', 5},   {'X', 10},  {'L', 50},

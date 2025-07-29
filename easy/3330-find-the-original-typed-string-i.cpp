@@ -13,6 +13,7 @@
 #include <string>
 
 class Solution {
+public:
     int possibleStringCount(const std::string& word) {
         int res = 0;
         char prev = ' ';

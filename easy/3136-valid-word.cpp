@@ -20,6 +20,7 @@
 #include <string>
 
 class Solution {
+public:
     bool isValid(const std::string& word) {
         if (word.size() < 3) {
             return false;

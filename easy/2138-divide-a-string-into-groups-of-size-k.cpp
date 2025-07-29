@@ -8,6 +8,7 @@
 #include <vector>
 
 class Solution {
+public:
     std::vector<std::string> divideString(const std::string& s, int k, char fill) {
         std::vector<std::string> res;
         for (size_t i = 0; i < s.size(); i += k) {
