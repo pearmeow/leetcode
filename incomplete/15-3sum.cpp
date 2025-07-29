@@ -49,11 +49,9 @@ public:
         }
         return unsorted;
     }
-
     std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
         mergeSort(nums);
         std::vector<std::vector<int>> triplets;
-
         return triplets;
     }
 };
