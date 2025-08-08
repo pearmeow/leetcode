@@ -15,19 +15,23 @@
  * accepted.
  */
 
+#include <cmath>
 #include <vector>
 
 class Solution {
 public:
     double soupServings(long long n) {
+        if (n > 4800) {
+            return 1;
+        }
         std::vector<std::vector<std::pair<double, double>>> dp(
-            n, std::vector<std::pair<double, double>>(n, {-1, -1}));
+            n / 25 + 2, std::vector<std::pair<double, double>>(n / 25 + 2, {-1, -1}));
         std::pair<double, double> chances = helper(n, n, dp);
         return chances.first + chances.second / 2;
     }
     // returns [a used up chance, both used up chance]
     std::pair<double, double> helper(long long a_ml, long long b_ml,
-                                     std::vector<std::vector<std::pair<double, double>>> dp) {
+                                     std::vector<std::vector<std::pair<double, double>>>& dp) {
         if (a_ml <= 0) {
             a_ml = 0;
         }
@@ -37,12 +41,12 @@ public:
         if (a_ml <= 0 && b_ml <= 0) {
             dp[a_ml][b_ml] = {0, 1};
         } else if (a_ml <= 0) {
-            dp[a_ml][b_ml] = {1, 0};
+            dp[a_ml][std::ceil(b_ml / 25.0)] = {1, 0};
         } else if (b_ml <= 0) {
-            dp[a_ml][b_ml] = {0, 0};
+            dp[std::ceil(a_ml / 25.0)][b_ml] = {0, 0};
         }
-        if (dp[a_ml][b_ml].first != -1) {
-            return dp[a_ml][b_ml];
+        if (dp[std::ceil(a_ml / 25.0)][std::ceil(b_ml / 25.0)].first != -1) {
+            return dp[std::ceil(a_ml / 25.0)][std::ceil(b_ml / 25.0)];
         }
         auto chances1 = helper(a_ml - 100, b_ml, dp);
         auto chances2 = helper(a_ml - 75, b_ml - 25, dp);
@@ -50,7 +54,12 @@ public:
         auto chances4 = helper(a_ml - 25, b_ml - 75, dp);
         double a_before_b = (chances1.first + chances2.first + chances3.first + chances4.first) / 4;
         double both = (chances1.second + chances2.second + chances3.second + chances4.second) / 4;
-        dp[a_ml][b_ml] = {a_before_b, both};
-        return dp[a_ml][b_ml];
+        dp[std::ceil(a_ml / 25.0)][std::ceil(b_ml / 25.0)] = {a_before_b, both};
+        return dp[std::ceil(a_ml / 25.0)][std::ceil(b_ml / 25.0)];
     }
 };
+
+int main() {
+    Solution sol;
+    sol.soupServings(400);
+}
