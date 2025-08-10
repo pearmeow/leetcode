@@ -22,6 +22,7 @@ public:
         }
         while (curr_num < n * 10) {
             if (curr_num < n / 10) {
+                curr_num *= 2;
                 continue;
             }
             std::vector<long long> temp_digits = num_digits;
